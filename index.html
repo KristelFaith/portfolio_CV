@@ -110,6 +110,24 @@
             outline-offset: 4px;
         }
 
+        .exp-detail-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .exp-detail-toggle:hover,
+        .exp-detail-toggle:focus-visible {
+            color: #6ee7b7;
+            outline: none;
+        }
+
         .ua-accent {
             display: inline-block;
             padding: 0 0.2rem;
@@ -1518,6 +1536,26 @@
                 document.querySelectorAll('.work-card').forEach(card => {
                     card.classList.toggle('hidden', filter !== 'all' && card.dataset.workCategory !== filter);
                 });
+            });
+        });
+
+        document.querySelectorAll('.exp-card').forEach(card => {
+            const detail = card.querySelector('.space-y-2.mb-4');
+            if (!detail) return;
+
+            detail.classList.add('hidden');
+            const toggle = document.createElement('button');
+            toggle.type = 'button';
+            toggle.className = 'exp-detail-toggle mb-4';
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.innerHTML = '<i class="fa-solid fa-chevron-down text-[10px]"></i><span data-en="View role details" data-ua="Показати деталі ролі">View role details</span>';
+            detail.parentNode.insertBefore(toggle, detail);
+
+            toggle.addEventListener('click', () => {
+                const isOpen = !detail.classList.contains('hidden');
+                detail.classList.toggle('hidden', isOpen);
+                toggle.setAttribute('aria-expanded', String(!isOpen));
+                toggle.querySelector('i').classList.toggle('rotate-180', !isOpen);
             });
         });
 
