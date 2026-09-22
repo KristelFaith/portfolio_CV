@@ -101,6 +101,15 @@
             backdrop-filter: blur(8px);
         }
 
+        .work-card {
+            cursor: pointer;
+        }
+
+        .work-card:focus-visible {
+            outline: 2px solid #fbbf24;
+            outline-offset: 4px;
+        }
+
         /* Gradient Text */
         .text-gradient-primary {
             background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
@@ -866,8 +875,17 @@
                 <span class="hidden sm:inline-flex glass-pill px-3 py-1 rounded-full text-[10px] font-mono text-amber-300 border border-amber-500/20">PUBLIC / REDACTED</span>
             </div>
 
+            <div class="flex flex-wrap gap-2" role="group" aria-label="Filter selected work">
+                <button type="button" class="work-filter glass-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-amber-300 border-amber-500/40" data-filter="all" data-en="All work" data-ua="Усі роботи">All work</button>
+                <button type="button" class="work-filter glass-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300" data-filter="ai" data-en="AI systems" data-ua="ШІ-системи">AI systems</button>
+                <button type="button" class="work-filter glass-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300" data-filter="web" data-en="Web / UX" data-ua="Web / UX">Web / UX</button>
+                <button type="button" class="work-filter glass-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300" data-filter="operations" data-en="Operations" data-ua="Операції">Operations</button>
+                <button type="button" class="work-filter glass-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300" data-filter="creative" data-en="Creative work" data-ua="Творчі роботи">Creative work</button>
+                <span class="ml-auto hidden md:inline-flex items-center gap-2 text-[10px] font-mono text-slate-500"><i class="fa-solid fa-hand-pointer"></i> SELECT A CARD FOR DETAILS</span>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <article class="glass-card-interactive rounded-2xl p-6 border-t-2 border-t-emerald-400 space-y-4">
+                <article class="work-card glass-card-interactive rounded-2xl p-6 border-t-2 border-t-emerald-400 space-y-4" data-work-category="ai" data-work-id="ai-workflows" tabindex="0" role="button">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <p class="text-[10px] font-mono uppercase tracking-widest text-emerald-400">01 / AI SYSTEMS</p>
@@ -883,7 +901,7 @@
                     </div>
                 </article>
 
-                <article class="glass-card-interactive rounded-2xl p-6 border-t-2 border-t-cyan-400 space-y-4">
+                <article class="work-card glass-card-interactive rounded-2xl p-6 border-t-2 border-t-cyan-400 space-y-4" data-work-category="web" data-work-id="web-ux" tabindex="0" role="button">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <p class="text-[10px] font-mono uppercase tracking-widest text-cyan-400">02 / DIGITAL PRODUCTS</p>
@@ -899,7 +917,7 @@
                     </div>
                 </article>
 
-                <article class="glass-card-interactive rounded-2xl p-6 border-t-2 border-t-violet-400 space-y-4">
+                <article class="work-card glass-card-interactive rounded-2xl p-6 border-t-2 border-t-violet-400 space-y-4" data-work-category="operations" data-work-id="support-operations" tabindex="0" role="button">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <p class="text-[10px] font-mono uppercase tracking-widest text-violet-400">03 / OPERATIONS</p>
@@ -915,7 +933,7 @@
                     </div>
                 </article>
 
-                <article class="glass-card-interactive rounded-2xl p-6 border-t-2 border-t-pink-400 space-y-4">
+                <article class="work-card glass-card-interactive rounded-2xl p-6 border-t-2 border-t-pink-400 space-y-4" data-work-category="creative" data-work-id="narrative-design" tabindex="0" role="button">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <p class="text-[10px] font-mono uppercase tracking-widest text-pink-400">04 / CREATIVE SYSTEMS</p>
@@ -931,7 +949,7 @@
                     </div>
                 </article>
 
-                <article class="glass-card-interactive rounded-2xl p-6 border-t-2 border-t-amber-400 space-y-4">
+                <article class="work-card glass-card-interactive rounded-2xl p-6 border-t-2 border-t-amber-400 space-y-4" data-work-category="creative" data-work-id="content-pipeline" tabindex="0" role="button">
                     <div class="flex items-start justify-between gap-4">
                         <div>
                             <p class="text-[10px] font-mono uppercase tracking-widest text-amber-400">05 / CONTENT AUTOMATION</p>
@@ -949,6 +967,17 @@
                 </article>
             </div>
         </section>
+
+        <div id="workModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="workModalTitle">
+            <div class="absolute inset-0 bg-dark-900/80 backdrop-blur-sm" data-close-work-modal></div>
+            <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card rounded-2xl border border-amber-500/30 p-6 sm:p-8 shadow-2xl">
+                <button type="button" class="absolute right-4 top-4 glass-pill w-9 h-9 rounded-lg text-slate-300 hover:text-white" data-close-work-modal aria-label="Close case study"><i class="fa-solid fa-xmark"></i></button>
+                <p id="workModalEyebrow" class="text-[10px] font-mono uppercase tracking-widest text-amber-400"></p>
+                <h3 id="workModalTitle" class="mt-2 pr-10 text-2xl font-extrabold text-white"></h3>
+                <div id="workModalBody" class="mt-5 space-y-4 text-sm leading-relaxed text-slate-300"></div>
+                <div id="workModalTags" class="mt-6 flex flex-wrap gap-2"></div>
+            </div>
+        </div>
 
         <section id="education" class="space-y-6">
             <div class="flex items-center justify-between border-b border-white/10 pb-4">
@@ -1272,6 +1301,123 @@
                 toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
             }, 3000);
         }
+
+        const workDetails = {
+            'ai-workflows': {
+                eyebrow: ['01 / AI SYSTEMS', '01 / ШІ-СИСТЕМИ'],
+                title: ['Prompt & Agentic Workflow Architecture', 'Архітектура промптів та агентних workflow'],
+                body: [
+                    'I design structured prompts, JSON data flows, bot logic, and automation patterns for digital products. The work can include prompt testing, response refinement, workflow structure, and connecting AI behaviour to a practical user journey.',
+                    'Client names, private business rules, and confidential implementation details are intentionally omitted.'
+                ],
+                bodyUa: [
+                    'Проєктую структуровані промпти, JSON-потоки даних, логіку ботів і патерни автоматизації для цифрових продуктів. Робота може охоплювати тестування промптів, покращення відповідей, структуру workflow та поєднання поведінки ШІ з практичним користувацьким шляхом.',
+                    'Назви клієнтів, приватні бізнес-правила та конфіденційні деталі реалізації навмисно не розкриваються.'
+                ],
+                tags: ['Prompt Engineering', 'N8N', 'JSON Pipelines', 'Bot Architecture']
+            },
+            'web-ux': {
+                eyebrow: ['02 / DIGITAL PRODUCTS', '02 / DIGITAL PRODUCTS'],
+                title: ['Responsive Web & UX Systems', 'Адаптивні вебпродукти та UX-системи'],
+                body: [
+                    'I turn complex requirements into clear interfaces, responsive layouts, UX audits, and maintainable front-end experiences. My process connects visual structure, content hierarchy, usability, and implementation.',
+                    'This combines Figma thinking with HTML, CSS, JavaScript, and practical no-code or code-based delivery.'
+                ],
+                bodyUa: [
+                    'Перетворюю складні вимоги на зрозумілі інтерфейси, адаптивні макети, UX-аудити та підтримувані frontend-рішення. Мій процес поєднує візуальну структуру, ієрархію контенту, зручність і реалізацію.',
+                    'Це поєднання мислення у Figma з HTML, CSS, JavaScript та практичною no-code або code-based реалізацією.'
+                ],
+                tags: ['Figma', 'HTML / CSS', 'JavaScript', 'UX Audits']
+            },
+            'support-operations': {
+                eyebrow: ['03 / OPERATIONS', '03 / ОПЕРАЦІЇ'],
+                title: ['Support Operations & Knowledge Systems', 'Операції підтримки та системи знань'],
+                body: [
+                    'I improve support workflows through fast written communication, knowledge-base structure, prompt templates, CRM processes, and recurring feedback analysis. The focus is both human: understanding the customer, and systematic: making the next response better.',
+                    'This work is grounded in international SaaS support experience and a sustained 5.0 / 5.0 CSAT record.'
+                ],
+                bodyUa: [
+                    'Покращую процеси підтримки через швидку письмову комунікацію, структуру бази знань, prompt-шаблони, CRM-процеси та аналіз повторюваного зворотного зв’язку. Фокус одночасно людський: зрозуміти клієнта, і системний: зробити наступну відповідь кращою.',
+                    'Цей напрям спирається на досвід міжнародної SaaS-підтримки та стабільний показник CSAT 5.0 / 5.0.'
+                ],
+                tags: ['CSAT 5.0/5.0', 'CRM', 'Knowledge Base', 'User Feedback']
+            },
+            'narrative-design': {
+                eyebrow: ['04 / CREATIVE SYSTEMS', '04 / ТВОРЧІ СИСТЕМИ'],
+                title: ['Narrative Design & Transmedia Worlds', 'Наративний дизайн і трансмедійні світи'],
+                body: [
+                    'I build character arcs, lore architectures, psychological prose, and bilingual content systems for fiction, blogs, games, and creative brands. Narrative is treated as a system: voice, structure, emotional movement, and audience experience work together.',
+                    'This is the creative layer connecting my writing, editing, TTRPG world-building, and digital content practice.'
+                ],
+                bodyUa: [
+                    'Створюю арки персонажів, лор-архітектури, психологічну прозу та двомовні контент-системи для літератури, блогів, ігор і креативних брендів. Наратив розглядається як система: голос, структура, емоційний рух і досвід аудиторії працюють разом.',
+                    'Це творчий напрям, що поєднує моє письмо, редактуру, TTRPG world-building і практику цифрового контенту.'
+                ],
+                tags: ['World-building', 'Editing', 'Story Architecture', 'Creative Writing']
+            },
+            'content-pipeline': {
+                eyebrow: ['05 / CONTENT AUTOMATION', '05 / АВТОМАТИЗАЦІЯ КОНТЕНТУ'],
+                title: ['Multilingual TikTok & YouTube Content Pipeline', 'Багатомовний контентний pipeline для TikTok і YouTube'],
+                body: [
+                    'I co-developed an AI-assisted content workflow in N8N and VS Code for a TikTok-focused project with supporting YouTube content. The work included stories, video concepts, quizzes, bots, AI-generated image and video assets, sourcing, and adaptation in Ukrainian, Russian, and English.',
+                    'The project was collaborative, so the public description focuses on my contribution and the working methods rather than private project details.'
+                ],
+                bodyUa: [
+                    'Я брала участь у створенні AI-assisted workflow у N8N і VS Code для TikTok-орієнтованого проєкту з додатковим YouTube-контентом. Робота охоплювала історії, концепції відео, квізи, ботів, AI-зображення й відео, пошук матеріалів та адаптацію українською, російською й англійською.',
+                    'Проєкт був командним, тому публічний опис зосереджений на моєму внеску та методах роботи, а не на приватних деталях.'
+                ],
+                tags: ['N8N', 'VS Code', 'TikTok / YouTube', 'UA / RU / EN']
+            }
+        };
+
+        function openWorkModal(workId) {
+            const detail = workDetails[workId];
+            if (!detail) return;
+            const languageIndex = currentLang === 'UA' ? 1 : 0;
+            const paragraphs = currentLang === 'UA' ? detail.bodyUa : detail.body;
+            document.getElementById('workModalEyebrow').textContent = detail.eyebrow[languageIndex];
+            document.getElementById('workModalTitle').textContent = detail.title[languageIndex];
+            document.getElementById('workModalBody').innerHTML = paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
+            document.getElementById('workModalTags').innerHTML = detail.tags.map(tag => `<span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">${tag}</span>`).join('');
+            document.getElementById('workModal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeWorkModal() {
+            document.getElementById('workModal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.querySelectorAll('.work-card').forEach(card => {
+            card.addEventListener('click', () => openWorkModal(card.dataset.workId));
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openWorkModal(card.dataset.workId);
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-close-work-modal]').forEach(element => {
+            element.addEventListener('click', closeWorkModal);
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeWorkModal();
+        });
+
+        document.querySelectorAll('.work-filter').forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                document.querySelectorAll('.work-filter').forEach(filterButton => {
+                    filterButton.classList.toggle('text-amber-300', filterButton === button);
+                    filterButton.classList.toggle('border-amber-500/40', filterButton === button);
+                });
+                document.querySelectorAll('.work-card').forEach(card => {
+                    card.classList.toggle('hidden', filter !== 'all' && card.dataset.workCategory !== filter);
+                });
+            });
+        });
 
         // Filter Experience Timeline Live Search
         function filterExperience() {
