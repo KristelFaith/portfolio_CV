@@ -110,6 +110,13 @@
             outline-offset: 4px;
         }
 
+        .ua-accent {
+            background: linear-gradient(to bottom, #60a5fa 0 50%, #facc15 50% 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* Gradient Text */
         .text-gradient-primary {
             background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
@@ -230,7 +237,7 @@
                     <!-- Language Switcher Button -->
                     <button id="langToggleBtn" onclick="toggleLanguage()" class="glass-pill px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-400 transition-all cursor-pointer">
                         <i class="fa-solid fa-globe text-emerald-400"></i>
-                        <span id="langLabel">UA / RU / EN</span>
+                        <span id="langLabel">UA / EN</span>
                     </button>
 
                     <!-- Print / Save PDF Button -->
@@ -387,7 +394,7 @@
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3" data-en="Linguistic Capabilities" data-ua="Мовні Навички">Linguistic Capabilities</h4>
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 font-mono text-xs">
                             <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-emerald-400">
-                                <div class="font-bold text-white">Ukrainian</div>
+                                <div class="font-bold ua-accent">Ukrainian</div>
                                 <div class="text-[10px] text-emerald-400">Native (C2)</div>
                             </div>
                             <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-cyan-400">
@@ -403,7 +410,7 @@
                                 <div class="text-[10px] text-pink-400">Beginner (A1)</div>
                             </div>
                             <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-slate-600 opacity-75">
-                                <div class="font-bold text-slate-300"><span class="text-[9px] text-slate-500 mr-1">R</span>Russian</div>
+                                <div class="font-bold text-slate-300"><span class="text-[9px] text-slate-500">R</span>ussian</div>
                                 <div class="text-[10px] text-slate-500">Fluent (C2)</div>
                             </div>
                         </div>
@@ -1237,11 +1244,10 @@
 
         // Toggle Language (EN / UA)
         function toggleLanguage() {
-            currentLang = currentLang === 'EN' ? 'UA' : currentLang === 'UA' ? 'RU' : 'EN';
+            currentLang = currentLang === 'EN' ? 'UA' : 'EN';
             const languageLabels = {
-                EN: 'UA / RU / EN',
-                UA: 'EN / RU / UA',
-                RU: 'EN / UA / RU'
+                EN: 'UA / EN',
+                UA: 'EN / UA'
             };
             document.getElementById('langLabel').textContent = languageLabels[currentLang];
 
@@ -1256,8 +1262,7 @@
 
             const languageMessages = {
                 EN: 'Language switched to English',
-                UA: 'Мову змінено на українську',
-                RU: 'Язык изменен на русский'
+                UA: 'Мову змінено на українську'
             };
             showToast(languageMessages[currentLang]);
         }
@@ -1404,7 +1409,7 @@
             const detail = workDetails[workId];
             if (!detail) return;
             const languageIndex = currentLang === 'UA' ? 1 : 0;
-            const paragraphs = currentLang === 'UA' ? detail.bodyUa : currentLang === 'RU' ? detail.bodyRu : detail.body;
+            const paragraphs = currentLang === 'UA' ? detail.bodyUa : detail.body;
             document.getElementById('workModalEyebrow').textContent = detail.eyebrow[languageIndex];
             document.getElementById('workModalTitle').textContent = detail.title[languageIndex];
             document.getElementById('workModalBody').innerHTML = paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
