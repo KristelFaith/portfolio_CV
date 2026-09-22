@@ -967,7 +967,7 @@
                         </div>
                         <i class="fa-solid fa-video text-amber-400 text-xl"></i>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-300" data-en="Co-developed an AI-assisted content workflow in N8N and VS Code for a TikTok-focused project with supporting YouTube content. Created stories, video concepts, quizzes, bots, image and video assets, and adapted content in Ukrainian, English, and russian." data-ua="Брала участь у створенні AI-assisted workflow у N8N і VS Code для TikTok-орієнтованого проєкту з додатковим YouTube-контентом. Створювала історії, концепції відео, квізи, ботів, зображення, відеоматеріали та адаптувала контент українською, англійською та russian.">Co-developed an AI-assisted content workflow in N8N and VS Code for a TikTok-focused project with supporting YouTube content. Created stories, video concepts, quizzes, bots, image and video assets, and adapted content in Ukrainian, English, and russian.</p>
+                    <p class="localized-rich text-sm leading-relaxed text-slate-300" data-en-html="Co-developed an AI-assisted content workflow in N8N and VS Code for a TikTok-focused project with supporting YouTube content. Created stories, video concepts, quizzes, bots, image and video assets, and adapted content in <span class='ua-accent'>Ukrainian</span>, English, and russian." data-ua-html="Брала участь у створенні AI-assisted workflow у N8N і VS Code для TikTok-орієнтованого проєкту з додатковим YouTube-контентом. Створювала історії, концепції відео, квізи, ботів, зображення, відеоматеріали та адаптувала контент <span class='ua-accent'>українською</span>, англійською та russian.">Co-developed an AI-assisted content workflow in N8N and VS Code for a TikTok-focused project with supporting YouTube content. Created stories, video concepts, quizzes, bots, image and video assets, and adapted content in <span class="ua-accent">Ukrainian</span>, English, and russian.</p>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">N8N</span>
                         <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">VS Code</span>
@@ -1261,6 +1261,10 @@
                 } else {
                     el.textContent = el.getAttribute('data-en');
                 }
+            });
+
+            document.querySelectorAll('.localized-rich').forEach(el => {
+                el.innerHTML = currentLang === 'UA' ? el.getAttribute('data-ua-html') : el.getAttribute('data-en-html');
             });
 
             const languageMessages = {
