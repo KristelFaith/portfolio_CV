@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRISTINA VADOVSKA | Lead AI Engineer & Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#060913',
+                            800: '#0b0f19',
+                            700: '#111827',
+                            600: '#1f293d',
+                        },
+                        emeraldGlow: '#10b981',
+                        cyanGlow: '#06b6d4',
+                        violetGlow: '#8b5cf6',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060913;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.60);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        .glass-card-interactive {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-interactive:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.15), 0 0 15px rgba(6, 182, 212, 0.1);
+        }
+
+        .glass-nav {
+            background: rgba(6, 9, 19, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Gradient Text */
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glowing Orbs in Background */
+        .glow-orb-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-orb-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 40%;
+            right: -200px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-orb-3 {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.13) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: 10%;
+            left: -150px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Print Optimized Styling */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #111827 !important;
+            }
+            .no-print, nav, .glow-orb-1, .glow-orb-2, .glow-orb-3, #toast, .action-buttons {
+                display: none !important;
+            }
+            .glass-card, .glass-card-interactive {
+                background: #ffffff !important;
+                border: 1px solid #e5e7eb !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                color: #111827 !important;
+                page-break-inside: avoid;
+            }
+            p, h1, h2, h3, h4, span, div, li {
+                color: #111827 !important;
+            }
+            .text-gradient-accent, .text-gradient-primary {
+                background: none !important;
+                -webkit-text-fill-color: #111827 !important;
+                color: #111827 !important;
+            }
+            .border-white\/10 {
+                border-color: #e5e7eb !important;
+            }
+            .print-badge {
+                border: 1px solid #9ca3af !important;
+                background: #f3f4f6 !important;
+                color: #111827 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
+
+    <!-- Glowing Background Atmosphere -->
+    <div class="glow-orb-1 animate-pulse-slow"></div>
+    <div class="glow-orb-2 animate-pulse-slow"></div>
+    <div class="glow-orb-3 animate-pulse-slow"></div>
+
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand / Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-cyan-500 to-violet-600 flex items-center justify-center font-bold text-lg text-white shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                        KV
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold tracking-tight text-white group-hover:text-emerald-400 transition-colors">KRISTINA VADOVSKA</span>
+                        <span class="text-xs text-slate-400 font-mono" data-en="Executive Portfolio 2026" data-ua="Портфоліо Фахівця 2026">Executive Portfolio 2026</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#about" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="About" data-ua="Про мене">About</a>
+                    <a href="#experience" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Experience" data-ua="Досвід">Experience</a>
+                    <a href="#skills" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Skills & Tech" data-ua="Навички">Skills & Tech</a>
+                    <a href="#education" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Education" data-ua="Освіта">Education</a>
+                    <a href="#accomplishments" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Highlights" data-ua="Досягнення">Highlights</a>
+                    <a href="#interests" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Lore & Arts" data-ua="Інтереси">Lore & Arts</a>
+                </nav>
+
+                <!-- Actions: Language Toggle & Print CV -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Language Switcher Button -->
+                    <button id="langToggleBtn" onclick="toggleLanguage()" class="glass-pill px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-400 transition-all cursor-pointer">
+                        <i class="fa-solid fa-globe text-emerald-400"></i>
+                        <span id="langLabel">UA / EN</span>
+                    </button>
+
+                    <!-- Print / Save PDF Button -->
+                    <button onclick="window.print()" class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-dark-900 font-bold text-xs sm:text-sm px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-lg shadow-emerald-500/20 flex items-center gap-2 transition-all cursor-pointer">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span class="hidden sm:inline" data-en="Save PDF / Print" data-ua="Зберегти / Друк">Save PDF / Print</span>
+                        <span class="sm:hidden" data-en="PDF" data-ua="PDF">PDF</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden glass-pill p-2 rounded-lg text-slate-300 hover:text-white">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-dark-800/95 px-4 pt-3 pb-6 space-y-2">
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="About & Summary" data-ua="Про мене">About & Summary</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Experience" data-ua="Досвід роботи">Experience</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Skills & Tech" data-ua="Навички">Skills & Tech</a>
+            <a href="#education" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Education & Certs" data-ua="Освіта та Сертифікати">Education & Certs</a>
+            <a href="#accomplishments" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Key Accomplishments" data-ua="Ключові Досягнення">Key Accomplishments</a>
+            <a href="#interests" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Personal Lore & Arts" data-ua="Інтереси та Творчість">Personal Lore & Arts</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 relative z-10 space-y-12 sm:space-y-16">
+
+        <section id="hero" class="relative">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/10 overflow-hidden relative">
+                <!-- Background Glowing Flare -->
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+                    
+                    <!-- Avatar Ring & Profile Visual -->
+                    <div class="relative flex-shrink-0 group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-cyan-500 to-violet-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl bg-dark-800 p-2 border border-white/10 flex flex-col items-center justify-center text-center overflow-hidden">
+                            <!-- Initials Avatar Graphic with Sparkles -->
+                            <div class="w-full h-full rounded-xl bg-gradient-to-br from-slate-800 via-dark-700 to-slate-900 flex flex-col items-center justify-center p-4 border border-white/5 relative">
+                                <i class="fa-solid fa-microchip text-4xl text-emerald-400 mb-2 animate-float"></i>
+                                <span class="font-extrabold text-2xl tracking-wider text-white">KV</span>
+                                <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest mt-1">Tech & Story</span>
+                            </div>
+                        </div>
+                        <!-- Status Badge -->
+                        <div class="absolute -bottom-2 -right-2 bg-dark-900/90 backdrop-blur border border-emerald-500/40 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span class="text-[11px] font-semibold text-emerald-300" data-en="Available / Remote" data-ua="Доступна / Remote">Available / Remote</span>
+                        </div>
+                    </div>
+
+                    <!-- Profile Information -->
+                    <div class="flex-1 text-center lg:text-left space-y-4">
+                        
+                        <!-- Badges Row -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+                            <span class="glass-pill px-3 py-1 rounded-full text-xs font-semibold text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span data-en="Red Diploma Honors (4.9/5.0 GPA)" data-ua="Диплом з Відзнакою (4.9/5.0)">Red Diploma Honors (4.9/5.0 GPA)</span>
+                            </span>
+                            <span class="glass-pill px-3 py-1 rounded-full text-xs font-semibold text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+                                <i class="fa-solid fa-star"></i>
+                                <span data-en="CSAT 5.0/5.0 Top Performer" data-ua="CSAT 5.0/5.0 (OBRIO / Genesis)">CSAT 5.0/5.0 Top Performer</span>
+                            </span>
+                            <span class="glass-pill px-3 py-1 rounded-full text-xs font-semibold text-violet-300 border border-violet-500/30 flex items-center gap-1.5">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <span data-en="Registered FOP Founder" data-ua="Засновниця ФОП / Консультант">Registered FOP Founder</span>
+                            </span>
+                        </div>
+
+                        <!-- Name & Multilingual Title -->
+                        <div>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                                KRISTINA VADOVSKA
+                            </h1>
+                            <p class="text-sm sm:text-base font-semibold text-emerald-400 font-mono mt-1" data-en="Крістіна Вадовська • Tech & Narrative Architect" data-ua="Крістіна Вадовська • Архітекторка Технологій та Наративу">
+                                Крістіна Вадовська • Tech & Narrative Architect
+                            </p>
+                        </div>
+
+                        <!-- Primary Roles Bar -->
+                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-medium">
+                            <span class="text-white font-semibold">Lead AI & Prompt Engineer</span> <span class="text-slate-500">|</span> 
+                            <span class="text-white font-semibold">Web & Software Developer</span> <span class="text-slate-500">|</span> 
+                            <span class="text-white font-semibold">Founder & Advisory Consultant</span> <span class="text-slate-500">|</span> 
+                            <span class="text-white font-semibold">Published Author & Narrative Designer</span>
+                        </p>
+
+                        <!-- Contact Pills & Quick Actions -->
+                        <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                            <!-- Email Copy Button -->
+                            <button onclick="copyToClipboard('bussineskristel@gmail.com', 'Email copied to clipboard!')" class="glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all flex items-center gap-2 group cursor-pointer">
+                                <i class="fa-solid fa-envelope text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                                <span>bussineskristel@gmail.com</span>
+                                <i class="fa-regular fa-copy text-slate-400 text-[10px]"></i>
+                            </button>
+
+                            <!-- Phone Copy Button -->
+                            <button onclick="copyToClipboard('+380635996194', 'Phone number copied!')" class="glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-all flex items-center gap-2 group cursor-pointer">
+                                <i class="fa-solid fa-phone text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                                <span>+380 63 599 6194</span>
+                                <i class="fa-regular fa-copy text-slate-400 text-[10px]"></i>
+                            </button>
+
+                            <!-- Location Badge -->
+                            <div class="glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-violet-400"></i>
+                                <span data-en="Odesa, Ukraine | Remote" data-ua="Одеса, Україна | Віддалено">Odesa, Ukraine | Remote</span>
+                            </div>
+
+                            <!-- LinkedIn Link -->
+                            <a href="https://linkedin.com/in/kristina-vadovska-844854313" target="_blank" rel="noopener noreferrer" class="glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-blue-500/20 hover:border-blue-500/40 transition-all flex items-center gap-2 group">
+                                <i class="fa-brands fa-linkedin text-blue-400 group-hover:scale-110 transition-transform"></i>
+                                <span>LinkedIn Profile</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <i class="fa-solid fa-user-gear text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="Executive Summary & Core Philosophy" data-ua="Простір Спеціаліста та Філософія">Executive Summary & Core Philosophy</h2>
+                        <p class="text-xs text-slate-400" data-en="Multidisciplinary mastery across technology, AI systems, operations, and creative narrative." data-ua="Мультидисциплінарне поєднання технологій, ШІ-систем, операцій та наративу.">Multidisciplinary mastery across technology, AI systems, operations, and creative narrative.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Main Summary Text -->
+                <div class="lg:col-span-2 glass-card rounded-2xl p-6 sm:p-8 space-y-4">
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base" data-en="I am an adaptable, multidisciplinary Tech & Creative Specialist who seamlessly bridges AI architecture, software development, UI/UX design, customer operations, and transmedia storytelling. With an official sole proprietorship (FOP), I provide end-to-end consulting, building scalable LLM workflows, automated business pipelines, and intuitive digital experiences." data-ua="Я — адаптивна, мультидисциплінарна фахівчиня у сфері IT та творчих технологій, яка поєднує архітектуру ШІ, розробку програмного забезпечення, UI/UX дизайн, операційну підтримку та трансмедійний сторітелінг. Як зареєстрований ФОП, я надаю комплексні консалтингові послуги, створюючи масштабовані LLM-сценарії, автоматизовані бізнес-процеси та інтуїтивні цифрові продукти.">
+                        I am an adaptable, multidisciplinary Tech & Creative Specialist who seamlessly bridges AI architecture, software development, UI/UX design, customer operations, and transmedia storytelling. With an official sole proprietorship (FOP), I provide end-to-end consulting, building scalable LLM workflows, automated business pipelines, and intuitive digital experiences.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base" data-en="Holding a Bachelor's Degree with Honors (Red Diploma, 4.9/5.0 GPA) and having achieved a flawless 5.0/5.0 CSAT record within the Genesis ecosystem (OBRIO), I excel at solving high-complexity problems, crafting rich narrative architectures, and delivering customer satisfaction at scale." data-ua="Маючи диплом бакалавра з відзнакою (Червоний диплом, GPA 4.9/5.0) та бездоганний показник CSAT 5.0/5.0 в екосистемі Genesis (OBRIO), я ефективно вирішую складні завдання, будую глибокі наративні світи та забезпечую найвищий рівень задоволеності клієнтів.">
+                        Holding a Bachelor's Degree with Honors (Red Diploma, 4.9/5.0 GPA) and having achieved a flawless 5.0/5.0 CSAT record within the Genesis ecosystem (OBRIO), I excel at solving high-complexity problems, crafting rich narrative architectures, and delivering customer satisfaction at scale.
+                    </p>
+
+                    <!-- Language Capabilities Bar -->
+                    <div class="pt-4 border-t border-white/10">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3" data-en="Linguistic Capabilities" data-ua="Мовні Навички">Linguistic Capabilities</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 font-mono text-xs">
+                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-emerald-400">
+                                <div class="font-bold text-white">Ukrainian</div>
+                                <div class="text-[10px] text-emerald-400">Native (C2)</div>
+                            </div>
+                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-cyan-400">
+                                <div class="font-bold text-white">English</div>
+                                <div class="text-[10px] text-cyan-400">Advanced (C1)</div>
+                            </div>
+                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-violet-400">
+                                <div class="font-bold text-white">Russian</div>
+                                <div class="text-[10px] text-violet-400">Fluent (C2)</div>
+                            </div>
+                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-amber-400">
+                                <div class="font-bold text-white">German</div>
+                                <div class="text-[10px] text-amber-400">Elementary (A2)</div>
+                            </div>
+                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-pink-400">
+                                <div class="font-bold text-white">Romanian</div>
+                                <div class="text-[10px] text-pink-400">Beginner (A1)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Stat Metrics Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card rounded-2xl p-5 flex flex-col justify-center items-center text-center border border-emerald-500/20 hover:border-emerald-500/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 font-mono">4.9 / 5.0</div>
+                        <div class="text-xs font-semibold text-slate-300 mt-1" data-en="Academic GPA (Red Diploma)" data-ua="Середній Бал (Диплом з Відзнакою)">Academic GPA (Red Diploma)</div>
+                        <div class="text-[10px] text-emerald-400 mt-1 font-mono" data-en="Top 5% Graduate" data-ua="ТОП-5% Випускників">Top 5% Graduate</div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-5 flex flex-col justify-center items-center text-center border border-cyan-500/20 hover:border-cyan-500/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400 font-mono">5.0 / 5.0</div>
+                        <div class="text-xs font-semibold text-slate-300 mt-1" data-en="CSAT Score (OBRIO/Genesis)" data-ua="Показник CSAT (OBRIO/Genesis)">CSAT Score (OBRIO/Genesis)</div>
+                        <div class="text-[10px] text-cyan-400 mt-1 font-mono" data-en="Perfect Satisfaction" data-ua="100% Задоволеність">Perfect Satisfaction</div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-5 flex flex-col justify-center items-center text-center border border-violet-500/20 hover:border-violet-500/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400 font-mono">8+ Yrs</div>
+                        <div class="text-xs font-semibold text-slate-300 mt-1" data-en="Creative & Writing Lore" data-ua="Досвід Письменництва та Копірайтингу">Creative & Writing Lore</div>
+                        <div class="text-[10px] text-violet-400 mt-1 font-mono" data-en="Published Works & Blog" data-ua="Публікації та Блог">Published Works & Blog</div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-5 flex flex-col justify-center items-center text-center border border-amber-500/20 hover:border-amber-500/50 transition-all">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-emerald-400 font-mono">FOP</div>
+                        <div class="text-xs font-semibold text-slate-300 mt-1" data-en="Sole Proprietorship" data-ua="Фізична Особа-Підприємець">Sole Proprietorship</div>
+                        <div class="text-[10px] text-amber-400 mt-1 font-mono" data-en="Legal Advisory Entity" data-ua="Зареєстрований ФОП">Legal Advisory Entity</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                        <i class="fa-solid fa-briefcase text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="Professional Experience" data-ua="Професійний Досвід">Professional Experience</h2>
+                        <p class="text-xs text-slate-400" data-en="Chronological career path spanning tech architecture, operations, and creative narrative." data-ua="Хронологічний шлях у розробці, операціях та наративному дизайні.">Chronological career path spanning tech architecture, operations, and creative narrative.</p>
+                    </div>
+                </div>
+
+                <!-- Live Experience Search & Filter Bar -->
+                <div class="flex items-center gap-2">
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+                        <input type="text" id="expSearchInput" onkeyup="filterExperience()" placeholder="Filter position, tech, company..." class="glass-pill pl-8 pr-3 py-1.5 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 w-48 sm:w-64">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Timeline Container -->
+            <div id="experienceContainer" class="space-y-6">
+
+                <!-- Job Card 1 -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-emerald-500" data-keywords="founder advisory consultant fop self-employed ai strategy ui ux management">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white" data-en="Founder & Advisory Consultant" data-ua="Засновниця та Консультантка з Адопції ШІ">Founder & Advisory Consultant</h3>
+                                <span class="bg-emerald-500/20 text-emerald-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-emerald-500/30">Registered Sole Proprietorship (FOP)</span>
+                            </div>
+                            <p class="text-sm font-semibold text-emerald-400 mt-0.5">Self-Employed / Independent Advisory</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            02/2024 – Present
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Operating an independent consultancy registered as a sole proprietorship. Delivering strategic AI adoption, bespoke prompt engineering workflows, UX strategy, and narrative branding for startups and businesses." data-ua="Управління незалежною консалтинговою практикою в статусі ФОП. Консультування підприємств та стартапів з впровадження ШІ, розробка промпт-систем, UX-стратегії та бренд-наративу.">
+                        Operating an independent consultancy registered as a sole proprietorship. Delivering strategic AI adoption, bespoke prompt engineering workflows, UX strategy, and narrative branding for startups and businesses.
+                    </p>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Key Deliverables & Impact:" data-ua="Ключові Результати та Вплив:">Key Deliverables & Impact:</div>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
+                            <li data-en="Architected end-to-end prompt pipelines and automated AI logic for commercial clients, lowering operational overhead." data-ua="Побудувала складні промпт-ланцюжки та автоматизовану ШІ-логіку для комерційних клієнтів.">Architected end-to-end prompt pipelines and automated AI logic for commercial clients, lowering operational overhead.</li>
+                            <li data-en="Designed high-converting UI/UX layouts, wireframes, and digital brand voice frameworks with 100% positive client feedback." data-ua="Розробила UI/UX макети та структури бренду з 100% позитивними відгуками замовників.">Designed high-converting UI/UX layouts, wireframes, and digital brand voice frameworks with 100% positive client feedback.</li>
+                            <li data-en="Provided regulatory and legal compliance management for sole proprietorship contracts, invoicing, and service execution." data-ua="Повне ведення юридичних та фінансових аспектів діяльності ФОП.">Provided regulatory and legal compliance management for sole proprietorship contracts, invoicing, and service execution.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">AI Integration</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">Prompt Engineering</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">UI/UX Strategy</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Business Consulting</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">FOP Management</span>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-cyan-500" data-keywords="lead ai prompt engineer web software developer python javascript n8n bot github LLM">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white" data-en="Lead AI & Prompt Engineer | Web & Software Developer" data-ua="Головна ШІ & Prompt Інженерка | Web & Software Розробниця">Lead AI & Prompt Engineer | Web & Software Developer</h3>
+                                <span class="bg-cyan-500/20 text-cyan-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-cyan-500/30">Freelance & Startups</span>
+                            </div>
+                            <p class="text-sm font-semibold text-cyan-400 mt-0.5">Commercial Web Apps & AI Systems</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            2023 – Present
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Leading technical development for web tools, agentic AI workflows, custom chatbot architectures, and responsive web platforms using modern web stacks and LLM APIs." data-ua="Технічна розробка веб-інструментів, автономних ШІ-агентів, архітектури чат-ботів та сучасних веб-платформ з використанням LLM API.">
+                        Leading technical development for web tools, agentic AI workflows, custom chatbot architectures, and responsive web platforms using modern web stacks and LLM APIs.
+                    </p>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Key Highlights:" data-ua="Ключові Досягнення:">Key Highlights:</div>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
+                            <li data-en="Engineered complex N8N agentic pipelines and Telegram bots with integrated OpenAI & Claude LLM endpoints." data-ua="Розробила N8N сценарії та Telegram-ботів з інтеграцією LLM API (OpenAI, Claude).">Engineered complex N8N agentic pipelines and Telegram bots with integrated OpenAI & Claude LLM endpoints.</li>
+                            <li data-en="Developed modern web interfaces using HTML5, Tailwind CSS, JavaScript, and Python scripts for dynamic content injection." data-ua="Створила веб-інтерфейси з використанням Tailwind CSS, JS та Python.">Developed modern web interfaces using HTML5, Tailwind CSS, JavaScript, and Python scripts for dynamic content injection.</li>
+                            <li data-en="Conducted comprehensive UX audits, system testing, and prompt debugging for conversational AI applications." data-ua="Провела UX-аудити та тестування систем штучного інтелекту.">Conducted comprehensive UX audits, system testing, and prompt debugging for conversational AI applications.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">Python</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">N8N Workflows</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">LLM Prompting</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">JavaScript / Tailwind</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Telegram Bot API</span>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-violet-500" data-keywords="customer support operations specialist obrio genesis ecosystem csat 5.0 crm salesforce live chat">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white" data-en="Customer Support & Operations Specialist" data-ua="Спеціалістка з Підтримки та Операцій (CSAT 5.0)">Customer Support & Operations Specialist</h3>
+                                <span class="bg-violet-500/20 text-violet-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-violet-500/30">OBRIO (Genesis Ecosystem)</span>
+                            </div>
+                            <p class="text-sm font-semibold text-violet-400 mt-0.5">Global User Support & Workflow Optimization</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            02/2023 – 05/2024
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Managed user query resolution, high-touch support ticket escalation, and CRM operations within OBRIO (Genesis Tech Ecosystem). Maintained a flawless 5.0/5.0 CSAT rating across thousands of customer interactions." data-ua="Управління підтримкою користувачів, обробка тікетів високої складності та CRM-операцій в OBRIO (Екосистема Genesis). Досягла та утримувала ідеальний рейтинг CSAT 5.0/5.0.">
+                        Managed user query resolution, high-touch support ticket escalation, and CRM operations within OBRIO (Genesis Tech Ecosystem). Maintained a flawless 5.0/5.0 CSAT rating across thousands of customer interactions.
+                    </p>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Key Achievements:" data-ua="Ключові Досягнення:">Key Achievements:</div>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
+                            <li data-en="Awarded Top Performer status with a sustained 5.0 / 5.0 Customer Satisfaction rating." data-ua="Отримала статус найкращого фахівця зі стабільним рейтингом CSAT 5.0 / 5.0.">Awarded Top Performer status with a sustained 5.0 / 5.0 Customer Satisfaction rating.</li>
+                            <li data-en="Optimized ticket resolution workflows, reducing average response latency and improving customer retention." data-ua="Оптимізувала процеси обробки звернень, скоротивши час відповіді та покращивши утримання користувачів.">Optimized ticket resolution workflows, reducing average response latency and improving customer retention.</li>
+                            <li data-en="Collaborated with product engineers and QA teams to report software bugs and refine user onboarding flows." data-ua="Співпрацювала з розробниками та QA для виправлення багів та вдосконалення онбордингу.">Collaborated with product engineers and QA teams to report software bugs and refine user onboarding flows.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">CSAT 5.0/5.0</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Genesis Ecosystem</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">CRM Operations</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">Live Chat Support</span>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-amber-500" data-keywords="published author narrative designer kristel inside out blog lore transmedia storytelling creative">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white" data-en="Published Author & Narrative Designer" data-ua="Публікована Авторка та Наративна Дизайнерка">Published Author & Narrative Designer</h3>
+                                <span class="bg-amber-500/20 text-amber-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-amber-500/30">Independent Publishing & "Kristel inside out" Blog</span>
+                            </div>
+                            <p class="text-sm font-semibold text-amber-400 mt-0.5">Transmedia Storytelling & Literary Prose</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            01/2016 – Present
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Authoring psychological and fantasy fiction prose, building extensive lore architectures, and publishing digital essays through the 'Kristel inside out' publication platform." data-ua="Створення психологічної та фентезійної прози, розробка глибоких лор-архітектур та публікація есеїв у блозі 'Kristel inside out'.">
+                        Authoring psychological and fantasy fiction prose, building extensive lore architectures, and publishing digital essays through the 'Kristel inside out' publication platform.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">Lore Architecture</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Transmedia Worldbuilding</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">Creative Writing</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">Digital Publishing</span>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-pink-500" data-keywords="copywriter content specialist digital content maker smm editor freelance">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white" data-en="Copywriter & Content Specialist | Freelance Editor" data-ua="Копірайтерка & Контент-Спеціалістка | Фріланс Редакторка">Copywriter & Content Specialist | Freelance Editor</h3>
+                                <span class="bg-pink-500/20 text-pink-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-pink-500/30">SMM Agency & Freelance</span>
+                            </div>
+                            <p class="text-sm font-semibold text-pink-400 mt-0.5">Editorial Content, Brand Messaging & Copywriting</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            2015 – Present
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Over 8 years of professional writing, copy editing, digital strategy, SEO copywriting, and social media content creation across tech, lifestyle, and literary domains." data-ua="Понад 8 років досвіду професійного копірайтингу, редактури, SMM-контенту, SEO-текстів у сферах IT, медіа та культури.">
+                        Over 8 years of professional writing, copy editing, digital strategy, SEO copywriting, and social media content creation across tech, lifestyle, and literary domains.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-pink-300">SEO Copywriting</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">SMM Strategy</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">Technical Editing</span>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 & 7 Grouped Hospitality / Resilience -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-slate-500" data-keywords="housekeeper hospitality atlas apart hotel line cook baker andreas pizzeria romania crisis resilience">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white" data-en="International Operations & Hospitality (Romania)" data-ua="Міжнародні Операції та Сервіс (Румунія)">International Operations & Hospitality (Romania)</h3>
+                                <span class="bg-slate-500/20 text-slate-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-slate-500/30">Atlas Apart Hotel & Andreas Pizzeria</span>
+                            </div>
+                            <p class="text-sm font-semibold text-slate-400 mt-0.5">Adaptability, High-Stress Performance & Service Discipline</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            05/2022 – 10/2022
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Demonstrated extreme crisis resilience, fast cross-cultural adaptation, and operational discipline in high-stress hospitality and culinary environments during international displacement." data-ua="Продемонструвала виняткову адаптивність, стресостійкість та дисципліну в міжнародній сфері обслуговування та кулінарії під час вимушеного переміщення.">
+                        Demonstrated extreme crisis resilience, fast cross-cultural adaptation, and operational discipline in high-stress hospitality and culinary environments during international displacement.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">Crisis Resilience</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">Quality Control</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">Cross-Cultural Operations</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                        <i class="fa-solid fa-layer-group text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="Categorized Technical & Creative Skills" data-ua="Класифікація Навичок та Технологій">Categorized Technical & Creative Skills</h2>
+                        <p class="text-xs text-slate-400" data-en="A detailed breakdown of AI systems, design tools, code, operations, and creative strategy." data-ua="Деталізований стек ШІ-систем, інструментів дизайну, коду та операцій.">A detailed breakdown of AI systems, design tools, code, operations, and creative strategy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Skill Category 1: AI & Automation -->
+                <div class="glass-card rounded-2xl p-6 border-t-2 border-t-emerald-400 hover:border-emerald-500/50 transition-all space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold">
+                            <i class="fa-solid fa-robot text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base" data-en="AI Architecture & Automation" data-ua="ШІ Архітектура та Автоматизація">AI Architecture & Automation</h3>
+                    </div>
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-300">Prompt Engineering & Chains</span>
+                            <span class="text-emerald-400">Expert</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-cyan-400 h-1.5 rounded-full" style="width: 95%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">N8N Agentic Pipelines</span>
+                            <span class="text-emerald-400">Advanced</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-cyan-400 h-1.5 rounded-full" style="width: 88%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">LLM Workflows & Bot Systems</span>
+                            <span class="text-emerald-400">Advanced</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-cyan-400 h-1.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 pt-2">
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-emerald-300">JSON Schemas</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-emerald-300">System Prompts</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-emerald-300">Claude / ChatGPT API</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2: UI/UX & Design -->
+                <div class="glass-card rounded-2xl p-6 border-t-2 border-t-cyan-400 hover:border-cyan-500/50 transition-all space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-cyan-500/20 text-cyan-400 font-bold">
+                            <i class="fa-solid fa-palette text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base" data-en="UI/UX & Visual Web Design" data-ua="UI/UX та Веб-Дизайн">UI/UX & Visual Web Design</h3>
+                    </div>
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-300">Figma Wireframing & UI</span>
+                            <span class="text-cyan-400">Advanced</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-violet-400 h-1.5 rounded-full" style="width: 90%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">Glassmorphism Aesthetics</span>
+                            <span class="text-cyan-400">Expert</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-violet-400 h-1.5 rounded-full" style="width: 95%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">UX Audits & User Journeys</span>
+                            <span class="text-cyan-400">Advanced</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-violet-400 h-1.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 pt-2">
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-cyan-300">Webflow</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-cyan-300">Tilda</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-cyan-300">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3: Software & Code -->
+                <div class="glass-card rounded-2xl p-6 border-t-2 border-t-violet-400 hover:border-violet-500/50 transition-all space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-violet-500/20 text-violet-400 font-bold">
+                            <i class="fa-solid fa-code text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base" data-en="Software Development Stack" data-ua="Програмне Забезпечення">Software Development Stack</h3>
+                    </div>
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-300">Python Scripting</span>
+                            <span class="text-violet-400">Intermediate</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-violet-500 to-pink-400 h-1.5 rounded-full" style="width: 80%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">JavaScript / TypeScript</span>
+                            <span class="text-violet-400">Intermediate</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-violet-500 to-pink-400 h-1.5 rounded-full" style="width: 78%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">HTML5 / CSS3 / C++ Basics</span>
+                            <span class="text-violet-400">Advanced</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-violet-500 to-pink-400 h-1.5 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 pt-2">
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-violet-300">GitHub</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-violet-300">VS Code</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-violet-300">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 4: Client Relations & Operations -->
+                <div class="glass-card rounded-2xl p-6 border-t-2 border-t-amber-400 hover:border-amber-500/50 transition-all space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 font-bold">
+                            <i class="fa-solid fa-headset text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base" data-en="Operations & Client Relations" data-ua="Операції та Клієнтський Сервіс">Operations & Client Relations</h3>
+                    </div>
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-300">CSAT Excellence (5.0/5.0)</span>
+                            <span class="text-amber-400">Master</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500 to-emerald-400 h-1.5 rounded-full" style="width: 100%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-slate-300">CRM Systems (Salesforce/HubSpot)</span>
+                            <span class="text-amber-400">Advanced</span>
+                        </div>
+                        <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500 to-emerald-400 h-1.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 pt-2">
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-amber-300">Live Chat</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-amber-300">Ticket Escalation</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-amber-300">Workflow Docs</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 5: Narrative & Creative Writing -->
+                <div class="glass-card rounded-2xl p-6 border-t-2 border-t-pink-400 hover:border-pink-500/50 transition-all space-y-4 lg:col-span-2">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-pink-500/20 text-pink-400 font-bold">
+                            <i class="fa-solid fa-book-bookmark text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-base" data-en="Content Strategy & Narrative Design" data-ua="Контент-Стратегія та Наративний Дизайн">Content Strategy & Narrative Design</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">Transmedia Worldbuilding & Lore</span>
+                                <span class="text-pink-400">Expert</span>
+                            </div>
+                            <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden mt-1">
+                                <div class="bg-gradient-to-r from-pink-500 to-violet-400 h-1.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">Technical & Creative Writing</span>
+                                <span class="text-pink-400">Expert</span>
+                            </div>
+                            <div class="w-full bg-dark-900 rounded-full h-1.5 overflow-hidden mt-1">
+                                <div class="bg-gradient-to-r from-pink-500 to-violet-400 h-1.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1 pt-2">
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-pink-300">Editorial Proofreading</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-pink-300">SEO Copywriting</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-pink-300">Digital Publishing</span>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] text-pink-300">SMM Strategy</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="Education & Professional Credentials" data-ua="Освіта та Сертифікати">Education & Professional Credentials</h2>
+                        <p class="text-xs text-slate-400" data-en="Academic honors and specialized certifications." data-ua="Академічні досягнення та спеціалізовані сертифікати.">Academic honors and specialized certifications.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- Academic Degree Card -->
+                <div class="glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-emerald-500">
+                    <div class="flex items-start justify-between gap-2 mb-3">
+                        <div>
+                            <span class="glass-pill px-2.5 py-0.5 rounded text-[10px] font-mono text-emerald-300 uppercase tracking-widest" data-en="Higher Education" data-ua="Вища Освіта">Higher Education</span>
+                            <h3 class="text-lg font-bold text-white mt-1" data-en="Bachelor's Degree with Honors (Red Diploma)" data-ua="Диплом Бакалавра з Відзнакою (Червоний Диплом)">Bachelor's Degree with Honors (Red Diploma)</h3>
+                            <p class="text-sm font-semibold text-emerald-400">Journalism, Marketing, PR & Mass Communications</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Odesa National Polytechnic University (2017 – 2021)</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-extrabold text-emerald-400 font-mono">4.9 / 5.0</div>
+                            <div class="text-[10px] text-slate-400" data-en="GPA Score" data-ua="Середній Бал">GPA Score</div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4" data-en="Graduated in the Top 5% of class with maximum honors. Deep specialized research into digital media psychology, public relations, strategic communications, and audience behavior analysis." data-ua="Випускниця ТОП-5% курсу з відзнакою. Дослідження у сферах медіапсихології, PR, стратегічних комунікацій та аналізу аудиторії.">
+                        Graduated in the Top 5% of class with maximum honors. Deep specialized research into digital media psychology, public relations, strategic communications, and audience behavior analysis.
+                    </p>
+
+                    <!-- Secondary School Card -->
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <h4 class="text-xs font-bold text-white" data-en="Secondary Education Diploma with Silver Medal Honors" data-ua="Атестат про Повну Загальну Середню Освіту (Срібна Медаль)">Secondary Education Diploma with Silver Medal Honors</h4>
+                            <p class="text-[11px] text-slate-400">Chornomorsk School No. 7 (2006 – 2017)</p>
+                        </div>
+                        <span class="glass-pill px-2 py-0.5 rounded text-[10px] font-mono text-cyan-300">Silver Medal</span>
+                    </div>
+                </div>
+
+                <!-- Certificates Grid Card -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-4">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2" data-en="Specialized Professional Certifications" data-ua="Спеціалізовані Сертифікати та Курси">
+                        <i class="fa-solid fa-certificate text-cyan-400"></i>
+                        <span>Specialized Professional Certifications</span>
+                    </h3>
+
+                    <div class="space-y-3 font-sans text-xs">
+                        <!-- Cert 1 -->
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 hover:border-cyan-500/40 transition-all">
+                            <div class="p-2 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="AI Systems & Prompt Engineering Architecture" data-ua="Архітектура ШІ-систем та Промпт-Інжиніринг">AI Systems & Prompt Engineering Architecture</h4>
+                                <p class="text-[11px] text-slate-400">Coursera & Specialized AI Academies (2023 – Present)</p>
+                            </div>
+                        </div>
+
+                        <!-- Cert 2 -->
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 hover:border-violet-500/40 transition-all">
+                            <div class="p-2 rounded-lg bg-violet-500/20 text-violet-400 font-bold">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="UI/UX & Web Development Intensive" data-ua="Інтенсив UI/UX та Веб-Розробки">UI/UX & Web Development Intensive</h4>
+                                <p class="text-[11px] text-slate-400">Modern Layout Design, Figma System & Web Architecture (2023 – 2024)</p>
+                            </div>
+                        </div>
+
+                        <!-- Cert 3 -->
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 hover:border-emerald-500/40 transition-all">
+                            <div class="p-2 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="Applied Neopsychology & Behavioral Analysis" data-ua="Прикладна Неопсихологія та Поведінковий Аналіз">Applied Neopsychology & Behavioral Analysis</h4>
+                                <p class="text-[11px] text-slate-400">Human behavior profiling & psychological interaction models (2021)</p>
+                            </div>
+                        </div>
+
+                        <!-- Cert 4 -->
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 hover:border-amber-500/40 transition-all">
+                            <div class="p-2 rounded-lg bg-amber-500/20 text-amber-400 font-bold">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="Mass Communications & Media Psychology" data-ua="Масові Комунікації та Медіапсихологія">Mass Communications & Media Psychology</h4>
+                                <p class="text-[11px] text-slate-400">Representation in Media & Strategic Communications (2021)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="accomplishments" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                        <i class="fa-solid fa-trophy text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="Key Accomplishments & Career Milestones" data-ua="Ключові Досягнення та Доробок">Key Accomplishments & Career Milestones</h2>
+                        <p class="text-xs text-slate-400" data-en="Measurable achievements and recognized excellence." data-ua="Вимірювані успіхи та визначні результати.">Measurable achievements and recognized excellence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                <!-- Accomplishment Card 1 -->
+                <div class="glass-card-interactive rounded-2xl p-5 border-t-2 border-t-emerald-400 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg mb-3">
+                            🏅
+                        </div>
+                        <h3 class="font-bold text-white text-sm" data-en="Academic Red Diploma" data-ua="Червоний Диплом">Academic Red Diploma</h3>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed" data-en="Achieved 4.9 / 5.0 GPA graduating in the top 5% of class at ONPU in Mass Communications." data-ua="Завершила ОНПУ з баллом 4.9 / 5.0 та увійшла до ТОП-5% випускників.">Achieved 4.9 / 5.0 GPA graduating in the top 5% of class at ONPU in Mass Communications.</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-emerald-400 mt-4 block">ONPU • Top 5%</span>
+                </div>
+
+                <!-- Accomplishment Card 2 -->
+                <div class="glass-card-interactive rounded-2xl p-5 border-t-2 border-t-cyan-400 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-lg mb-3">
+                            ⭐
+                        </div>
+                        <h3 class="font-bold text-white text-sm" data-en="Flawless CSAT 5.0 / 5.0" data-ua="Ідеальний CSAT 5.0">Flawless CSAT 5.0 / 5.0</h3>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed" data-en="Sustained a perfect 100% satisfaction index during tenure at OBRIO (Genesis Ecosystem)." data-ua="Зберегла 100% показник задоволеності користувачів у Genesis / OBRIO.">Sustained a perfect 100% satisfaction index during tenure at OBRIO (Genesis Ecosystem).</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-cyan-400 mt-4 block">Genesis / OBRIO</span>
+                </div>
+
+                <!-- Accomplishment Card 3 -->
+                <div class="glass-card-interactive rounded-2xl p-5 border-t-2 border-t-violet-400 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-violet-500/20 text-violet-400 flex items-center justify-center font-bold text-lg mb-3">
+                            💼
+                        </div>
+                        <h3 class="font-bold text-white text-sm" data-en="FOP Sole Proprietorship" data-ua="Реєстрація ФОП">FOP Sole Proprietorship</h3>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed" data-en="Established official self-employed consultancy status with 100% client satisfaction rate." data-ua="Успішно заснувала офіційну консалтингову практикою з високим рівнем довіри.">Established official self-employed consultancy status with 100% client satisfaction rate.</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-violet-400 mt-4 block">FOP Founder</span>
+                </div>
+
+                <!-- Accomplishment Card 4 -->
+                <div class="glass-card-interactive rounded-2xl p-5 border-t-2 border-t-amber-400 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg mb-3">
+                            🖋️
+                        </div>
+                        <h3 class="font-bold text-white text-sm" data-en="Kristel inside out" data-ua="Авторський Блог">Kristel inside out</h3>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed" data-en="Founded & published independent creative narrative blog and psychological fantasy prose." data-ua="Створила та веде авторську платформу "Kristel inside out" з прозою та есеями.">Founded & published independent creative narrative blog and psychological fantasy prose.</p>
+                    </div>
+                    <span class="text-[10px] font-mono text-amber-400 mt-4 block">Author Platform</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="interests" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-pink-500/10 text-pink-400 border border-pink-500/20">
+                        <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="Personal Interests & Creative Lore" data-ua="Захоплення та Творчий Лор">Personal Interests & Creative Lore</h2>
+                        <p class="text-xs text-slate-400" data-en="Interdisciplinary passions that shape creative vision and analytical depth." data-ua="Сфери натхнення, що формують аналітичну та творчу глибину.">Interdisciplinary passions that shape creative vision and analytical depth.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+
+                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-pink-500/40 transition-all group">
+                    <div class="text-2xl text-pink-400 group-hover:scale-110 transition-transform">🎨</div>
+                    <div class="text-xs font-bold text-white" data-en="Visual Arts" data-ua="Образотворче Мистецтво">Visual Arts</div>
+                    <div class="text-[10px] text-slate-400" data-en="Traditional Painting" data-ua="Традиційний Живопис">Traditional Painting</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-violet-500/40 transition-all group">
+                    <div class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">🎲</div>
+                    <div class="text-xs font-bold text-white" data-en="TTRPG & Lore" data-ua="TTRPG та Лор">TTRPG & Lore</div>
+                    <div class="text-[10px] text-slate-400" data-en="World Architecture" data-ua="Архітектура Світів">World Architecture</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-emerald-500/40 transition-all group">
+                    <div class="text-2xl text-emerald-400 group-hover:scale-110 transition-transform">🌿</div>
+                    <div class="text-xs font-bold text-white" data-en="Tactile Arts" data-ua="Тактильне Мистецтво">Tactile Arts</div>
+                    <div class="text-[10px] text-slate-400" data-en="Botanical Crafts" data-ua="Ботанічний Ремесла">Botanical Crafts</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-cyan-500/40 transition-all group">
+                    <div class="text-2xl text-cyan-400 group-hover:scale-110 transition-transform">🎤</div>
+                    <div class="text-xs font-bold text-white" data-en="Vocal Arts" data-ua="Вокальне Мистецтво">Vocal Arts</div>
+                    <div class="text-[10px] text-slate-400" data-en="Performative Express" data-ua="Перформативна Виразність">Performative Express</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-amber-500/40 transition-all group">
+                    <div class="text-2xl text-amber-400 group-hover:scale-110 transition-transform">🎮</div>
+                    <div class="text-xs font-bold text-white" data-en="Gaming Analysis" data-ua="Аналіз Геймдизайну">Gaming Analysis</div>
+                    <div class="text-[10px] text-slate-400" data-en="Baldur's Gate 3 Lore" data-ua="Нарратив BG3">Baldur's Gate 3 Lore</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-indigo-500/40 transition-all group">
+                    <div class="text-2xl text-indigo-400 group-hover:scale-110 transition-transform">📚</div>
+                    <div class="text-xs font-bold text-white" data-en="Literature" data-ua="Література">Literature</div>
+                    <div class="text-[10px] text-slate-400" data-en="Psych & Fantasy" data-ua="Психологія та Фентезі">Psych & Fantasy</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-8 border-t border-white/10 text-center text-xs text-slate-400 space-y-2 no-print">
+            <p>© 2026 KRISTINA VADOVSKA. Built with Glassmorphism, Tailwind CSS & Dynamic Interactivity.</p>
+            <p class="font-mono text-[11px] text-emerald-400">bussineskristel@gmail.com • +380 63 599 6194 • Odesa, Ukraine</p>
+        </footer>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-card px-4 py-3 rounded-xl border border-emerald-500/40 text-emerald-300 text-xs font-semibold shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toastMessage">Action completed successfully</span>
+    </div>
+
+    <script>
+        // State Management
+        let currentLang = 'EN';
+
+        // Toggle Language (EN / UA)
+        function toggleLanguage() {
+            currentLang = currentLang === 'EN' ? 'UA' : 'EN';
+            document.getElementById('langLabel').textContent = currentLang === 'EN' ? 'UA / EN' : 'EN / UA';
+
+            const elements = document.querySelectorAll('[data-en][data-ua]');
+            elements.forEach(el => {
+                if (currentLang === 'UA') {
+                    el.textContent = el.getAttribute('data-ua');
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                }
+            });
+
+            showToast(currentLang === 'UA' ? 'Мову змінено на Українську' : 'Language switched to English');
+        }
+
+        // Toggle Mobile Navigation Drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Clipboard Copy Helper
+        function copyToClipboard(text, message) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(message);
+                }).catch(() => {
+                    fallbackCopy(text, message);
+                });
+            } else {
+                fallbackCopy(text, message);
+            }
+        }
+
+        function fallbackCopy(text, message) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(message);
+            } catch (err) {
+                showToast("Failed to copy");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Display Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Filter Experience Timeline Live Search
+        function filterExperience() {
+            const query = document.getElementById('expSearchInput').value.toLowerCase();
+            const expCards = document.querySelectorAll('.exp-card');
+
+            expCards.forEach(card => {
+                const keywords = card.getAttribute('data-keywords') || '';
+                const textContent = card.textContent.toLowerCase();
+                if (keywords.toLowerCase().includes(query) || textContent.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
