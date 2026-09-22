@@ -230,7 +230,7 @@
                     <!-- Language Switcher Button -->
                     <button id="langToggleBtn" onclick="toggleLanguage()" class="glass-pill px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-400 transition-all cursor-pointer">
                         <i class="fa-solid fa-globe text-emerald-400"></i>
-                        <span id="langLabel">UA / EN</span>
+                        <span id="langLabel">UA / RU / EN</span>
                     </button>
 
                     <!-- Print / Save PDF Button -->
@@ -394,10 +394,6 @@
                                 <div class="font-bold text-white">English</div>
                                 <div class="text-[10px] text-cyan-400">Advanced (C1)</div>
                             </div>
-                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-violet-400">
-                                <div class="font-bold text-white">Russian</div>
-                                <div class="text-[10px] text-violet-400">Fluent (C2)</div>
-                            </div>
                             <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-amber-400">
                                 <div class="font-bold text-white">German</div>
                                 <div class="text-[10px] text-amber-400">Elementary (A2)</div>
@@ -405,6 +401,10 @@
                             <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-pink-400">
                                 <div class="font-bold text-white">Romanian</div>
                                 <div class="text-[10px] text-pink-400">Beginner (A1)</div>
+                            </div>
+                            <div class="glass-pill p-2 rounded-lg text-center border-l-2 border-slate-600 opacity-75">
+                                <div class="font-bold text-slate-300"><span class="text-[9px] text-slate-500 mr-1">R</span>Russian</div>
+                                <div class="text-[10px] text-slate-500">Fluent (C2)</div>
                             </div>
                         </div>
                     </div>
@@ -1237,8 +1237,13 @@
 
         // Toggle Language (EN / UA)
         function toggleLanguage() {
-            currentLang = currentLang === 'EN' ? 'UA' : 'EN';
-            document.getElementById('langLabel').textContent = currentLang === 'EN' ? 'UA / EN' : 'EN / UA';
+            currentLang = currentLang === 'EN' ? 'UA' : currentLang === 'UA' ? 'RU' : 'EN';
+            const languageLabels = {
+                EN: 'UA / RU / EN',
+                UA: 'EN / RU / UA',
+                RU: 'EN / UA / RU'
+            };
+            document.getElementById('langLabel').textContent = languageLabels[currentLang];
 
             const elements = document.querySelectorAll('[data-en][data-ua]');
             elements.forEach(el => {
@@ -1249,7 +1254,12 @@
                 }
             });
 
-            showToast(currentLang === 'UA' ? 'Мову змінено на Українську' : 'Language switched to English');
+            const languageMessages = {
+                EN: 'Language switched to English',
+                UA: 'Мову змінено на українську',
+                RU: 'Язык изменен на русский'
+            };
+            showToast(languageMessages[currentLang]);
         }
 
         // Toggle Mobile Navigation Drawer
@@ -1314,6 +1324,10 @@
                     'Проєктую структуровані промпти, JSON-потоки даних, логіку ботів і патерни автоматизації для цифрових продуктів. Робота може охоплювати тестування промптів, покращення відповідей, структуру workflow та поєднання поведінки ШІ з практичним користувацьким шляхом.',
                     'Назви клієнтів, приватні бізнес-правила та конфіденційні деталі реалізації навмисно не розкриваються.'
                 ],
+                bodyRu: [
+                    'Проектирую структурированные промпты, JSON-потоки данных, логику ботов и паттерны автоматизации для цифровых продуктов. Работа может включать тестирование промптов, улучшение ответов, структуру workflow и связь поведения ИИ с практическим пользовательским путем.',
+                    'Названия клиентов, частные бизнес-правила и конфиденциальные детали реализации намеренно не раскрываются.'
+                ],
                 tags: ['Prompt Engineering', 'N8N', 'JSON Pipelines', 'Bot Architecture']
             },
             'web-ux': {
@@ -1326,6 +1340,10 @@
                 bodyUa: [
                     'Перетворюю складні вимоги на зрозумілі інтерфейси, адаптивні макети, UX-аудити та підтримувані frontend-рішення. Мій процес поєднує візуальну структуру, ієрархію контенту, зручність і реалізацію.',
                     'Це поєднання мислення у Figma з HTML, CSS, JavaScript та практичною no-code або code-based реалізацією.'
+                ],
+                bodyRu: [
+                    'Превращаю сложные требования в понятные интерфейсы, адаптивные макеты, UX-аудиты и поддерживаемые frontend-решения. Мой процесс объединяет визуальную структуру, иерархию контента, удобство и реализацию.',
+                    'Это сочетание мышления в Figma с HTML, CSS, JavaScript и практической no-code или code-based реализацией.'
                 ],
                 tags: ['Figma', 'HTML / CSS', 'JavaScript', 'UX Audits']
             },
@@ -1340,6 +1358,10 @@
                     'Покращую процеси підтримки через швидку письмову комунікацію, структуру бази знань, prompt-шаблони, CRM-процеси та аналіз повторюваного зворотного зв’язку. Фокус одночасно людський: зрозуміти клієнта, і системний: зробити наступну відповідь кращою.',
                     'Цей напрям спирається на досвід міжнародної SaaS-підтримки та стабільний показник CSAT 5.0 / 5.0.'
                 ],
+                bodyRu: [
+                    'Улучшаю процессы поддержки через быструю письменную коммуникацию, структуру базы знаний, prompt-шаблоны, CRM-процессы и анализ повторяющейся обратной связи. Фокус одновременно человеческий: понять клиента, и системный: сделать следующий ответ лучше.',
+                    'Это направление основано на опыте международной SaaS-поддержки и стабильном показателе CSAT 5.0 / 5.0.'
+                ],
                 tags: ['CSAT 5.0/5.0', 'CRM', 'Knowledge Base', 'User Feedback']
             },
             'narrative-design': {
@@ -1352,6 +1374,10 @@
                 bodyUa: [
                     'Створюю арки персонажів, лор-архітектури, психологічну прозу та двомовні контент-системи для літератури, блогів, ігор і креативних брендів. Наратив розглядається як система: голос, структура, емоційний рух і досвід аудиторії працюють разом.',
                     'Це творчий напрям, що поєднує моє письмо, редактуру, TTRPG world-building і практику цифрового контенту.'
+                ],
+                bodyRu: [
+                    'Создаю арки персонажей, лор-архитектуры, психологическую прозу и двуязычные контент-системы для литературы, блогов, игр и креативных брендов. Нарратив рассматривается как система: голос, структура, эмоциональное движение и опыт аудитории работают вместе.',
+                    'Это творческое направление объединяет мое письмо, редактуру, TTRPG world-building и практику цифрового контента.'
                 ],
                 tags: ['World-building', 'Editing', 'Story Architecture', 'Creative Writing']
             },
@@ -1366,6 +1392,10 @@
                     'Я брала участь у створенні AI-assisted workflow у N8N і VS Code для TikTok-орієнтованого проєкту з додатковим YouTube-контентом. Робота охоплювала історії, концепції відео, квізи, ботів, AI-зображення й відео, пошук матеріалів та адаптацію українською, російською й англійською.',
                     'Проєкт був командним, тому публічний опис зосереджений на моєму внеску та методах роботи, а не на приватних деталях.'
                 ],
+                bodyRu: [
+                    'Я участвовала в создании AI-assisted workflow в N8N и VS Code для TikTok-ориентированного проекта с дополнительным YouTube-контентом. Работа включала истории, концепции видео, квизы, ботов, AI-изображения и видео, поиск материалов и адаптацию на украинском, русском и английском языках.',
+                    'Проект был командным, поэтому публичное описание сосредоточено на моем вкладе и методах работы, а не на частных деталях.'
+                ],
                 tags: ['N8N', 'VS Code', 'TikTok / YouTube', 'UA / RU / EN']
             }
         };
@@ -1374,7 +1404,7 @@
             const detail = workDetails[workId];
             if (!detail) return;
             const languageIndex = currentLang === 'UA' ? 1 : 0;
-            const paragraphs = currentLang === 'UA' ? detail.bodyUa : detail.body;
+            const paragraphs = currentLang === 'UA' ? detail.bodyUa : currentLang === 'RU' ? detail.bodyRu : detail.body;
             document.getElementById('workModalEyebrow').textContent = detail.eyebrow[languageIndex];
             document.getElementById('workModalTitle').textContent = detail.title[languageIndex];
             document.getElementById('workModalBody').innerHTML = paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
