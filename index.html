@@ -1227,44 +1227,54 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
 
-                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-pink-500/40 transition-all group">
+                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-pink-500/40 transition-all group" data-interest-id="visual-arts">
                     <div class="text-2xl text-pink-400 group-hover:scale-110 transition-transform">🎨</div>
                     <div class="text-xs font-bold text-white" data-en="Visual Arts" data-ua="Образотворче Мистецтво">Visual Arts</div>
                     <div class="text-[10px] text-slate-400" data-en="Traditional Painting" data-ua="Традиційний Живопис">Traditional Painting</div>
-                </div>
+                </button>
 
-                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-violet-500/40 transition-all group">
+                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-violet-500/40 transition-all group" data-interest-id="ttrpg">
                     <div class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">🎲</div>
                     <div class="text-xs font-bold text-white" data-en="TTRPG & Lore" data-ua="TTRPG та Лор">TTRPG & Lore</div>
                     <div class="text-[10px] text-slate-400" data-en="World Architecture" data-ua="Архітектура Світів">World Architecture</div>
-                </div>
+                </button>
 
-                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-emerald-500/40 transition-all group">
+                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-emerald-500/40 transition-all group" data-interest-id="tactile-arts">
                     <div class="text-2xl text-emerald-400 group-hover:scale-110 transition-transform">🌿</div>
                     <div class="text-xs font-bold text-white" data-en="Tactile Arts" data-ua="Тактильне Мистецтво">Tactile Arts</div>
                     <div class="text-[10px] text-slate-400" data-en="Botanical Crafts" data-ua="Ботанічний Ремесла">Botanical Crafts</div>
-                </div>
+                </button>
 
-                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-cyan-500/40 transition-all group">
+                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-cyan-500/40 transition-all group" data-interest-id="vocal-arts">
                     <div class="text-2xl text-cyan-400 group-hover:scale-110 transition-transform">🎤</div>
                     <div class="text-xs font-bold text-white" data-en="Vocal Arts" data-ua="Вокальне Мистецтво">Vocal Arts</div>
                     <div class="text-[10px] text-slate-400" data-en="Performative Express" data-ua="Перформативна Виразність">Performative Express</div>
-                </div>
+                </button>
 
-                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-amber-500/40 transition-all group">
+                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-amber-500/40 transition-all group" data-interest-id="gaming-analysis">
                     <div class="text-2xl text-amber-400 group-hover:scale-110 transition-transform">🎮</div>
                     <div class="text-xs font-bold text-white" data-en="Gaming Analysis" data-ua="Аналіз Геймдизайну">Gaming Analysis</div>
                     <div class="text-[10px] text-slate-400" data-en="Baldur's Gate 3 Lore" data-ua="Нарратив BG3">Baldur's Gate 3 Lore</div>
-                </div>
+                </button>
 
-                <div class="glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-indigo-500/40 transition-all group">
+                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-indigo-500/40 transition-all group" data-interest-id="literature">
                     <div class="text-2xl text-indigo-400 group-hover:scale-110 transition-transform">📚</div>
                     <div class="text-xs font-bold text-white" data-en="Literature" data-ua="Література">Literature</div>
                     <div class="text-[10px] text-slate-400" data-en="Psych & Fantasy" data-ua="Психологія та Фентезі">Psych & Fantasy</div>
-                </div>
+                </button>
 
             </div>
         </section>
+
+        <div id="interestModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="interestModalTitle">
+            <div class="absolute inset-0 bg-dark-900/80 backdrop-blur-sm" data-close-interest-modal></div>
+            <div class="relative w-full max-w-xl glass-card rounded-2xl border border-pink-500/30 p-6 sm:p-8 shadow-2xl">
+                <button type="button" class="absolute right-4 top-4 glass-pill w-9 h-9 rounded-lg text-slate-300 hover:text-white" data-close-interest-modal aria-label="Close interest detail"><i class="fa-solid fa-xmark"></i></button>
+                <p id="interestModalEyebrow" class="text-[10px] font-mono uppercase tracking-widest text-pink-400">PERSONAL LENS</p>
+                <h3 id="interestModalTitle" class="mt-2 pr-10 text-2xl font-extrabold text-white"></h3>
+                <p id="interestModalBody" class="mt-5 text-sm leading-relaxed text-slate-300"></p>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer class="pt-8 border-t border-white/10 text-center text-xs text-slate-400 space-y-2 no-print">
@@ -1559,6 +1569,55 @@
                 toggle.setAttribute('aria-expanded', String(!isOpen));
                 toggle.querySelector('i').classList.toggle('rotate-180', !isOpen);
             });
+        });
+
+        const interestDetails = {
+            'visual-arts': {
+                title: ['Visual Arts', 'Образотворче мистецтво'],
+                body: ['Traditional painting and digital artwork shape my sense of composition, colour, atmosphere, and visual storytelling.', 'Традиційний живопис і digital artwork формують моє відчуття композиції, кольору, атмосфери та візуального сторітеллінгу.']
+            },
+            ttrpg: {
+                title: ['TTRPG & Lore', 'TTRPG та лор'],
+                body: ['I design campaigns, branching narratives, character dynamics, and immersive world architecture for Dungeons & Dragons and tabletop systems.', 'Я створюю кампанії, branching narratives, динаміку персонажів та immersive world architecture для Dungeons & Dragons і настільних систем.']
+            },
+            'tactile-arts': {
+                title: ['Tactile Arts', 'Тактильне мистецтво'],
+                body: ['Candles, beadwork, crystal artifacts, and embroidery connect ritual aesthetics with natural textures and precise handcraft.', 'Свічки, бісер, crystal artifacts та вишивка поєднують ритуальну естетику, природні текстури й точність ручної роботи.']
+            },
+            'vocal-arts': {
+                title: ['Vocal Arts', 'Вокальне мистецтво'],
+                body: ['Voice practice and audio performance explore rhythm, sound aesthetics, emotional resonance, and the presence of a spoken story.', 'Вокальна практика й audio performance досліджують ритм, естетику звуку, емоційний резонанс і присутність spoken story.']
+            },
+            'gaming-analysis': {
+                title: ['Gaming Analysis', 'Аналіз ігор'],
+                body: ['I study lore-rich games such as Baldur’s Gate 3 through player agency, game mechanics, character systems, and environmental storytelling.', 'Я досліджую lore-rich ігри, зокрема Baldur’s Gate 3, через player agency, game mechanics, character systems та environmental storytelling.']
+            },
+            literature: {
+                title: ['Psychological & Fantasy Literature', 'Психологічна та fantasy-література'],
+                body: ['Fantasy, speculative fiction, psychological prose, mythology, Tarot, and runic systems feed the symbolic and emotional depth of my creative work.', 'Фентезі, speculative fiction, психологічна проза, міфологія, Таро та руничні системи живлять символічну й емоційну глибину моєї творчості.']
+            }
+        };
+
+        function openInterestModal(interestId) {
+            const detail = interestDetails[interestId];
+            if (!detail) return;
+            const languageIndex = currentLang === 'UA' ? 1 : 0;
+            document.getElementById('interestModalTitle').textContent = detail.title[languageIndex];
+            document.getElementById('interestModalBody').textContent = detail.body[languageIndex];
+            document.getElementById('interestModal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeInterestModal() {
+            document.getElementById('interestModal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.querySelectorAll('.interest-card').forEach(card => {
+            card.addEventListener('click', () => openInterestModal(card.dataset.interestId));
+        });
+        document.querySelectorAll('[data-close-interest-modal]').forEach(element => {
+            element.addEventListener('click', closeInterestModal);
         });
 
         // Filter Experience Timeline Live Search
