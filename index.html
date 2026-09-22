@@ -187,12 +187,29 @@
 
         /* Print Optimized Styling */
         @media print {
+            @page {
+                margin: 14mm 12mm;
+            }
             body {
                 background: #ffffff !important;
                 color: #111827 !important;
             }
-            .no-print, nav, .glow-orb-1, .glow-orb-2, .glow-orb-3, #toast, .action-buttons {
+            .no-print, nav, .glow-orb-1, .glow-orb-2, .glow-orb-3, #toast, .action-buttons,
+            .work-filter, .exp-detail-toggle, #workModal, #interestModal, #contactQrModal {
                 display: none !important;
+            }
+            .profile-details {
+                display: block !important;
+            }
+            .profile-details > summary {
+                display: none !important;
+            }
+            .glass-card, .glass-card-interactive {
+                border-radius: 0 !important;
+            }
+            a {
+                color: #111827 !important;
+                text-decoration: none !important;
             }
             .glass-card, .glass-card-interactive {
                 background: #ffffff !important;
@@ -387,13 +404,13 @@
                             </a>
 
                             <!-- Contact QR Codes -->
-                            <button type="button" class="glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-amber-500/20 hover:border-amber-500/40 transition-all flex items-center gap-2 group" data-open-contact-qr title="Show contact QR codes">
+                            <button type="button" class="no-print glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-amber-500/20 hover:border-amber-500/40 transition-all flex items-center gap-2 group" data-open-contact-qr title="Show contact QR codes">
                                 <i class="fa-solid fa-qrcode text-amber-400 group-hover:scale-110 transition-transform"></i>
                                 <span data-en="QR contacts" data-ua="QR-контакти">QR contacts</span>
                             </button>
 
                             <!-- Booking Link -->
-                            <a href="https://cal.com/kristina-vadovska/intro-project-discussion?overlayCalendar=true" target="_blank" rel="noopener noreferrer" class="glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-fuchsia-500/20 hover:border-fuchsia-500/40 transition-all flex items-center gap-2 group">
+                            <a href="https://cal.com/kristina-vadovska/intro-project-discussion?overlayCalendar=true" target="_blank" rel="noopener noreferrer" class="no-print glass-pill px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-fuchsia-500/20 hover:border-fuchsia-500/40 transition-all flex items-center gap-2 group">
                                 <i class="fa-regular fa-calendar-check text-fuchsia-300 group-hover:scale-110 transition-transform"></i>
                                 <span data-en="Book a consultation" data-ua="Забронювати консультацію">Book a consultation</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
