@@ -903,11 +903,12 @@
                         </div>
                         <i class="fa-solid fa-diagram-project text-emerald-400 text-xl"></i>
                     </div>
-                    <p class="text-sm leading-relaxed text-slate-300" data-en="Designing structured prompts, JSON data flows, custom bot logic, and automated workflows for digital products. Client details and business logic remain confidential." data-ua="Проєктування структурованих промптів, JSON-потоків даних, логіки ботів та автоматизованих workflow для цифрових продуктів. Деталі клієнтів і бізнес-логіка залишаються конфіденційними.">Designing structured prompts, JSON data flows, custom bot logic, and automated workflows for digital products. Client details and business logic remain confidential.</p>
+                    <p class="text-sm leading-relaxed text-slate-300" data-en="Architecting system prompts, structured outputs, prompt chains, and automated AI workflows for support, content, bots, and digital products." data-ua="Проєктування system prompts, структурованих відповідей, prompt chains та автоматизованих AI-workflow для підтримки, контенту, ботів і цифрових продуктів.">Architecting system prompts, structured outputs, prompt chains, and automated AI workflows for support, content, bots, and digital products.</p>
                     <div class="flex flex-wrap gap-1.5">
                         <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">Prompt Engineering</span>
                         <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">N8N</span>
                         <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">JSON Pipelines</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Guardrails / QA</span>
                     </div>
                 </article>
 
@@ -1347,18 +1348,26 @@
                 eyebrow: ['01 / AI SYSTEMS', '01 / ШІ-СИСТЕМИ'],
                 title: ['Prompt & Agentic Workflow Architecture', 'Архітектура промптів та агентних workflow'],
                 body: [
-                    'I design structured prompts, JSON data flows, bot logic, and automation patterns for digital products. The work can include prompt testing, response refinement, workflow structure, and connecting AI behaviour to a practical user journey.',
-                    'Client names, private business rules, and confidential implementation details are intentionally omitted.'
+                    'I created operational support prompts for SaaS and customer service, analytical prompts for entity extraction, conversation summarisation, intent classification, tagging, and root-cause analysis, plus content, narrative, marketing, and advisory prompt systems.',
+                    'I worked with a clear system-prompt and user-prompt split. System prompts defined role and persona, guardrails, tone, forbidden topics, action rules, and output format; user prompts carried dynamic client text, variables, files, or JSON objects.',
+                    'I configured strict JSON outputs with few-shot examples, parsed the result for Python or JavaScript code and webhooks, and built prompt chains where intent and key facts were extracted first, then passed as context into a response or action step.',
+                    'In N8N, I worked with patterns including Webhook, AI Agent or OpenAI nodes, Code nodes, HTTP Request, Split in Batches, Telegram, IF/Switch branches, external APIs, files, and Google Sheets or database-style storage. I also worked with Telegram bot integrations and LLM providers such as OpenAI and Anthropic.',
+                    'I iterated through zero-shot and few-shot prompts, adjusted model parameters for structured or creative tasks, tested variations, reduced hallucinations with context-only constraints, repaired broken JSON with schemas and smaller steps, and used negative constraints and contrastive examples to improve weak answers.',
+                    'My solo contribution included business-logic architecture, prompt writing and testing, guardrails, knowledge bases, hallucination analysis, documentation, prompt libraries, and team training. AI helped with scripts, JSON formatting, examples, and brainstorming; collaboration covered product requirements, user friction, and CRM or backend integration.'
                 ],
                 bodyUa: [
-                    'Проєктую структуровані промпти, JSON-потоки даних, логіку ботів і патерни автоматизації для цифрових продуктів. Робота може охоплювати тестування промптів, покращення відповідей, структуру workflow та поєднання поведінки ШІ з практичним користувацьким шляхом.',
-                    'Назви клієнтів, приватні бізнес-правила та конфіденційні деталі реалізації навмисно не розкриваються.'
+                    'Я створювала операційні промпти для SaaS і клієнтського сервісу, аналітичні промпти для витягання сутностей, сумаризації діалогів, класифікації намірів, тегування та аналізу причин звернень, а також контентні, наративні, маркетингові й консультаційні prompt-системи.',
+                    'Я чітко розділяла system prompts і user prompts. System prompts визначали роль і persona, guardrails, tone, заборонені теми, правила дій і формат відповіді; user prompts передавали динамічний текст клієнта, змінні, файли або JSON-об’єкти.',
+                    'Налаштовувала strict JSON із few-shot прикладами, парсила результат для Python або JavaScript і webhooks та будувала prompt chains: спочатку витягування наміру й ключових фактів, потім передача їх як контекст у відповідь або дію.',
+                    'У N8N працювала з патернами Webhook, AI Agent або OpenAI nodes, Code nodes, HTTP Request, Split in Batches, Telegram, IF/Switch-гілками, зовнішніми API, файлами та Google Sheets або database-style storage. Також працювала з Telegram Bot API і LLM-провайдерами на кшталт OpenAI та Anthropic.',
+                    'Ітерувала zero-shot і few-shot промпти, налаштовувала параметри моделей для структурованих або творчих задач, тестувала варіанти, зменшувала hallucinations через context-only constraints, виправляла зламаний JSON схемами й меншими кроками та використовувала negative constraints і contrastive examples.',
+                    'Мій solo-внесок охоплював архітектуру бізнес-логіки, написання й тестування промптів, guardrails, knowledge bases, аналіз hallucinations, документацію, prompt libraries і навчання команди. ШІ допомагав зі скриптами, JSON-форматуванням, прикладами й brainstorming; командна робота охоплювала вимоги продукту, user friction і CRM або backend integration.'
                 ],
                 bodyRu: [
                     'Проектирую структурированные промпты, JSON-потоки данных, логику ботов и паттерны автоматизации для цифровых продуктов. Работа может включать тестирование промптов, улучшение ответов, структуру workflow и связь поведения ИИ с практическим пользовательским путем.',
                     'Названия клиентов, частные бизнес-правила и конфиденциальные детали реализации намеренно не раскрываются.'
                 ],
-                tags: ['Prompt Engineering', 'N8N', 'JSON Pipelines', 'Bot Architecture']
+                tags: ['System / User Prompts', 'N8N Pipelines', 'Strict JSON / Schemas', 'Guardrails / QA']
             },
             'web-ux': {
                 eyebrow: ['02 / DIGITAL PRODUCTS', '02 / DIGITAL PRODUCTS'],
