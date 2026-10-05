@@ -206,6 +206,8 @@
             pointer-events: none;
         }
 
+        @media not print {
+        /* Legacy print rules are retained for reference but disabled for print. */
         /* Print Optimized Styling: print the real portfolio sections */
         @media print {
             @page {
@@ -1558,6 +1560,2044 @@
                 page-break-after: avoid !important;
             }
         }
+
+        /* Editorial print finish: a subtle bridge between the CV and portfolio identity. */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 11mm 12mm;
+            }
+
+            #printResume {
+                color: #263344 !important;
+                font-family: "Plus Jakarta Sans", Arial, sans-serif !important;
+                font-size: 9.1pt !important;
+                line-height: 1.4 !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            #printResume .print-header {
+                position: relative !important;
+                grid-template-columns: minmax(0, 1.25fr) minmax(62mm, .85fr) !important;
+                gap: 8mm !important;
+                margin-bottom: 6mm !important;
+                padding: 5mm 0 4mm !important;
+                border-bottom: 1pt solid #cbd5e1 !important;
+                background: linear-gradient(90deg, #10b981 0%, #06b6d4 55%, #8b5cf6 100%) top left / 100% 1.2mm no-repeat !important;
+            }
+
+            #printResume h1 {
+                color: #111827 !important;
+                font-size: 25pt !important;
+                font-weight: 800 !important;
+                letter-spacing: .015em !important;
+            }
+
+            #printResume .print-title {
+                color: #047857 !important;
+                font-size: 11pt !important;
+                letter-spacing: .01em !important;
+            }
+
+            #printResume .print-header > div:first-child > p {
+                max-width: 105mm !important;
+                margin-top: 2mm !important;
+                color: #475569 !important;
+                font-size: 9pt !important;
+                line-height: 1.4 !important;
+            }
+
+            #printResume .print-contact {
+                padding: 3mm 3.5mm !important;
+                border-left: 1.2mm solid #10b981 !important;
+                background: #f0fdf9 !important;
+                color: #334155 !important;
+                text-align: left !important;
+                font-size: 8.2pt !important;
+                line-height: 1.55 !important;
+            }
+
+            #printResume section {
+                margin-bottom: 5mm !important;
+            }
+
+            #printResume h2 {
+                margin: 0 0 2.5mm !important;
+                padding: 0 0 1.3mm 2.5mm !important;
+                border-bottom: .5pt solid #dbe3e9 !important;
+                border-left: 1.4mm solid #10b981 !important;
+                color: #172033 !important;
+                font-size: 11pt !important;
+                font-weight: 800 !important;
+                letter-spacing: .08em !important;
+            }
+
+            #printResume h2::after {
+                content: "";
+                display: block;
+                width: 15mm;
+                margin-top: 1mm;
+                border-bottom: 1.2pt solid #06b6d4;
+            }
+
+            #printResume h3 {
+                margin-bottom: 1mm !important;
+                color: #111827 !important;
+                font-size: 9.8pt !important;
+                font-weight: 800 !important;
+                line-height: 1.25 !important;
+            }
+
+            #printResume p {
+                color: #3f4d5f !important;
+                font-size: 9pt !important;
+                line-height: 1.42 !important;
+            }
+
+            #printResume .print-entry {
+                margin-bottom: 3.2mm !important;
+                padding: 0 0 2.5mm 2.8mm !important;
+                border-bottom: .5pt solid #e2e8f0 !important;
+                border-left: .8mm solid #cbd5e1 !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-entry:nth-of-type(1) {
+                border-left-color: #10b981 !important;
+            }
+
+            #printResume .print-meta {
+                margin-bottom: 1.2mm !important;
+                color: #047857 !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 7.7pt !important;
+                font-weight: 500 !important;
+                letter-spacing: .015em !important;
+            }
+
+            #printResume ul {
+                margin-top: 1.5mm !important;
+                margin-left: 4mm !important;
+            }
+
+            #printResume li {
+                margin-bottom: 1.1mm !important;
+                padding-left: .7mm !important;
+                color: #3f4d5f !important;
+                font-size: 8.7pt !important;
+                line-height: 1.38 !important;
+            }
+
+            #printResume .print-grid {
+                gap: 6mm !important;
+            }
+
+            #printResume .print-grid .print-entry {
+                margin-bottom: 2.8mm !important;
+                padding-bottom: 2mm !important;
+            }
+
+            #printResume .print-tags {
+                margin-top: 1mm !important;
+                padding: 1.8mm 2mm !important;
+                border-left: .8mm solid #06b6d4 !important;
+                background: #f1f8fa !important;
+                color: #334155 !important;
+                font-size: 8.2pt !important;
+                line-height: 1.45 !important;
+            }
+
+            #printResume .print-strengths p {
+                padding: 1.5mm 2mm !important;
+                border-left: .7mm solid #10b981 !important;
+                background: #f5faf8 !important;
+                color: #334155 !important;
+                font-size: 8.3pt !important;
+                line-height: 1.35 !important;
+            }
+
+            #printResume .print-certifications {
+                border-top: .6pt solid #cbd5e1 !important;
+            }
+
+            #printResume .print-page-two::before {
+                content: "KRISTINA VADOVSKA  /  EXPERIENCE & SELECTED PRACTICE";
+                display: block;
+                margin: 0 0 5mm;
+                padding: 0 0 2mm;
+                border-bottom: 1pt solid #cbd5e1;
+                color: #047857;
+                font-family: "JetBrains Mono", Consolas, monospace;
+                font-size: 7.5pt;
+                font-weight: 700;
+                letter-spacing: .1em;
+            }
+
+            #printResume .print-page-one,
+            #printResume .print-page-two {
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume a {
+                color: #047857 !important;
+            }
+        }
+
+        /* Final CV art direction: restrained editorial typography and two deliberate A4 pages. */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 9mm 11mm;
+            }
+
+            html,
+            body {
+                margin: 0 !important;
+                background: #fff !important;
+                color: #1f2937 !important;
+                font-family: Arial, "Helvetica Neue", sans-serif !important;
+                font-size: 9pt !important;
+                line-height: 1.32 !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            body > header,
+            body > main,
+            #toast,
+            .glow-orb-1,
+            .glow-orb-2,
+            .glow-orb-3 {
+                display: none !important;
+            }
+
+            #printResume {
+                display: block !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #263344 !important;
+                font-family: Arial, "Helvetica Neue", sans-serif !important;
+                font-size: 8.7pt !important;
+                line-height: 1.3 !important;
+            }
+
+            #printResume * {
+                box-sizing: border-box !important;
+            }
+
+            #printResume .print-page {
+                display: block !important;
+                width: 100% !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume .print-page-one {
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+
+            #printResume .print-page-two {
+                break-before: page !important;
+                page-break-before: always !important;
+            }
+
+            #printResume .print-header {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1.45fr) minmax(58mm, .8fr) !important;
+                align-items: center !important;
+                gap: 7mm !important;
+                margin: 0 0 4mm !important;
+                padding: 4mm 0 3.5mm !important;
+                border-top: 1.2mm solid #10b981 !important;
+                border-bottom: .6pt solid #cbd5e1 !important;
+                background: none !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-header h1 {
+                margin: 0 !important;
+                color: #111827 !important;
+                font-size: 25pt !important;
+                font-weight: 800 !important;
+                line-height: 1 !important;
+                letter-spacing: .005em !important;
+            }
+
+            #printResume .print-title {
+                margin: 2mm 0 1.5mm !important;
+                color: #047857 !important;
+                font-size: 11pt !important;
+                font-weight: 700 !important;
+                line-height: 1.15 !important;
+            }
+
+            #printResume .print-header > div:first-child > p {
+                margin: 0 !important;
+                color: #526174 !important;
+                font-size: 8.5pt !important;
+                line-height: 1.35 !important;
+            }
+
+            #printResume .print-contact {
+                padding: 2mm 0 2mm 3mm !important;
+                border-left: .8mm solid #10b981 !important;
+                background: none !important;
+                color: #374151 !important;
+                text-align: left !important;
+                font-size: 7.7pt !important;
+                line-height: 1.55 !important;
+                overflow-wrap: anywhere !important;
+            }
+
+            #printResume section {
+                display: block !important;
+                margin: 0 0 3.2mm !important;
+                padding: 0 !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume h2 {
+                margin: 0 0 1.6mm !important;
+                padding: 0 0 .9mm !important;
+                border: 0 !important;
+                border-bottom: .5pt solid #cbd5e1 !important;
+                color: #172033 !important;
+                font-size: 10pt !important;
+                font-weight: 800 !important;
+                line-height: 1.1 !important;
+                letter-spacing: .09em !important;
+                text-transform: uppercase !important;
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+            }
+
+            #printResume h2::after {
+                display: none !important;
+            }
+
+            #printResume h3 {
+                margin: 0 0 .5mm !important;
+                color: #111827 !important;
+                font-size: 8.9pt !important;
+                font-weight: 700 !important;
+                line-height: 1.2 !important;
+            }
+
+            #printResume p {
+                margin: 0 0 1mm !important;
+                color: #3f4d5f !important;
+                font-size: 8.6pt !important;
+                line-height: 1.32 !important;
+            }
+
+            #printResume .print-grid {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+                align-items: start !important;
+                gap: 2mm 6mm !important;
+            }
+
+            #printResume .print-grid > div,
+            #printResume .print-grid > p {
+                min-width: 0 !important;
+            }
+
+            #printResume .print-strengths p {
+                margin: 0 !important;
+                padding: 1.3mm 1.8mm !important;
+                border-left: .65mm solid #10b981 !important;
+                background: #f5faf8 !important;
+                color: #435164 !important;
+                font-size: 7.9pt !important;
+                line-height: 1.28 !important;
+            }
+
+            #printResume .print-strengths strong {
+                color: #172033 !important;
+                font-size: 8pt !important;
+            }
+
+            #printResume .print-entry {
+                position: relative !important;
+                margin: 0 0 2.3mm !important;
+                padding: 0 0 1.5mm 2.5mm !important;
+                border: 0 !important;
+                border-left: .65mm solid #d4dde4 !important;
+                border-bottom: .4pt solid #e3e8ed !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-entry:nth-of-type(1) {
+                border-left-color: #10b981 !important;
+            }
+
+            #printResume .print-entry:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+                border-bottom: 0 !important;
+            }
+
+            #printResume .print-meta {
+                margin: 0 0 .8mm !important;
+                color: #047857 !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 7.3pt !important;
+                font-weight: 500 !important;
+                line-height: 1.2 !important;
+            }
+
+            #printResume ul {
+                margin: .8mm 0 0 3.7mm !important;
+                padding: 0 !important;
+            }
+
+            #printResume li {
+                margin: 0 0 .55mm !important;
+                padding-left: .3mm !important;
+                color: #3f4d5f !important;
+                font-size: 8.2pt !important;
+                line-height: 1.28 !important;
+            }
+
+            #printResume .print-tags {
+                margin: 0 !important;
+                padding: 1mm 0 0 !important;
+                border: 0 !important;
+                background: none !important;
+                color: #455468 !important;
+                font-size: 7.8pt !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere !important;
+            }
+
+            #printResume .print-grid .print-entry {
+                margin-bottom: 1.6mm !important;
+                padding: 0 0 1mm 2mm !important;
+            }
+
+            #printResume .print-grid .print-entry:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            #printResume .print-certifications {
+                margin-top: 1.5mm !important;
+                padding-top: 1.2mm !important;
+                border-top: .5pt solid #cbd5e1 !important;
+            }
+
+            #printResume .print-certifications p {
+                margin-bottom: .5mm !important;
+                font-size: 7.7pt !important;
+            }
+
+            #printResume .print-page-two::before {
+                content: "KRISTINA VADOVSKA  /  SELECTED EXPERIENCE & PRACTICE";
+                display: block !important;
+                margin: 0 0 3.5mm !important;
+                padding: 0 0 1.5mm !important;
+                border-bottom: .5pt solid #cbd5e1 !important;
+                color: #047857 !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 7pt !important;
+                font-weight: 700 !important;
+                letter-spacing: .08em !important;
+            }
+
+            #printResume .print-page-one::after,
+            #printResume .print-page-two::after {
+                display: block !important;
+                margin-top: 2mm !important;
+                padding-top: 1mm !important;
+                border-top: .4pt solid #dbe3e9 !important;
+                color: #64748b !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 6.8pt !important;
+                letter-spacing: .08em !important;
+                text-align: right !important;
+            }
+
+            #printResume .print-page-one::after {
+                content: "01 / 02" !important;
+            }
+
+            #printResume .print-page-two::after {
+                content: "02 / 02" !important;
+            }
+
+            #printResume a {
+                color: #047857 !important;
+                text-decoration: none !important;
+            }
+        }
+        /* Personal Systems Document: typography, grid and whitespace lead the print design. */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 12mm 14mm;
+            }
+
+            html,
+            body {
+                margin: 0 !important;
+                background: #fff !important;
+                color: #17212b !important;
+                font-family: "Plus Jakarta Sans", Arial, sans-serif !important;
+                font-size: 9pt !important;
+                line-height: 1.32 !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            body > header,
+            body > main,
+            #toast,
+            .glow-orb-1,
+            .glow-orb-2,
+            .glow-orb-3 {
+                display: none !important;
+            }
+
+            #printResume {
+                display: block !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #263344 !important;
+                font-family: "Plus Jakarta Sans", Arial, sans-serif !important;
+                font-size: 9pt !important;
+                line-height: 1.32 !important;
+                counter-reset: cv-section;
+            }
+
+            #printResume * {
+                box-sizing: border-box !important;
+            }
+
+            #printResume .print-page {
+                display: block !important;
+                width: 100% !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume .print-page-one {
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+
+            #printResume .print-page-two {
+                break-before: page !important;
+                page-break-before: always !important;
+            }
+
+            #printResume .print-header {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) minmax(56mm, .78fr) !important;
+                align-items: end !important;
+                gap: 7mm !important;
+                margin: 0 0 5mm !important;
+                padding: 4mm 0 3.5mm !important;
+                border-top: 1.1mm solid #07866f !important;
+                border-bottom: .5pt solid #cbd5d1 !important;
+                background: none !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-header h1 {
+                margin: 0 !important;
+                color: #111a20 !important;
+                font-size: 29pt !important;
+                font-weight: 800 !important;
+                line-height: .98 !important;
+                letter-spacing: -.035em !important;
+            }
+
+            #printResume .print-title {
+                margin: 2mm 0 1.3mm !important;
+                color: #087b67 !important;
+                font-size: 10.5pt !important;
+                font-weight: 700 !important;
+                line-height: 1.2 !important;
+                letter-spacing: .015em !important;
+            }
+
+            #printResume .print-header > div:first-child > p {
+                max-width: 105mm !important;
+                margin: 0 !important;
+                color: #53616c !important;
+                font-size: 8.4pt !important;
+                line-height: 1.35 !important;
+            }
+
+            #printResume .print-contact {
+                min-width: 0 !important;
+                padding: 0 0 0 3mm !important;
+                border-left: .7mm solid #07866f !important;
+                background: none !important;
+                color: #394752 !important;
+                text-align: left !important;
+                font-size: 7.5pt !important;
+                line-height: 1.48 !important;
+                overflow-wrap: anywhere !important;
+            }
+
+            #printResume section {
+                display: block !important;
+                margin: 0 0 3.4mm !important;
+                padding: 0 !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume h2 {
+                display: grid !important;
+                grid-template-columns: 9mm 1fr !important;
+                align-items: baseline !important;
+                gap: 1.5mm !important;
+                margin: 0 0 1.7mm !important;
+                padding: 0 0 .8mm !important;
+                border: 0 !important;
+                border-bottom: .45pt solid #cbd5d1 !important;
+                color: #17212b !important;
+                font-size: 9.4pt !important;
+                font-weight: 800 !important;
+                line-height: 1.15 !important;
+                letter-spacing: .105em !important;
+                text-transform: uppercase !important;
+                counter-increment: cv-section;
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+            }
+
+            #printResume h2::before {
+                content: counter(cv-section, decimal-leading-zero) !important;
+                color: #07866f !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 7pt !important;
+                font-weight: 500 !important;
+                letter-spacing: 0 !important;
+            }
+
+            #printResume h2::after {
+                display: none !important;
+            }
+
+            #printResume h3 {
+                margin: 0 0 .4mm !important;
+                color: #111a20 !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                line-height: 1.2 !important;
+            }
+
+            #printResume p {
+                margin: 0 0 .9mm !important;
+                color: #43515d !important;
+                font-size: 8.55pt !important;
+                line-height: 1.32 !important;
+            }
+
+            #printResume .print-entry {
+                display: block !important;
+                margin: 0 0 2.3mm !important;
+                padding: 0 0 1.7mm 2.5mm !important;
+                border: 0 !important;
+                border-left: .55mm solid #d2ddd9 !important;
+                border-bottom: .4pt solid #e2e8e5 !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-entry:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+                border-bottom: 0 !important;
+            }
+
+            #printResume .print-meta {
+                margin: 0 0 .8mm !important;
+                color: #087b67 !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 7.2pt !important;
+                font-weight: 500 !important;
+                line-height: 1.25 !important;
+                letter-spacing: .01em !important;
+            }
+
+            #printResume ul {
+                margin: .8mm 0 0 3.7mm !important;
+                padding: 0 !important;
+            }
+
+            #printResume li {
+                margin: 0 0 .55mm !important;
+                padding-left: .3mm !important;
+                color: #43515d !important;
+                font-size: 8.2pt !important;
+                line-height: 1.27 !important;
+            }
+
+            #printResume .print-grid {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+                align-items: start !important;
+                gap: 2mm 6mm !important;
+            }
+
+            #printResume .print-grid > div,
+            #printResume .print-grid > p {
+                min-width: 0 !important;
+            }
+
+            #printResume .print-grid h2 {
+                margin-top: 0 !important;
+            }
+
+            #printResume .print-grid .print-entry {
+                margin-bottom: 1.6mm !important;
+                padding: 0 0 1mm 2mm !important;
+            }
+
+            #printResume .print-grid .print-entry:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            #printResume .print-tags {
+                margin: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                background: none !important;
+                color: #43515d !important;
+                font-size: 7.8pt !important;
+                line-height: 1.34 !important;
+                overflow-wrap: anywhere !important;
+            }
+
+            #printResume .print-strengths {
+                gap: 1.4mm 5mm !important;
+                margin-top: .5mm !important;
+            }
+
+            #printResume .print-strengths p {
+                margin: 0 !important;
+                padding: 0 0 1.3mm !important;
+                border: 0 !important;
+                border-bottom: .35pt solid #e2e8e5 !important;
+                background: none !important;
+                color: #43515d !important;
+                font-size: 8.1pt !important;
+                line-height: 1.28 !important;
+            }
+
+            #printResume .print-strengths strong {
+                color: #17212b !important;
+                font-size: 8.2pt !important;
+            }
+
+            #printResume .print-certifications {
+                margin-top: 1mm !important;
+                padding-top: 1mm !important;
+                border-top: .45pt solid #cbd5d1 !important;
+            }
+
+            #printResume .print-certifications p {
+                margin-bottom: .5mm !important;
+                font-size: 7.6pt !important;
+            }
+
+            #printResume .print-page-two::before {
+                content: "KRISTINA VADOVSKA  /  SELECTED EXPERIENCE & PRACTICE" !important;
+                display: block !important;
+                margin: 0 0 4mm !important;
+                padding: 0 0 1.5mm !important;
+                border-bottom: .45pt solid #cbd5d1 !important;
+                color: #087b67 !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 7pt !important;
+                font-weight: 500 !important;
+                letter-spacing: .08em !important;
+            }
+
+            #printResume .print-page-one::after,
+            #printResume .print-page-two::after {
+                display: block !important;
+                margin-top: 2mm !important;
+                padding-top: 1mm !important;
+                border-top: .4pt solid #dce4e1 !important;
+                color: #78858d !important;
+                font-family: "JetBrains Mono", Consolas, monospace !important;
+                font-size: 6.7pt !important;
+                letter-spacing: .08em !important;
+                text-align: right !important;
+            }
+
+            #printResume .print-page-one::after {
+                content: "01 / 02" !important;
+            }
+
+            #printResume .print-page-two::after {
+                content: "02 / 02" !important;
+            }
+
+            #printResume a {
+                color: #087b67 !important;
+                text-decoration: none !important;
+            }
+        }
+        /* Clean editorial CV override: one consistent print system, no inherited portfolio UI. */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 11mm 13mm;
+            }
+
+            html,
+            body {
+                margin: 0 !important;
+                background: #fff !important;
+                color: #17212b !important;
+                font-family: Arial, "Helvetica Neue", sans-serif !important;
+                font-size: 9pt !important;
+                line-height: 1.32 !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            body > header,
+            body > main,
+            #toast,
+            .glow-orb-1,
+            .glow-orb-2,
+            .glow-orb-3 {
+                display: none !important;
+            }
+
+            #printResume {
+                display: block !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #17212b !important;
+                font-family: Arial, "Helvetica Neue", sans-serif !important;
+                font-size: 9pt !important;
+                line-height: 1.32 !important;
+                counter-reset: cv-section;
+            }
+
+            #printResume * {
+                box-sizing: border-box !important;
+            }
+
+            #printResume .print-page {
+                display: block !important;
+                width: 100% !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume .print-page-one {
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+
+            #printResume .print-page-two {
+                break-before: auto !important;
+                page-break-before: auto !important;
+            }
+
+            #printResume .print-page-two::before {
+                content: none !important;
+                display: none !important;
+            }
+
+            #printResume .print-header {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) 59mm !important;
+                align-items: end !important;
+                gap: 7mm !important;
+                margin: 0 0 4.5mm !important;
+                padding: 3mm 0 3.5mm !important;
+                border-top: 1.1mm solid #087b67 !important;
+                border-bottom: .5pt solid #cbd5d1 !important;
+                background: none !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-header h1 {
+                margin: 0 !important;
+                color: #111a20 !important;
+                font-size: 27pt !important;
+                font-weight: 800 !important;
+                line-height: .98 !important;
+                letter-spacing: -.035em !important;
+            }
+
+            #printResume .print-title {
+                margin: 2mm 0 1.2mm !important;
+                color: #087b67 !important;
+                font-size: 10.5pt !important;
+                font-weight: 700 !important;
+                line-height: 1.2 !important;
+            }
+
+            #printResume .print-header > div:first-child > p {
+                margin: 0 !important;
+                color: #53616c !important;
+                font-size: 8.5pt !important;
+                line-height: 1.32 !important;
+            }
+
+            #printResume .print-contact {
+                min-width: 0 !important;
+                padding: 0 0 0 3mm !important;
+                border-left: .7mm solid #087b67 !important;
+                background: none !important;
+                color: #394752 !important;
+                text-align: left !important;
+                font-size: 7.25pt !important;
+                line-height: 1.48 !important;
+                overflow-wrap: anywhere !important;
+            }
+
+            #printResume section {
+                display: block !important;
+                margin: 0 0 3.4mm !important;
+                padding: 0 !important;
+                break-inside: auto !important;
+                page-break-inside: auto !important;
+            }
+
+            #printResume h2 {
+                display: grid !important;
+                grid-template-columns: 8mm 1fr !important;
+                align-items: baseline !important;
+                gap: 1.5mm !important;
+                margin: 0 0 1.7mm !important;
+                padding: 0 0 .8mm !important;
+                border: 0 !important;
+                border-bottom: .45pt solid #cbd5d1 !important;
+                color: #17212b !important;
+                font-size: 9pt !important;
+                font-weight: 800 !important;
+                line-height: 1.15 !important;
+                letter-spacing: .09em !important;
+                text-transform: uppercase !important;
+                counter-increment: cv-section;
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+            }
+
+            #printResume h2::before {
+                content: counter(cv-section, decimal-leading-zero) !important;
+                color: #087b67 !important;
+                font-family: "Courier New", monospace !important;
+                font-size: 7pt !important;
+                font-weight: 400 !important;
+                letter-spacing: 0 !important;
+            }
+
+            #printResume h2::after {
+                content: none !important;
+                display: none !important;
+            }
+
+            #printResume h3 {
+                margin: 0 0 .5mm !important;
+                color: #111a20 !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                line-height: 1.2 !important;
+            }
+
+            #printResume p {
+                margin: 0 0 .9mm !important;
+                color: #43515d !important;
+                font-size: 8.55pt !important;
+                line-height: 1.32 !important;
+            }
+
+            #printResume .print-page-one > section:first-of-type > p {
+                max-width: 171mm !important;
+                color: #293944 !important;
+                font-size: 9.2pt !important;
+                line-height: 1.42 !important;
+            }
+
+            #printResume .print-strengths {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0 7mm !important;
+                margin: 0 !important;
+            }
+
+            #printResume .print-strengths p {
+                margin: 0 !important;
+                padding: 1.5mm 0 !important;
+                border-bottom: .35pt solid #e2e8e5 !important;
+                background: none !important;
+                color: #43515d !important;
+                font-size: 8.1pt !important;
+                line-height: 1.3 !important;
+            }
+
+            #printResume .print-strengths strong {
+                color: #17212b !important;
+                font-size: 8.2pt !important;
+            }
+
+            #printResume .print-entry {
+                position: relative !important;
+                margin: 0 0 2.2mm !important;
+                padding: 0 0 1.6mm 2.5mm !important;
+                border: 0 !important;
+                border-left: .55mm solid #d2ddd9 !important;
+                border-bottom: .35pt solid #e2e8e5 !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printResume .print-entry:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+                border-bottom: 0 !important;
+            }
+
+            #printResume .print-meta {
+                margin: 0 0 .7mm !important;
+                color: #087b67 !important;
+                font-family: "Courier New", monospace !important;
+                font-size: 7.1pt !important;
+                font-weight: 400 !important;
+                line-height: 1.2 !important;
+            }
+
+            #printResume ul {
+                margin: .8mm 0 0 3.7mm !important;
+                padding: 0 !important;
+            }
+
+            #printResume li {
+                margin: 0 0 .5mm !important;
+                padding-left: .3mm !important;
+                color: #43515d !important;
+                font-size: 8.1pt !important;
+                line-height: 1.27 !important;
+            }
+
+            #printResume .print-grid {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+                align-items: start !important;
+                gap: 2mm 6mm !important;
+            }
+
+            #printResume .print-grid > div,
+            #printResume .print-grid > p {
+                min-width: 0 !important;
+            }
+
+            #printResume .print-grid .print-entry {
+                margin-bottom: 1.6mm !important;
+                padding-bottom: 1mm !important;
+            }
+
+            #printResume .print-tags {
+                margin: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                background: none !important;
+                color: #43515d !important;
+                font-size: 7.8pt !important;
+                line-height: 1.34 !important;
+                overflow-wrap: anywhere !important;
+            }
+
+            #printResume .print-certifications {
+                margin-top: 1mm !important;
+                padding-top: 1mm !important;
+                border-top: .45pt solid #cbd5d1 !important;
+            }
+
+            #printResume .print-certifications p {
+                margin-bottom: .5mm !important;
+                font-size: 7.6pt !important;
+            }
+
+            #printResume .print-page-one::after,
+            #printResume .print-page-two::after {
+                display: block !important;
+                margin-top: 2mm !important;
+                padding-top: 1mm !important;
+                border-top: .4pt solid #dce4e1 !important;
+                color: #78858d !important;
+                font-family: "Courier New", monospace !important;
+                font-size: 6.7pt !important;
+                letter-spacing: .08em !important;
+                text-align: right !important;
+            }
+
+            #printResume .print-page-one::after {
+                content: "01 / 02" !important;
+            }
+
+            #printResume .print-page-two::after {
+                content: "02 / 02" !important;
+            }
+
+            #printResume a {
+                color: #087b67 !important;
+                text-decoration: none !important;
+            }
+        }
+        }
+    </style>
+<style>
+/* Dedicated editorial CV for A4 print. Screen portfolio styles are untouched. */
+@page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+}
+
+@media print {
+    :root {
+        color-scheme: light;
+    }
+
+    html,
+    body {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #202521 !important;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif !important;
+        font-size: 8.5pt !important;
+        line-height: 1.35 !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    body > *:not(#printCv) {
+        display: none !important;
+    }
+
+    #printCv,
+    #printCv * {
+        box-sizing: border-box !important;
+    }
+
+    #printCv {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #202521 !important;
+        font: inherit !important;
+    }
+
+    #printCv .cv-page {
+        display: grid !important;
+        grid-template-columns: 49mm minmax(0, 1fr) !important;
+        column-gap: 8mm !important;
+        row-gap: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-page-one {
+        grid-template-rows: auto 1fr auto !important;
+        break-after: page !important;
+        page-break-after: always !important;
+    }
+
+    #printCv .cv-page-two {
+        grid-template-rows: auto 1fr auto !important;
+        break-before: auto !important;
+        page-break-before: auto !important;
+    }
+
+    #printCv .cv-masthead {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+        margin: 0 0 6mm !important;
+        padding: 3mm 0 3.2mm !important;
+        border-top: 1mm solid #16816b !important;
+        border-bottom: .45pt solid #cbd2ce !important;
+    }
+
+    #printCv .cv-kicker,
+    #printCv .cv-descriptor,
+    #printCv .cv-running-head,
+    #printCv .cv-date,
+    #printCv .cv-context,
+    #printCv .cv-project small,
+    #printCv .cv-page-footer {
+        font-family: "JetBrains Mono", "Courier New", monospace !important;
+        text-transform: uppercase;
+        letter-spacing: .055em;
+    }
+
+    #printCv .cv-kicker {
+        margin: 0 0 2mm !important;
+        color: #16816b !important;
+        font-size: 6.5pt !important;
+        font-weight: 600 !important;
+    }
+
+    #printCv .cv-kicker span,
+    #printCv .cv-descriptor span,
+    #printCv .cv-contact i,
+    #printCv .cv-running-head i,
+    #printCv .cv-page-footer i {
+        color: #16816b !important;
+        font-style: normal !important;
+    }
+
+    #printCv h1 {
+        margin: 0 !important;
+        color: #151a17 !important;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif !important;
+        font-size: 24pt !important;
+        font-weight: 800 !important;
+        line-height: .98 !important;
+        letter-spacing: -.045em !important;
+        white-space: nowrap;
+    }
+
+    #printCv .cv-roleline {
+        margin: 2mm 0 1.3mm !important;
+        color: #252d28 !important;
+        font-size: 9.1pt !important;
+        font-weight: 800 !important;
+        letter-spacing: .085em !important;
+    }
+
+    #printCv .cv-descriptor {
+        margin: 0 0 2.2mm !important;
+        color: #616b64 !important;
+        font-size: 6.2pt !important;
+        font-weight: 500 !important;
+        line-height: 1.55 !important;
+    }
+
+    #printCv .cv-contact {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: .65mm !important;
+        color: #505a53 !important;
+        font-size: 7pt !important;
+        line-height: 1.35 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #printCv a {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+
+    #printCv .cv-rail {
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+        padding-top: 1mm;
+    }
+
+    #printCv .cv-main {
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+    }
+
+    #printCv .cv-section {
+        margin: 0 0 4.3mm !important;
+        padding: 0 !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-section-label {
+        display: grid !important;
+        grid-template-columns: 7mm minmax(0, 1fr) !important;
+        align-items: baseline !important;
+        gap: 1.5mm !important;
+        margin: 0 0 2mm !important;
+        padding: 0 0 1mm !important;
+        border-bottom: .4pt solid #cbd2ce !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #printCv .cv-section-label > span {
+        color: #16816b !important;
+        font-family: "JetBrains Mono", "Courier New", monospace !important;
+        font-size: 6.8pt !important;
+        letter-spacing: 0 !important;
+    }
+
+    #printCv h2 {
+        margin: 0 !important;
+        color: #29312c !important;
+        font-size: 8pt !important;
+        font-weight: 800 !important;
+        line-height: 1.15 !important;
+        letter-spacing: .12em !important;
+        text-transform: uppercase !important;
+    }
+
+    #printCv h3 {
+        margin: 0 0 .6mm !important;
+        color: #202722 !important;
+        font-size: 8.35pt !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv p {
+        margin: 0 0 .8mm !important;
+        color: #4a554e !important;
+        font-size: 8.2pt !important;
+        line-height: 1.36 !important;
+        orphans: 2;
+        widows: 2;
+    }
+
+    #printCv .cv-lead {
+        margin: 0 !important;
+        color: #303a34 !important;
+        font-size: 9.1pt !important;
+        line-height: 1.45 !important;
+    }
+
+    #printCv .cv-rail-section {
+        margin: 0 0 5mm !important;
+    }
+
+    #printCv .cv-capability {
+        margin: 0 0 3mm !important;
+        padding: 0 0 2.2mm 2.3mm !important;
+        border-left: .45mm solid #c6d2cc !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-capability h3 {
+        margin: 0 0 .7mm !important;
+        color: #16816b !important;
+        font-family: "JetBrains Mono", "Courier New", monospace !important;
+        font-size: 6.7pt !important;
+        font-weight: 600 !important;
+        letter-spacing: .055em !important;
+    }
+
+    #printCv .cv-capability p {
+        margin: 0 !important;
+        color: #4f5a53 !important;
+        font-size: 7.7pt !important;
+        line-height: 1.4 !important;
+    }
+
+    #printCv .cv-entries {
+        position: relative;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #printCv .cv-entry {
+        display: grid !important;
+        grid-template-columns: 19mm minmax(0, 1fr) !important;
+        gap: 3.5mm !important;
+        margin: 0 0 3.4mm !important;
+        padding: 0 0 2.8mm !important;
+        border-bottom: .4pt solid #dfe4e0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-entry:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    #printCv .cv-date {
+        margin: .4mm 0 0 !important;
+        color: #69756d !important;
+        font-size: 7pt !important;
+        line-height: 1.45 !important;
+    }
+
+    #printCv .cv-entry-body {
+        position: relative;
+        min-width: 0;
+        padding-left: 3mm !important;
+        border-left: .45mm solid #b7c5bd !important;
+    }
+
+    #printCv .cv-entry-body::before {
+        position: absolute;
+        top: .6mm;
+        left: -1.05mm;
+        width: 1.5mm;
+        height: 1.5mm;
+        border: .4mm solid #16816b;
+        border-radius: 50%;
+        background: #fff;
+        content: "";
+    }
+
+    #printCv .cv-context {
+        margin: 0 0 1.1mm !important;
+        color: #16816b !important;
+        font-size: 6.8pt !important;
+        line-height: 1.3 !important;
+    }
+
+    #printCv .cv-bullets {
+        margin: 1mm 0 0 3.1mm !important;
+        padding: 0 !important;
+        list-style: disc outside !important;
+    }
+
+    #printCv .cv-bullets li {
+        margin: 0 0 .75mm !important;
+        padding-left: .4mm !important;
+        color: #4a554e !important;
+        font-size: 8pt !important;
+        line-height: 1.34 !important;
+    }
+
+    #printCv .cv-entry-body p:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    #printCv strong {
+        color: #27332c !important;
+        font-weight: 700 !important;
+    }
+
+    #printCv .cv-method-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2.2mm 4mm !important;
+    }
+
+    #printCv .cv-method-grid article {
+        min-width: 0;
+        padding: 0 0 1.5mm 2.2mm !important;
+        border-left: .45mm solid #c6d2cc !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-method-grid article:last-child {
+        grid-column: 1 / -1 !important;
+    }
+
+    #printCv .cv-method-grid h3 {
+        margin: 0 0 .7mm !important;
+        color: #16816b !important;
+        font-family: "JetBrains Mono", "Courier New", monospace !important;
+        font-size: 6.5pt !important;
+        font-weight: 600 !important;
+        letter-spacing: .055em !important;
+    }
+
+    #printCv .cv-method-grid p {
+        margin: 0 !important;
+        color: #4f5a53 !important;
+        font-size: 7.1pt !important;
+        line-height: 1.35 !important;
+    }
+
+    #printCv .cv-running-head {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        display: flex !important;
+        justify-content: space-between !important;
+        margin: 0 0 5mm !important;
+        padding: 0 0 1.7mm !important;
+        border-bottom: .45pt solid #cbd2ce !important;
+        color: #69756d !important;
+        font-size: 6.3pt !important;
+    }
+
+    #printCv .cv-page-two .cv-rail {
+        padding-top: 0 !important;
+    }
+
+    #printCv .cv-proof {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: .3mm !important;
+        margin: 0 0 3.3mm !important;
+        padding: 0 0 2.3mm !important;
+        border-bottom: .4pt solid #dfe4e0 !important;
+    }
+
+    #printCv .cv-proof strong {
+        color: #1d2822 !important;
+        font-size: 15pt !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        letter-spacing: -.035em !important;
+    }
+
+    #printCv .cv-proof span {
+        color: #6a756e !important;
+        font-size: 6.4pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-languages {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #printCv .cv-languages li {
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 2mm !important;
+        padding: 1mm 0 !important;
+        border-bottom: .35pt solid #e1e6e2 !important;
+        color: #48534c !important;
+        font-size: 6.8pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-languages strong {
+        font-weight: 700 !important;
+    }
+
+    #printCv .cv-languages span {
+        color: #707b74 !important;
+        text-align: right !important;
+    }
+
+    #printCv .cv-project-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 2.1mm !important;
+    }
+
+    #printCv .cv-project {
+        display: grid !important;
+        grid-template-columns: 7mm minmax(0, 1fr) !important;
+        gap: 1.5mm !important;
+        margin: 0 !important;
+        padding: 0 0 1.8mm !important;
+        border-bottom: .4pt solid #dfe4e0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-project:last-child {
+        border-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    #printCv .cv-project-no {
+        color: #16816b !important;
+        font-family: "JetBrains Mono", "Courier New", monospace !important;
+        font-size: 6.7pt !important;
+        line-height: 1.35 !important;
+    }
+
+    #printCv .cv-project h3 {
+        margin: 0 0 .6mm !important;
+        font-size: 8pt !important;
+    }
+
+    #printCv .cv-project p {
+        margin: 0 0 .5mm !important;
+        font-size: 7.8pt !important;
+        line-height: 1.34 !important;
+    }
+
+    #printCv .cv-project small {
+        color: #77827b !important;
+        font-size: 5.9pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-education > h3 {
+        margin-bottom: .6mm !important;
+    }
+
+    #printCv .cv-education > p {
+        margin-bottom: .6mm !important;
+        font-size: 7.4pt !important;
+    }
+
+    #printCv .cv-credentials {
+        margin-top: 1.6mm !important;
+        padding-top: 1.3mm !important;
+        border-top: .4pt solid #dfe4e0 !important;
+    }
+
+    #printCv .cv-credentials p {
+        margin: 0 0 .8mm !important;
+        color: #667169 !important;
+        font-size: 6.5pt !important;
+        line-height: 1.32 !important;
+    }
+
+    #printCv .cv-learning {
+        margin: 0 0 2.2mm !important;
+        padding: 0 0 1.5mm !important;
+        border-bottom: .35pt solid #e1e6e2 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-learning strong,
+    #printCv .cv-learning span {
+        display: block !important;
+    }
+
+    #printCv .cv-learning strong {
+        color: #364139 !important;
+        font-size: 7.25pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-learning span {
+        margin-top: .45mm !important;
+        color: #737e76 !important;
+        font-family: "JetBrains Mono", "Courier New", monospace !important;
+        font-size: 6.4pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-page-footer {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-self: end !important;
+        margin: 2.5mm 0 0 !important;
+        padding: 1.4mm 0 0 !important;
+        border-top: .4pt solid #d9e0dc !important;
+        color: #7a857e !important;
+        font-size: 5.8pt !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv .cv-page-footer span:last-child {
+        color: #16816b !important;
+    }
+
+    #printCvLegacy {
+        display: none !important;
+    }
+}
+</style>
+    <style media="not all">
+        @page {
+            size: A4 portrait;
+            margin: 11mm 13mm;
+        }
+
+        @media print {
+            html, body {
+                width: 100%;
+                margin: 0 !important;
+                background: #fbfaf7 !important;
+                color: #202623 !important;
+                font: 8.4pt/1.34 "Plus Jakarta Sans", Arial, Helvetica, sans-serif !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body > *:not(#printCv) {
+                display: none !important;
+            }
+
+            #printCv {
+                display: block !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #202623 !important;
+                font: inherit !important;
+            }
+
+            #printCv *, #printCv *::before, #printCv *::after {
+                box-sizing: border-box !important;
+            }
+
+            #printCv .cv-page {
+                display: block !important;
+                width: 100% !important;
+                position: relative;
+            }
+
+            #printCv .cv-page-one {
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+
+            #printCv .cv-page-two {
+                break-before: auto !important;
+                page-break-before: auto !important;
+            }
+
+            #printCv .cv-masthead {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1.15fr) minmax(58mm, .85fr);
+                gap: 9mm;
+                align-items: end;
+                margin: 0 0 5mm;
+                padding: 3mm 0 4mm;
+                border-top: 1.1mm solid #087b67;
+                border-bottom: .45pt solid #c9cfca;
+            }
+
+            #printCv .cv-kicker,
+            #printCv .cv-descriptor,
+            #printCv .cv-running-head,
+            #printCv .cv-date,
+            #printCv .cv-context,
+            #printCv .cv-project small,
+            #printCv .cv-page-footer {
+                font-family: "Courier New", monospace !important;
+                text-transform: uppercase;
+                letter-spacing: .065em;
+            }
+
+            #printCv .cv-kicker {
+                margin: 0 0 2mm;
+                color: #087b67 !important;
+                font-size: 6.8pt !important;
+                font-weight: 700;
+            }
+
+            #printCv h1 {
+                margin: 0;
+                color: #141a17 !important;
+                font-size: 28pt !important;
+                font-weight: 800 !important;
+                line-height: .88 !important;
+                letter-spacing: -.045em !important;
+            }
+
+            #printCv .cv-roleline {
+                margin: 2.5mm 0 1.3mm;
+                color: #25312b !important;
+                font-size: 10pt !important;
+                font-weight: 700;
+                letter-spacing: .055em;
+            }
+
+            #printCv .cv-descriptor {
+                margin: 0;
+                color: #66716a !important;
+                font-size: 6.65pt !important;
+                line-height: 1.55 !important;
+            }
+
+            #printCv .cv-contact {
+                display: flex !important;
+                flex-direction: column;
+                gap: 1mm;
+                min-width: 0;
+                padding-left: 3mm;
+                border-left: .55mm solid #a9b9b0;
+                color: #48544d !important;
+                font-size: 7pt !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+
+            #printCv a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
+            #printCv .cv-section {
+                margin: 0 0 5mm;
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            #printCv .cv-section-label {
+                display: grid !important;
+                grid-template-columns: 8mm 1fr;
+                align-items: baseline;
+                gap: 1.5mm;
+                margin: 0 0 2mm;
+                padding: 0 0 1mm;
+                border-bottom: .4pt solid #cbd2cd;
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            #printCv .cv-section-label > span {
+                color: #087b67 !important;
+                font: 7pt/1 "Courier New", monospace !important;
+            }
+
+            #printCv h2 {
+                margin: 0 !important;
+                color: #27332d !important;
+                font-size: 8.2pt !important;
+                font-weight: 800 !important;
+                line-height: 1.1 !important;
+                letter-spacing: .12em !important;
+                text-transform: uppercase !important;
+            }
+
+            #printCv h3 {
+                margin: 0 0 .7mm !important;
+                color: #1c2520 !important;
+                font-size: 9.1pt !important;
+                font-weight: 700 !important;
+                line-height: 1.18 !important;
+            }
+
+            #printCv p {
+                margin: 0 0 1mm !important;
+                color: #46514b !important;
+                font-size: 8.55pt !important;
+                line-height: 1.38 !important;
+            }
+
+            #printCv .cv-lead {
+                max-width: 174mm;
+                margin: 0 !important;
+                color: #293630 !important;
+                font-size: 9.25pt !important;
+                line-height: 1.43 !important;
+            }
+
+            #printCv .cv-capability-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 9mm;
+                row-gap: 3mm;
+            }
+
+            #printCv .cv-capability {
+                padding: 0 0 2mm 2.5mm;
+                border-left: .45mm solid #d2dad5;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            #printCv .cv-capability h3 {
+                margin: 0 0 .8mm !important;
+                color: #087b67 !important;
+                font-size: 7.1pt !important;
+                letter-spacing: .08em;
+            }
+
+            #printCv .cv-capability p {
+                margin: 0 !important;
+                color: #46514b !important;
+                font-size: 8pt !important;
+                line-height: 1.38 !important;
+            }
+
+            #printCv .cv-entry {
+                display: grid !important;
+                grid-template-columns: 29mm minmax(0, 1fr);
+                gap: 5mm;
+                padding: 0 0 3mm;
+                margin: 0 0 3mm;
+                border-bottom: .4pt solid #dfe4e0;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            #printCv .cv-entry:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+
+            #printCv .cv-date {
+                padding-top: .6mm;
+                color: #66736b !important;
+                font-size: 6.55pt !important;
+                line-height: 1.55 !important;
+            }
+
+            #printCv .cv-entry-body p:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            #printCv .cv-context {
+                margin: 0 0 1mm !important;
+                color: #087b67 !important;
+                font-size: 6.65pt !important;
+                line-height: 1.3 !important;
+            }
+
+            #printCv .cv-running-head {
+                display: flex !important;
+                justify-content: space-between;
+                margin: 0 0 5mm;
+                padding: 0 0 1.5mm;
+                border-bottom: .45pt solid #cbd2cd;
+                color: #68746d !important;
+                font-size: 6.5pt !important;
+            }
+
+            #printCv .cv-project-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 2.4mm 7mm;
+            }
+
+            #printCv .cv-project {
+                display: grid !important;
+                grid-template-columns: 8mm minmax(0, 1fr);
+                gap: 1.5mm;
+                padding: 0 0 2mm;
+                border-bottom: .4pt solid #dfe4e0;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            #printCv .cv-project-no {
+                color: #087b67 !important;
+                font: 7pt/1.3 "Courier New", monospace !important;
+            }
+
+            #printCv .cv-project h3 {
+                font-size: 8.4pt !important;
+            }
+
+            #printCv .cv-project p {
+                margin: 0 0 .8mm !important;
+                font-size: 7.7pt !important;
+                line-height: 1.3 !important;
+            }
+
+            #printCv .cv-project small {
+                color: #77827b !important;
+                font-size: 6.1pt !important;
+                line-height: 1.25 !important;
+            }
+
+            #printCv .cv-proof-grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5mm;
+            }
+
+            #printCv .cv-proof-grid p {
+                display: flex !important;
+                flex-direction: column;
+                gap: .8mm;
+                margin: 0 !important;
+                padding-left: 2mm;
+                border-left: .45mm solid #b9c8c0;
+            }
+
+            #printCv .cv-proof-grid strong {
+                color: #1e2a23 !important;
+                font-size: 13pt !important;
+                line-height: 1 !important;
+                letter-spacing: -.03em;
+            }
+
+            #printCv .cv-proof-grid span {
+                color: #68746d !important;
+                font-size: 6.2pt !important;
+                line-height: 1.25 !important;
+            }
+
+            #printCv .cv-bottom-grid {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr);
+                gap: 9mm;
+            }
+
+            #printCv .cv-bottom-grid .cv-section-label {
+                grid-template-columns: 8mm 1fr;
+            }
+
+            #printCv .cv-education h3 {
+                font-size: 8.7pt !important;
+            }
+
+            #printCv .cv-education p,
+            #printCv .cv-credentials {
+                font-size: 7.4pt !important;
+                line-height: 1.32 !important;
+            }
+
+            #printCv .cv-credentials {
+                margin: 2mm 0 0 !important;
+                padding-top: 1.5mm;
+                border-top: .4pt solid #dfe4e0;
+                color: #657169 !important;
+            }
+
+            #printCv .cv-languages {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #printCv .cv-languages li {
+                display: flex !important;
+                justify-content: space-between;
+                gap: 2mm;
+                padding: .65mm 0;
+                border-bottom: .35pt solid #e1e6e2;
+                color: #46514b !important;
+                font-size: 7.3pt !important;
+            }
+
+            #printCv .cv-languages strong {
+                color: #26322b !important;
+                font-weight: 700;
+            }
+
+            #printCv .cv-languages span {
+                color: #66736b !important;
+                text-align: right;
+            }
+
+            #printCv .cv-page-footer {
+                display: flex !important;
+                justify-content: space-between;
+                margin-top: 3mm;
+                padding-top: 1.2mm;
+                border-top: .45pt solid #cbd2cd;
+                color: #87918b !important;
+                font-size: 6pt !important;
+            }
+
+            #printCv .cv-page-footer span:last-child {
+                color: #087b67 !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
@@ -1602,9 +3642,8 @@
 
                     <!-- Print / Save PDF Button -->
                     <button onclick="preparePrint()" class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-dark-900 font-bold text-xs sm:text-sm px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-lg shadow-emerald-500/20 flex items-center gap-2 transition-all cursor-pointer">
-                        <i class="fa-solid fa-file-pdf"></i>
-                        <span class="hidden sm:inline" data-en="Save PDF / Print" data-ua="Зберегти / Друк">Save PDF / Print</span>
-                        <span class="sm:hidden" data-en="PDF" data-ua="PDF">PDF</span>
+                        <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+                        <span data-en="Save CV" data-ua="Зберегти CV">Save CV</span>
                     </button>
 
                     <!-- Mobile Menu Button -->
@@ -2718,7 +4757,245 @@
 
     </main>
 
-    <section id="printResume" class="print-resume" aria-label="Printable CV">
+    <section id="printCv" class="print-resume cv-document" aria-label="Printable CV">
+        <article class="cv-page cv-page-one">
+            <header class="cv-masthead">
+                <p class="cv-kicker">INDEPENDENT PRACTICE <span>·</span> ODESA, UKRAINE</p>
+                <h1>KRISTINA VADOVSKA</h1>
+                <p class="cv-roleline">AI &amp; DIGITAL SYSTEMS CONSULTANT</p>
+                <p class="cv-descriptor">AI / LLM WORKFLOWS <span>·</span> AUTOMATION <span>·</span> WEB &amp; SOFTWARE <span>·</span> UX<br>RESEARCH <span>·</span> WRITING <span>·</span> NARRATIVE</p>
+                <div class="cv-contact">
+                    <a href="mailto:bussineskristel@gmail.com">bussineskristel@gmail.com</a>
+                    <span>+380 75 199 86 21 <i>·</i> WhatsApp +49 170 6689062 <i>·</i> Telegram @Erik_Milton</span>
+                    <span>Odesa, Ukraine <i>·</i> Remote <i>·</i> LinkedIn: linkedin.com/in/kristina-vadovska-844854313</span>
+                    <a href="https://cal.com/kristina-vadovska/intro-project-discussion">cal.com/kristina-vadovska/intro-project-discussion</a>
+                </div>
+            </header>
+
+            <aside class="cv-rail" aria-label="Capabilities">
+                <section class="cv-rail-section">
+                    <div class="cv-section-label"><span>02</span><h2>Capabilities</h2></div>
+                    <div class="cv-capability"><h3>AI SYSTEMS</h3><p>Prompt engineering · LLM workflows · Agentic pipelines · N8N · APIs · Structured outputs · Bot architecture · Guardrails / QA</p></div>
+                    <div class="cv-capability"><h3>DIGITAL</h3><p>Web / software development · JavaScript / TypeScript · Python · HTML / CSS · Responsive interfaces · GitHub · REST APIs</p></div>
+                    <div class="cv-capability"><h3>PRODUCT / UX</h3><p>UX strategy · Figma · Wireframing · UI systems · UX audits · User journeys · QA · Tilda · Webflow</p></div>
+                    <div class="cv-capability"><h3>RESEARCH / NARRATIVE</h3><p>Research · Technical and creative writing · Editing · SEO copywriting · Narrative design · Worldbuilding · Digital publishing</p></div>
+                </section>
+            </aside>
+
+            <div class="cv-main">
+                <section class="cv-section cv-profile">
+                    <div class="cv-section-label"><span>01</span><h2>Profile</h2></div>
+                    <p class="cv-lead">Multidisciplinary AI and digital systems specialist who turns user and business needs into practical workflows, products, and content. Combines prompt engineering, LLM integrations, and N8N automation with web/software development, UX, research, technical writing, and narrative design—from system logic through implementation and iteration.</p>
+                </section>
+
+                <section class="cv-section cv-experience">
+                    <div class="cv-section-label"><span>03</span><h2>Experience</h2></div>
+                    <div class="cv-entries">
+                        <article class="cv-entry">
+                            <p class="cv-date">02/2024 — PRESENT<br>INDEPENDENT</p>
+                            <div class="cv-entry-body"><h3>Founder &amp; Advisory Consultant</h3><p class="cv-context">Registered sole proprietorship (FOP) · Independent advisory</p><ul class="cv-bullets"><li>Advise startups and businesses on AI adoption, prompt workflows, UX strategy, and narrative branding; architect prompt pipelines and automated AI logic.</li><li>Design UI/UX layouts, wireframes, and brand-voice frameworks for client projects.</li><li>Manage contracts, invoicing, regulatory compliance, and service delivery for the registered practice.</li></ul></div>
+                        </article>
+                        <article class="cv-entry">
+                            <p class="cv-date">2023 — PRESENT<br>PROJECT-BASED</p>
+                            <div class="cv-entry-body"><h3>Lead AI &amp; Prompt Engineer | Web &amp; Software Developer</h3><p class="cv-context">Freelance &amp; startup projects</p><ul class="cv-bullets"><li>Develop agentic AI workflows, chatbot architectures, web tools, and responsive platforms using LLM APIs.</li><li>Engineer N8N pipelines and Telegram bots integrated with OpenAI and Claude endpoints.</li><li>Build interfaces with HTML5, Tailwind CSS, JavaScript, and Python; conduct UX audits, system testing, and prompt debugging.</li></ul></div>
+                        </article>
+                        <article class="cv-entry">
+                            <p class="cv-date">02/2023 — 05/2024<br>ODESA / REMOTE</p>
+                            <div class="cv-entry-body"><h3>Customer Support &amp; Operations Specialist</h3><p class="cv-context">OBRIO · Genesis ecosystem</p><ul class="cv-bullets"><li>Resolved user queries, escalated complex tickets, and managed CRM operations across thousands of customer interactions.</li><li>Maintained a <strong>5.0 / 5.0 CSAT</strong> record and earned Top Performer recognition.</li><li>Optimized support workflows and collaborated with product and QA teams on bug reports and onboarding improvements.</li></ul></div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="cv-section cv-method">
+                    <div class="cv-section-label"><span>04</span><h2>AI workflow practice</h2></div>
+                    <div class="cv-method-grid">
+                        <article><h3>PROMPT STRUCTURE</h3><p>Separate system and user instructions; define role, guardrails, tone, action rules, and output format. Use few-shot examples, strict JSON schemas, and staged prompt chains.</p></article>
+                        <article><h3>ORCHESTRATION</h3><p>Build N8N patterns with Webhooks, AI Agent / OpenAI and Code nodes, HTTP Request, Telegram, IF / Switch branches, APIs, and structured storage.</p></article>
+                        <article><h3>TESTING &amp; QUALITY</h3><p>Iterate prompt variants, validate structured outputs, apply context-only constraints, repair JSON with schemas and smaller steps, and analyze hallucinations.</p></article>
+                    </div>
+                </section>
+            </div>
+            <footer class="cv-page-footer"><span>KRISTINA VADOVSKA <i>·</i> PROFESSIONAL CV</span><span>01 / 02</span></footer>
+        </article>
+
+        <article class="cv-page cv-page-two">
+            <header class="cv-running-head"><span>KRISTINA VADOVSKA</span><span>AI SYSTEMS <i>·</i> DIGITAL <i>·</i> NARRATIVE</span></header>
+            <aside class="cv-rail" aria-label="Selected proof and languages">
+                <section class="cv-rail-section cv-proof-section">
+                    <div class="cv-section-label"><span>09</span><h2>Selected proof</h2></div>
+                    <div class="cv-proof"><strong>5.0 / 5.0</strong><span>CSAT · OBRIO / Genesis</span></div>
+                    <div class="cv-proof"><strong>4.9 / 5.0</strong><span>GPA · Honors degree</span></div>
+                    <div class="cv-proof"><strong>TOP 5%</strong><span>Graduating class</span></div>
+                    <div class="cv-proof"><strong>FOP</strong><span>Registered independent practice</span></div>
+                </section>
+                <section class="cv-rail-section cv-development-section">
+                    <div class="cv-section-label"><span>11</span><h2>Courses &amp; study</h2></div>
+                    <div class="cv-learning"><strong>AI Systems &amp; Prompt Engineering Architecture</strong><span>Coursera &amp; specialized AI academies · 2023–present</span></div>
+                    <div class="cv-learning"><strong>UI/UX &amp; Web Development Intensive</strong><span>2023–2024</span></div>
+                    <div class="cv-learning"><strong>Applied Neopsychology &amp; Behavioral Analysis</strong><span>2021</span></div>
+                    <div class="cv-learning"><strong>Mass Communications &amp; Media Psychology</strong><span>2021</span></div>
+                </section>
+                <section class="cv-rail-section cv-languages-section">
+                    <div class="cv-section-label"><span>10</span><h2>Languages</h2></div>
+                    <ul class="cv-languages">
+                        <li><strong>Ukrainian</strong><span>Native · C2</span></li>
+                        <li><strong>English</strong><span>Advanced · C1</span></li>
+                        <li><strong>German</strong><span>Elementary · A2</span></li>
+                        <li><strong>Romanian</strong><span>Beginner · A1</span></li>
+                        <li><strong>Russian</strong><span>Fluent · C2</span></li>
+                    </ul>
+                </section>
+            </aside>
+
+            <div class="cv-main">
+                <section class="cv-section cv-experience-continued">
+                    <div class="cv-section-label"><span>05</span><h2>Experience / continued</h2></div>
+                    <div class="cv-entries">
+                        <article class="cv-entry">
+                            <p class="cv-date">01/2016 — PRESENT<br>INDEPENDENT</p>
+                            <div class="cv-entry-body"><h3>Published Author &amp; Narrative Designer</h3><p class="cv-context">Independent publishing · Kristel inside out</p><p>Write psychological and fantasy prose, poetry, and essays; develop character arcs, lore, worlds, and transmedia narratives. Lead writing, editing, and digital publishing through an independent author platform.</p></div>
+                        </article>
+                        <article class="cv-entry">
+                            <p class="cv-date">2015 — PRESENT<br>FREELANCE</p>
+                            <div class="cv-entry-body"><h3>Copywriter &amp; Content Specialist | Freelance Editor</h3><p class="cv-context">SMM agency &amp; freelance</p><p>Write and edit technical, creative, SEO, SMM, and brand content across technology, media, lifestyle, and literary domains—from research and editorial structure to tone of voice and adaptation.</p></div>
+                        </article>
+                        <article class="cv-entry">
+                            <p class="cv-date">05/2022 — 10/2022<br>ROMANIA</p>
+                            <div class="cv-entry-body"><h3>International Operations &amp; Hospitality</h3><p class="cv-context">Atlas Apart Hotel · Andreas Pizzeria</p><p>Hospitality and culinary operations demonstrating cross-cultural adaptability, service discipline, and performance in high-stress environments.</p></div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="cv-section cv-projects">
+                    <div class="cv-section-label"><span>06</span><h2>Selected projects</h2></div>
+                    <div class="cv-project-grid">
+                        <article class="cv-project"><span class="cv-project-no">01</span><div><h3>Prompt &amp; agentic workflow architecture</h3><p>Structured prompts, JSON outputs, guardrails, and N8N automation for support, content, bots, and digital products.</p><small>N8N · LLM APIs · JSON · QA</small></div></article>
+                        <article class="cv-project"><span class="cv-project-no">02</span><div><h3>Responsive web &amp; UX systems</h3><p>Websites and interfaces from concept to responsive implementation, including portfolios, dashboards, and service sites.</p><small>Figma · HTML / CSS / JS · Tilda · Webflow</small></div></article>
+                        <article class="cv-project"><span class="cv-project-no">03</span><div><h3>Multilingual content pipeline</h3><p>Collaborative TikTok / YouTube workflow spanning stories, video concepts, quizzes, bots, AI media, research, and language adaptation.</p><small>N8N · VS Code · Ukrainian / English / Russian</small></div></article>
+                    </div>
+                </section>
+
+                <section class="cv-section cv-writing">
+                    <div class="cv-section-label"><span>07</span><h2>Writing &amp; narrative practice</h2></div>
+                    <p>Creative and editorial work spans psychological and fantasy prose, poetry, essays, character arcs, lore architecture, mythology, TTRPG campaigns, and worldbuilding. The editorial cycle includes research, drafting, self-editing, copyediting, fact-checking, structural revision, SEO, adaptation, and digital publishing.</p>
+                </section>
+
+                <section class="cv-section cv-education">
+                    <div class="cv-section-label"><span>08</span><h2>Education</h2></div>
+                    <h3>Bachelor’s Degree with Honors</h3>
+                    <p>Journalism, Marketing, PR &amp; Mass Communications</p>
+                    <p class="cv-context">Odesa National Polytechnic University · 2017–2021</p>
+                    <p><strong>4.9 / 5.0 GPA · Top 5% · Red Diploma</strong></p>
+                </section>
+            </div>
+            <footer class="cv-page-footer"><span>TECHNICAL EXECUTION <i>·</i> RESEARCH <i>·</i> CREATIVE INTELLIGENCE</span><span>02 / 02</span></footer>
+        </article>
+    </section>
+
+    <template id="printCvLegacy">
+        <div class="cv-page cv-page-one">
+            <div class="cv-masthead">
+                <div class="cv-identity">
+                    <p class="cv-kicker">INDEPENDENT PRACTICE / ODESA, UKRAINE</p>
+                    <h1>KRISTINA<br>VADOVSKA</h1>
+                    <p class="cv-roleline">AI &amp; DIGITAL SYSTEMS CONSULTANT</p>
+                    <p class="cv-descriptor">AI / LLM WORKFLOWS · AUTOMATION · WEB · UX<br>RESEARCH · WRITING · NARRATIVE</p>
+                </div>
+                <div class="cv-contact">
+                    <a href="mailto:bussineskristel@gmail.com">bussineskristel@gmail.com</a>
+                    <span>+380 75 199 86 21 · WhatsApp +49 170 6689062</span>
+                    <span>Telegram @Erik_Milton · Odesa, Ukraine · Remote</span>
+                    <a href="https://linkedin.com/in/kristina-vadovska-844854313">linkedin.com/in/kristina-vadovska-844854313</a>
+                    <a href="https://cal.com/kristina-vadovska/intro-project-discussion">cal.com/kristina-vadovska/intro-project-discussion</a>
+                </div>
+            </div>
+
+            <section class="cv-section cv-profile">
+                <div class="cv-section-label"><span>01</span><h2>Profile</h2></div>
+                <p class="cv-lead">Multidisciplinary AI and digital systems specialist who turns user and business needs into practical workflows, products, and content. Combines prompt engineering, LLM integrations and N8N automation with web/software development, UX, research, technical writing, and narrative design—from discovery and system logic through implementation and iteration.</p>
+            </section>
+
+            <section class="cv-section cv-capabilities">
+                <div class="cv-section-label"><span>02</span><h2>Capabilities</h2></div>
+                <div class="cv-capability-grid">
+                    <div class="cv-capability"><h3>AI SYSTEMS</h3><p>Prompt engineering · LLM workflows · Agentic pipelines · N8N · APIs · Structured outputs · Bot architecture · Guardrails / QA</p></div>
+                    <div class="cv-capability"><h3>DIGITAL SYSTEMS</h3><p>Web / software development · HTML · CSS · JavaScript / TypeScript · Python · Responsive interfaces · GitHub · REST APIs</p></div>
+                    <div class="cv-capability"><h3>PRODUCT / UX</h3><p>UX strategy · Figma · Wireframing · UI systems · UX audits · User journeys · QA · Tilda · Webflow</p></div>
+                    <div class="cv-capability"><h3>RESEARCH / NARRATIVE</h3><p>Research · Technical and creative writing · Editing · SEO copywriting · Narrative design · Worldbuilding · Digital publishing</p></div>
+                </div>
+            </section>
+
+            <section class="cv-section cv-experience">
+                <div class="cv-section-label"><span>03</span><h2>Experience</h2></div>
+                <div class="cv-entry">
+                    <div class="cv-date">02/2024 — PRESENT<br>INDEPENDENT</div>
+                    <div class="cv-entry-body"><h3>Founder &amp; Advisory Consultant</h3><p class="cv-context">Registered sole proprietorship (FOP) · Independent advisory</p><p>Advise startups and businesses on AI adoption, bespoke prompt workflows, UX strategy, and narrative branding. Architect end-to-end prompt pipelines and automated AI logic; design UI/UX layouts, wireframes, and brand-voice frameworks; manage contracts, invoicing, compliance, and delivery for the registered practice.</p></div>
+                </div>
+                <div class="cv-entry">
+                    <div class="cv-date">2023 — PRESENT<br>PROJECT-BASED</div>
+                    <div class="cv-entry-body"><h3>Lead AI &amp; Prompt Engineer | Web &amp; Software Developer</h3><p class="cv-context">Freelance &amp; startup projects</p><p>Lead technical development of agentic workflows, chatbot architectures, web tools, and responsive platforms. Engineer N8N pipelines and Telegram bots integrated with OpenAI and Claude endpoints; develop with HTML5, Tailwind CSS, JavaScript, and Python; conduct UX audits, system testing, and prompt debugging.</p></div>
+                </div>
+                <div class="cv-entry">
+                    <div class="cv-date">02/2023 — 05/2024<br>ODESA / REMOTE</div>
+                    <div class="cv-entry-body"><h3>Customer Support &amp; Operations Specialist</h3><p class="cv-context">OBRIO · Genesis ecosystem</p><p>Managed user-query resolution, complex ticket escalation, and CRM operations across thousands of customer interactions. Maintained a <strong>5.0 / 5.0 CSAT</strong> record and Top Performer recognition; optimized support workflows and collaborated with product and QA teams on bug reports and onboarding improvements.</p></div>
+                </div>
+            </section>
+            <div class="cv-page-footer"><span>KRISTINA VADOVSKA · PROFESSIONAL CV</span><span>01 / 02</span></div>
+        </div>
+
+        <div class="cv-page cv-page-two">
+            <div class="cv-running-head"><span>KRISTINA VADOVSKA</span><span>AI · SYSTEMS · DIGITAL · NARRATIVE</span></div>
+            <section class="cv-section">
+                <div class="cv-section-label"><span>04</span><h2>Experience / continued</h2></div>
+                <div class="cv-entry">
+                    <div class="cv-date">01/2016 — PRESENT<br>INDEPENDENT</div>
+                    <div class="cv-entry-body"><h3>Published Author &amp; Narrative Designer</h3><p class="cv-context">Independent publishing · Kristel inside out</p><p>Write psychological and fantasy prose, poetry, and essays; develop character arcs, lore, worlds, and transmedia narratives. Lead writing, editing, and digital publishing through an independent author platform.</p></div>
+                </div>
+                <div class="cv-entry">
+                    <div class="cv-date">2015 — PRESENT<br>FREELANCE</div>
+                    <div class="cv-entry-body"><h3>Copywriter &amp; Content Specialist | Freelance Editor</h3><p class="cv-context">SMM agency &amp; freelance</p><p>Write and edit technical, creative, SEO, SMM, and brand content across technology, media, lifestyle, and literary domains, from research and editorial structure to tone of voice and adaptation.</p></div>
+                </div>
+                <div class="cv-entry">
+                    <div class="cv-date">05/2022 — 10/2022<br>ROMANIA</div>
+                    <div class="cv-entry-body"><h3>International Operations &amp; Hospitality</h3><p class="cv-context">Atlas Apart Hotel · Andreas Pizzeria</p><p>Hospitality and culinary operations demonstrating cross-cultural adaptability, service discipline, and performance in high-stress environments.</p></div>
+                </div>
+            </section>
+
+            <section class="cv-section cv-projects">
+                <div class="cv-section-label"><span>05</span><h2>Selected projects</h2></div>
+                <div class="cv-project-grid">
+                    <article class="cv-project"><span class="cv-project-no">01</span><div><h3>Prompt &amp; agentic workflow architecture</h3><p>Structured prompts, JSON outputs, guardrails, and N8N automation for support, content, bots, and digital products.</p><small>N8N · LLM APIs · JSON · QA</small></div></article>
+                    <article class="cv-project"><span class="cv-project-no">02</span><div><h3>Responsive web &amp; UX systems</h3><p>Websites and interfaces shaped from concept to responsive implementation, including portfolios, dashboards, and service sites.</p><small>Figma · HTML / CSS / JS · Tilda · Webflow</small></div></article>
+                    <article class="cv-project"><span class="cv-project-no">03</span><div><h3>Multilingual content pipeline</h3><p>Collaborative TikTok / YouTube workflow spanning stories, video concepts, quizzes, bots, AI media, research, and language adaptation.</p><small>N8N · VS Code · Ukrainian / English / Russian</small></div></article>
+                </div>
+            </section>
+
+            <section class="cv-section cv-proof">
+                <div class="cv-section-label"><span>06</span><h2>Selected proof</h2></div>
+                <div class="cv-proof-grid">
+                    <p><strong>5.0 / 5.0</strong><span>CSAT · OBRIO / Genesis</span></p>
+                    <p><strong>4.9 / 5.0</strong><span>GPA · Honors degree</span></p>
+                    <p><strong>TOP 5%</strong><span>Graduating class</span></p>
+                    <p><strong>FOP</strong><span>Registered independent practice</span></p>
+                </div>
+            </section>
+
+            <section class="cv-section cv-bottom-grid">
+                <div>
+                    <div class="cv-section-label"><span>07</span><h2>Education &amp; credentials</h2></div>
+                    <div class="cv-education"><h3>Bachelor’s Degree with Honors</h3><p>Journalism, Marketing, PR &amp; Mass Communications</p><p class="cv-context">Odesa National Polytechnic University · 2017–2021</p><p>GPA 4.9 / 5.0 · Top 5% · Red Diploma</p></div>
+                    <p class="cv-credentials">AI Systems &amp; Prompt Engineering Architecture — Coursera &amp; specialized AI academies, 2023–present<br>UI/UX &amp; Web Development Intensive, 2023–2024 · Applied Neopsychology &amp; Behavioral Analysis, 2021 · Mass Communications &amp; Media Psychology, 2021</p>
+                </div>
+                <div>
+                    <div class="cv-section-label"><span>08</span><h2>Languages</h2></div>
+                    <ul class="cv-languages"><li><strong>Ukrainian</strong><span>Native · C2</span></li><li><strong>English</strong><span>Advanced · C1</span></li><li><strong>German</strong><span>Elementary · A2</span></li><li><strong>Romanian</strong><span>Beginner · A1</span></li><li><strong>Russian</strong><span>Fluent · C2</span></li></ul>
+                </div>
+            </section>
+            <div class="cv-page-footer"><span>AI SYSTEMS · TECHNICAL EXECUTION · CREATIVE INTELLIGENCE</span><span>02 / 02</span></div>
+        </div>
+    </template>
+
+    <template id="printResumeLegacy">
         <div class="print-page print-page-one">
         <header class="print-header">
             <div>
@@ -2737,18 +5014,16 @@
 
         <section>
             <h2>Professional Summary</h2>
-            <p>Multidisciplinary AI and digital systems specialist who designs, builds, automates, and improves AI-powered products and workflows. My work combines prompt engineering and LLM integrations with N8N automation, web and software development, UX strategy, research, technical writing, and narrative design. I work across the full problem-solving cycle: translating business or user needs into system logic, structured outputs, interfaces, content, and practical workflows.</p>
+            <p>Multidisciplinary AI and digital systems specialist who turns user and business needs into practical workflows, products, and content. Combines prompt engineering, LLM integrations and N8N automation with web/software development, UX, research, technical writing, and narrative design—from discovery and system logic through implementation and iteration.</p>
         </section>
 
         <section>
-            <h2>Professional Strengths</h2>
+            <h2>How I Work</h2>
             <div class="print-grid print-strengths">
-                <p><strong>Systems thinking:</strong> Breaks complex needs into workflows, logic, inputs, outputs, and connected components.</p>
-                <p><strong>AI & automation architecture:</strong> Connects prompts, LLMs, APIs, structured outputs, and automation into practical workflows.</p>
-                <p><strong>Research & synthesis:</strong> Turns research and user or business context into structured content, systems, and decisions.</p>
-                <p><strong>Cross-disciplinary problem solving:</strong> Combines technology, UX, operations, writing, and creative perspectives.</p>
-                <p><strong>Creative systems thinking:</strong> Builds narrative structures, lore, worlds, and content systems for audience experience.</p>
-                <p><strong>Independent ownership:</strong> Takes projects from discovery and planning through implementation, iteration, and delivery.</p>
+                <p><strong>Systems thinking</strong><br>Structures complex needs into connected workflows, logic, inputs, and outputs.</p>
+                <p><strong>AI & automation architecture</strong><br>Connects prompts, LLMs, APIs, and structured outputs into usable workflows.</p>
+                <p><strong>Research & synthesis</strong><br>Turns user, business, and research context into clear content and decisions.</p>
+                <p><strong>Creative systems & ownership</strong><br>Builds narrative systems and carries work from discovery through delivery.</p>
             </div>
         </section>
 
@@ -2759,10 +5034,8 @@
                 <h3>Founder & Advisory Consultant | Registered FOP</h3>
                 <p class="print-meta">02/2024 – Present | Independent Advisory</p>
                 <ul>
-                    <li>Advise startups and businesses on AI adoption, bespoke prompt-engineering workflows, UX strategy, and narrative branding.</li>
-                    <li>Architect end-to-end prompt pipelines and automated AI logic for commercial use cases, with a focus on reducing operational overhead.</li>
-                    <li>Design UI/UX layouts, wireframes, digital brand-voice frameworks, and practical AI-enabled workflows; the portfolio records 100% positive client feedback.</li>
-                    <li>Manage the operational, contractual, invoicing, and service-delivery side of an independent advisory practice.</li>
+                    <li>Advise on AI adoption, prompt workflows, UX strategy, and narrative branding; build prompt pipelines and automated AI logic for business use.</li>
+                    <li>Design UI/UX layouts, wireframes, and brand-voice frameworks; manage the registered practice’s contracts, invoicing, and delivery.</li>
                 </ul>
             </div>
 
@@ -2770,10 +5043,8 @@
                 <h3>Lead AI & Prompt Engineer | Web & Software Developer</h3>
                 <p class="print-meta">2023 – Present | Freelance & Startup Projects</p>
                 <ul>
-                    <li>Build agentic AI workflows, custom chatbot architectures, web tools, and responsive web platforms using LLM APIs and modern web technologies.</li>
-                    <li>Engineer N8N pipelines and Telegram bots integrating OpenAI and Claude endpoints, structured JSON outputs, webhooks, APIs, and conditional workflow logic.</li>
-                    <li>Develop interfaces with HTML5, CSS/Tailwind, JavaScript, and Python scripting; work with GitHub, VS Code, and REST APIs.</li>
-                    <li>Conduct UX audits, system testing, prompt debugging, and structured-output QA for conversational AI applications.</li>
+                    <li>Build agentic AI workflows, chatbot architectures, web tools, and responsive platforms; engineer N8N pipelines and Telegram bots with OpenAI/Claude endpoints and structured JSON.</li>
+                    <li>Develop with HTML5, CSS/Tailwind, JavaScript, and Python; conduct UX audits, system testing, prompt debugging, and structured-output QA.</li>
                 </ul>
             </div>
 
@@ -2781,9 +5052,8 @@
                 <h3>Customer Support & Operations Specialist | OBRIO / Genesis</h3>
                 <p class="print-meta">02/2023 – 05/2024 | Odesa, Ukraine / Remote</p>
                 <ul>
-                    <li>Managed user support, ticket escalation, CRM operations, and high-touch customer communication across thousands of interactions.</li>
-                    <li>Maintained a sustained 5.0 / 5.0 CSAT rating and received Top Performer recognition.</li>
-                    <li>Optimized support workflows and collaborated with product and QA teams on bug reporting, user feedback, and onboarding improvements.</li>
+                    <li>Handled user support, ticket escalation, and CRM operations across thousands of interactions; maintained 5.0 / 5.0 CSAT and Top Performer recognition.</li>
+                    <li>Improved support workflows and shared user feedback with product and QA teams to inform bug fixes and onboarding.</li>
                 </ul>
             </div>
 
@@ -2796,9 +5066,8 @@
                 <h3>Published Author & Narrative Designer | Kristel inside out</h3>
                 <p class="print-meta">01/2016 – Present | Independent Publishing</p>
                 <ul>
-                    <li>Write psychological and fantasy prose, poetry, essays, and digital publications while developing long-form narrative systems.</li>
-                    <li>Design lore architectures, character arcs, worldbuilding, and transmedia storytelling for literary and interactive contexts.</li>
-                    <li>Combine creative writing, editing, digital publishing, and narrative strategy in an independent author platform.</li>
+                    <li>Publish psychological and fantasy prose, poetry, and essays; develop lore, character arcs, worlds, and transmedia narratives.</li>
+                    <li>Lead writing, editing, and digital publishing through the independent Kristel inside out platform.</li>
                 </ul>
             </div>
 
@@ -2806,9 +5075,15 @@
                 <h3>Copywriter & Content Specialist | Freelance Editor</h3>
                 <p class="print-meta">2015 – Present | Remote</p>
                 <ul>
-                    <li>Produce and edit technical, creative, SEO, SMM, and brand content across technology, media, lifestyle, and literary domains.</li>
-                    <li>Work across research, copyediting, editorial structure, tone of voice, digital strategy, and content adaptation.</li>
+                    <li>Write and edit technical, creative, SEO, SMM, and brand content across technology, media, lifestyle, and literary domains.</li>
+                    <li>Work across research, copyediting, editorial structure, tone of voice, and content adaptation.</li>
                 </ul>
+            </div>
+
+            <div class="print-entry">
+                <h3>International Operations & Hospitality | Atlas Apart Hotel & Andreas Pizzeria</h3>
+                <p class="print-meta">05/2022 – 10/2022 | Romania</p>
+                <p>Hospitality and culinary operations demonstrating cross-cultural adaptability, service discipline, and performance in high-stress environments.</p>
             </div>
         </section>
 
@@ -2846,18 +5121,18 @@
                 <h2>Selected Projects</h2>
 
                 <div class="print-entry">
-                    <h3>Prompt & Agentic Workflow Architecture</h3>
-                    <p>Designed system prompts, structured outputs, prompt chains, guardrails, and automated AI workflows for support, content, bots, and digital products. Work includes N8N, JSON pipelines, LLM integrations, testing, and hallucination reduction.</p>
+                    <h3>01 &nbsp; AI workflow architecture</h3>
+                    <p>Prompt chains, structured JSON, guardrails, and N8N automation for support, content, bots, and digital products.</p>
                 </div>
 
                 <div class="print-entry">
-                    <h3>Responsive Web & UX Systems</h3>
-                    <p>Created websites and interfaces from concept through responsive implementation, including landing pages, portfolio sites, dashboards, and service websites, supported by Figma systems and UX audits.</p>
+                    <h3>02 &nbsp; Responsive web & UX</h3>
+                    <p>Websites and interfaces from concept to responsive delivery, including landing pages, portfolios, dashboards, and service sites.</p>
                 </div>
 
                 <div class="print-entry">
-                    <h3>Multilingual Content Automation</h3>
-                    <p>Co-developed an NDA-safe TikTok-focused pipeline with supporting YouTube content using N8N and VS Code. The workflow covered stories, video concepts, quizzes, bots, AI-generated media, and multilingual adaptation.</p>
+                    <h3>03 &nbsp; Multilingual content pipeline</h3>
+                    <p>Collaborative, NDA-safe TikTok/YouTube workflow using N8N and VS Code across stories, video concepts, quizzes, bots, AI media, and language adaptation.</p>
                 </div>
             </div>
         </section>
@@ -2894,7 +5169,7 @@
             </div>
         </section>
         </div>
-    </section>
+    </template>
     <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 glass-card px-4 py-3 rounded-xl border border-emerald-500/40 text-emerald-300 text-xs font-semibold shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
         <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
