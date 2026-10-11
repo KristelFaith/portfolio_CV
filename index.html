@@ -4000,10 +4000,11 @@
     #printCv .cv-experience-continued { order: 5 !important; }
     #printCv .cv-projects { order: 6 !important; }
     #printCv .cv-writing { order: 7 !important; }
-    #printCv .cv-education { order: 8 !important; }
-    #printCv .cv-proof-section { order: 9 !important; }
-    #printCv .cv-development-section { order: 10 !important; }
-    #printCv .cv-languages-section { order: 11 !important; }
+    #printCv .cv-theatre { order: 8 !important; }
+    #printCv .cv-education { order: 9 !important; }
+    #printCv .cv-proof-section { order: 10 !important; }
+    #printCv .cv-development-section { order: 11 !important; }
+    #printCv .cv-languages-section { order: 12 !important; }
 
     #printCv .cv-section,
     #printCv .cv-rail-section {
@@ -5386,10 +5387,10 @@
             </div>
 
             <!-- Experience Timeline Container -->
-            <div id="experienceContainer" class="space-y-6">
+            <div id="experienceContainer" class="flex flex-col gap-6">
 
                 <!-- Job Card 1 -->
-                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-emerald-500" data-keywords="founder advisory consultant fop self-employed ai strategy ui ux management">
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-emerald-500" data-keywords="founder advisory consultant fop self-employed ai strategy ui ux management" style="order: 1">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
@@ -5426,7 +5427,7 @@
                 </div>
 
                 <!-- Job Card 2 -->
-                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-cyan-500" data-keywords="lead ai prompt engineer web software developer python javascript n8n bot github LLM">
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-cyan-500" data-keywords="lead ai prompt engineer web software developer python javascript n8n bot github LLM" style="order: 2">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
@@ -5463,7 +5464,7 @@
                 </div>
 
                 <!-- Job Card 3 -->
-                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-violet-500" data-keywords="customer support operations specialist obrio genesis ecosystem csat 5.0 crm salesforce live chat">
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-violet-500" data-keywords="customer support operations specialist obrio genesis ecosystem csat 5.0 crm salesforce live chat" style="order: 3">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
@@ -5498,8 +5499,46 @@
                     </div>
                 </div>
 
+                <!-- Data Analyst — Creditors Relief -->
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-amber-500" data-keywords="data analyst creditors relief financial services creditor debt solutions merchant cash advances data mining business intelligence financial auditing spreadsheets database Romania remote" style="order: 4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg sm:text-xl font-bold text-white">Data Analyst</h3>
+                                <span class="bg-amber-500/20 text-amber-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-md border border-amber-500/30">Creditors Relief</span>
+                            </div>
+                            <p class="text-sm font-semibold text-amber-400 mt-0.5">Financial Services · Creditor Debt Solutions &amp; Merchant Cash Advances</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap self-start md:self-auto">
+                            10/2022 – 02/2023 · Romania / Remote
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        Supported creditor debt-solutions operations by structuring financial profiles, auditing lender records, and improving the accuracy of internal business intelligence and lead-generation data.
+                    </p>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Key Responsibilities:</div>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
+                            <li>Managed data mining, categorization, and structuring of extensive B2B financial profiles, merchant cash advances, and creditor frameworks within internal cloud architectures.</li>
+                            <li>Developed and maintained specialized data tracking spreadsheets to audit lender profiles, separating active creditors from non-lending entities for legal and financial compliance.</li>
+                            <li>Extracted, compiled, and audited historical creditor records to optimize internal business intelligence systems and lead generation accuracy.</li>
+                            <li>Partnered with distributed global teams to refine data entry standards, reducing structural record inconsistencies and database latency.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">Data Mining</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">Business Intelligence (BI)</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300">Financial Data Auditing</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Advanced Spreadsheets</span>
+                        <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">Cross-Functional Operations</span>
+                    </div>
+                </div>
+
                 <!-- Job Card 4 -->
-                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-amber-500" data-keywords="published author narrative designer kristel inside out blog lore transmedia storytelling creative">
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-amber-500" data-keywords="published author narrative designer kristel inside out blog lore transmedia storytelling creative" style="order: 6">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
@@ -5526,7 +5565,7 @@
                 </div>
 
                 <!-- Job Card 5 -->
-                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-pink-500" data-keywords="copywriter content specialist digital content maker smm editor freelance">
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-pink-500" data-keywords="copywriter content specialist digital content maker smm editor freelance" style="order: 7">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
@@ -5552,7 +5591,7 @@
                 </div>
 
                 <!-- Job Card 6 & 7 Grouped Hospitality / Resilience -->
-                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-slate-500" data-keywords="housekeeper hospitality atlas apart hotel line cook baker andreas pizzeria romania crisis resilience">
+                <div class="exp-card glass-card-interactive rounded-2xl p-6 sm:p-8 relative border-l-4 border-l-slate-500" data-keywords="housekeeper hospitality atlas apart hotel line cook baker andreas pizzeria romania crisis resilience" style="order: 5">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
@@ -6159,6 +6198,34 @@
                 </button>
 
             </div>
+
+            <article class="glass-card rounded-2xl p-6 sm:p-8 border-l-4 border-l-pink-500">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                    <div>
+                        <span class="inline-flex glass-pill px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-widest text-pink-300 border border-pink-500/30" data-en="Volunteer / Creative Practice" data-ua="Волонтерство / Творча практика">Volunteer / Creative Practice</span>
+                        <h3 class="mt-2 text-lg sm:text-xl font-bold text-white" data-en="Volunteer Actress & Theatre Ensemble Member" data-ua="Волонтерка-акторка та учасниця театрального ансамблю">Volunteer Actress &amp; Theatre Ensemble Member</h3>
+                        <p class="text-sm font-semibold text-pink-300 mt-1" data-en="Volunteer Community Theatre Project / Independent Stage Ensemble" data-ua="Волонтерський театральний проєкт / Незалежний сценічний ансамбль">Volunteer Community Theatre Project / Independent Stage Ensemble</p>
+                    </div>
+                    <p class="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 whitespace-normal md:whitespace-nowrap" data-en="07/2023 – 02/2024 · Odesa, Ukraine" data-ua="07/2023 – 02/2024 · Одеса, Україна">07/2023 – 02/2024 · Odesa, Ukraine</p>
+                </div>
+
+                <ul class="space-y-2 text-sm leading-relaxed text-slate-300 list-disc pl-5">
+                    <li data-en="Engaged in immersive script analysis, psychological character profiling, and intensive vocal and physical stage presence training for a planned theatrical production." data-ua="Працювала з глибоким аналізом сценарію, психологічним профілюванням персонажа та інтенсивною вокальною і фізичною підготовкою сценічної присутності для запланованої вистави.">Engaged in immersive script analysis, psychological character profiling, and intensive vocal and physical stage presence training for a planned theatrical production.</li>
+                    <li data-en="Collaborated closely with the director and a cross-functional creative ensemble to build narrative pacing, scene blockings, and emotional delivery systems." data-ua="Тісно співпрацювала з режисером і міждисциплінарним творчим ансамблем над наративним темпом, мізансценами та системою емоційної подачі.">Collaborated closely with the director and a cross-functional creative ensemble to build narrative pacing, scene blockings, and emotional delivery systems.</li>
+                    <li data-en="Maintained high operational and creative discipline during high-stress rehearsal cycles, adapting dynamically to fluid scheduling and safety protocols." data-ua="Підтримувала високу організаційну й творчу дисципліну під час інтенсивних репетицій, адаптуючись до змін у графіку та протоколів безпеки.">Maintained high operational and creative discipline during high-stress rehearsal cycles, adapting dynamically to fluid scheduling and safety protocols.</li>
+                    <li data-en="Developed advanced soft skills in performative expression, public delivery, crisis adaptability, and non-verbal communication frameworks." data-ua="Розвинула навички сценічного вираження, публічної подачі, адаптивності в кризових умовах і невербальної комунікації.">Developed advanced soft skills in performative expression, public delivery, crisis adaptability, and non-verbal communication frameworks.</li>
+                </ul>
+
+                <p class="mt-4 text-xs leading-relaxed text-slate-400" data-en="Completed intensive preparation and ensemble work. The production was not publicly released due to the escalation of the war and force majeure circumstances." data-ua="Інтенсивну підготовку та роботу ансамблю було завершено. Виставу не було представлено публічно через ескалацію війни та обставини непереборної сили.">Completed intensive preparation and ensemble work. The production was not publicly released due to the escalation of the war and force majeure circumstances.</p>
+
+                <div class="mt-4 flex flex-wrap gap-1.5" aria-label="Theatre skills">
+                    <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-pink-300">Character Architecture</span>
+                    <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-300">Performative Expression</span>
+                    <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-violet-300">Script Analysis</span>
+                    <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-300">Team Alignment</span>
+                    <span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">Crisis Resilience</span>
+                </div>
+            </article>
         </section>
 
         <div id="interestModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="interestModalTitle">
@@ -6265,21 +6332,21 @@
             <header class="cv-running-head"><span>KRISTINA VADOVSKA</span><span>AI SYSTEMS <i>·</i> DIGITAL <i>·</i> NARRATIVE</span></header>
             <aside class="cv-rail" aria-label="Selected proof and languages">
                 <section class="cv-rail-section cv-proof-section">
-                    <div class="cv-section-label"><span>09</span><h2>Selected proof</h2></div>
+                    <div class="cv-section-label"><span>10</span><h2>Selected proof</h2></div>
                     <div class="cv-proof"><strong>5.0 / 5.0</strong><span>CSAT · OBRIO / Genesis</span></div>
                     <div class="cv-proof"><strong>4.9 / 5.0</strong><span>GPA · Honors degree</span></div>
                     <div class="cv-proof"><strong>TOP 5%</strong><span>Graduating class</span></div>
                     <div class="cv-proof"><strong>FOP</strong><span>Registered independent practice</span></div>
                 </section>
                 <section class="cv-rail-section cv-development-section">
-                    <div class="cv-section-label"><span>11</span><h2>Courses &amp; study</h2></div>
+                    <div class="cv-section-label"><span>12</span><h2>Courses &amp; study</h2></div>
                     <div class="cv-learning"><strong>AI Systems &amp; Prompt Engineering Architecture</strong><span>Coursera &amp; specialized AI academies · 2023–present</span></div>
                     <div class="cv-learning"><strong>UI/UX &amp; Web Development Intensive</strong><span>2023–2024</span></div>
                     <div class="cv-learning"><strong>Applied Neopsychology &amp; Behavioral Analysis</strong><span>2021</span></div>
                     <div class="cv-learning"><strong>Mass Communications &amp; Media Psychology</strong><span>2021</span></div>
                 </section>
                 <section class="cv-rail-section cv-languages-section">
-                    <div class="cv-section-label"><span>10</span><h2>Languages</h2></div>
+                    <div class="cv-section-label"><span>11</span><h2>Languages</h2></div>
                     <ul class="cv-languages">
                         <li><strong>Ukrainian</strong><span>Native · C2</span></li>
                         <li><strong>English</strong><span>Advanced · C1</span></li>
@@ -6293,16 +6360,30 @@
             <div class="cv-main">
                 <section class="cv-section cv-experience-continued">
                     <div class="cv-section-label"><span>05</span><h2>Experience / continued</h2></div>
-                    <div class="cv-entries">
-                        <article class="cv-entry">
+                    <div class="cv-entries" style="display: flex; flex-direction: column;">
+                        <article class="cv-entry" style="order: 6">
                             <p class="cv-date">01/2016 — PRESENT<br>INDEPENDENT</p>
                             <div class="cv-entry-body"><h3>Published Author &amp; Narrative Designer</h3><p class="cv-context">Independent publishing · Kristel inside out</p><p>Write psychological and fantasy prose, poetry, and essays; develop character arcs, lore, worlds, and transmedia narratives. Lead writing, editing, and digital publishing through an independent author platform.</p></div>
                         </article>
-                        <article class="cv-entry">
+                        <article class="cv-entry" style="order: 7">
                             <p class="cv-date">2015 — PRESENT<br>FREELANCE</p>
                             <div class="cv-entry-body"><h3>Copywriter &amp; Content Specialist | Freelance Editor</h3><p class="cv-context">SMM agency &amp; freelance</p><p>Write and edit technical, creative, SEO, SMM, and brand content across technology, media, lifestyle, and literary domains—from research and editorial structure to tone of voice and adaptation.</p></div>
                         </article>
-                        <article class="cv-entry">
+                        <article class="cv-entry" style="order: 4">
+                            <p class="cv-date">10/2022 — 02/2023<br>ROMANIA / REMOTE</p>
+                            <div class="cv-entry-body">
+                                <h3>Data Analyst</h3>
+                                <p class="cv-context">Creditors Relief · Financial services / creditor debt solutions</p>
+                                <ul class="cv-bullets">
+                                    <li>Managed data mining, categorization, and structuring of extensive B2B financial profiles, merchant cash advances, and creditor frameworks within internal cloud architectures.</li>
+                                    <li>Developed and maintained specialized data tracking spreadsheets to audit lender profiles, separating active creditors from non-lending entities for legal and financial compliance.</li>
+                                    <li>Extracted, compiled, and audited historical creditor records to optimize internal business intelligence systems and lead generation accuracy.</li>
+                                    <li>Partnered with distributed global teams to refine data entry standards, reducing structural record inconsistencies and database latency.</li>
+                                </ul>
+                                <p class="cv-context">DATA MINING · BUSINESS INTELLIGENCE (BI) · FINANCIAL DATA AUDITING · ADVANCED SPREADSHEETS · CROSS-FUNCTIONAL OPERATIONS</p>
+                            </div>
+                        </article>
+                        <article class="cv-entry" style="order: 5">
                             <p class="cv-date">05/2022 — 10/2022<br>ROMANIA</p>
                             <div class="cv-entry-body"><h3>International Operations &amp; Hospitality</h3><p class="cv-context">Atlas Apart Hotel · Andreas Pizzeria</p><p>Hospitality and culinary operations demonstrating cross-cultural adaptability, service discipline, and performance in high-stress environments.</p></div>
                         </article>
@@ -6323,8 +6404,27 @@
                     <p>Creative and editorial work spans psychological and fantasy prose, poetry, essays, character arcs, lore architecture, mythology, TTRPG campaigns, and worldbuilding. The editorial cycle includes research, drafting, self-editing, copyediting, fact-checking, structural revision, SEO, adaptation, and digital publishing.</p>
                 </section>
 
+                <section class="cv-section cv-theatre">
+                    <div class="cv-section-label"><span>08</span><h2>Volunteer theatre practice</h2></div>
+                    <article class="cv-entry">
+                        <p class="cv-date">07/2023 — 02/2024<br>ODESA, UKRAINE</p>
+                        <div class="cv-entry-body">
+                            <h3>Volunteer Actress &amp; Theatre Ensemble Member</h3>
+                            <p class="cv-context">Volunteer community theatre project · Independent stage ensemble</p>
+                            <ul class="cv-bullets">
+                                <li>Engaged in immersive script analysis, psychological character profiling, and intensive vocal and physical stage presence training for a planned theatrical production.</li>
+                                <li>Collaborated closely with the director and a cross-functional creative ensemble to build narrative pacing, scene blockings, and emotional delivery systems.</li>
+                                <li>Maintained high operational and creative discipline during high-stress rehearsal cycles, adapting dynamically to fluid scheduling and safety protocols.</li>
+                                <li>Developed advanced soft skills in performative expression, public delivery, crisis adaptability, and non-verbal communication frameworks.</li>
+                            </ul>
+                            <p class="cv-context">Preparation and ensemble work were completed; the production was not publicly released due to the escalation of the war and force majeure circumstances.</p>
+                            <p class="cv-tags">Character Architecture · Performative Expression · Script Analysis · Team Alignment · Crisis Resilience</p>
+                        </div>
+                    </article>
+                </section>
+
                 <section class="cv-section cv-education">
-                    <div class="cv-section-label"><span>08</span><h2>Education</h2></div>
+                    <div class="cv-section-label"><span>09</span><h2>Education</h2></div>
                     <h3>Bachelor’s Degree with Honors</h3>
                     <p>Journalism, Marketing, PR &amp; Mass Communications</p>
                     <p class="cv-context">Odesa National Polytechnic University · 2017–2021</p>
