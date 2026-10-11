@@ -3,6 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (() => {
+            const storageKey = 'portfolioTheme';
+            const validThemes = ['daylight', 'frozen'];
+
+            function applyTheme(theme, persist = false) {
+                const selectedTheme = validThemes.includes(theme) ? theme : 'frozen';
+                const root = document.documentElement;
+                root.classList.remove('theme-daylight', 'theme-frozen');
+                root.classList.add(`theme-${selectedTheme}`);
+                root.dataset.theme = selectedTheme;
+
+                if (persist) {
+                    try {
+                        localStorage.setItem(storageKey, selectedTheme);
+                    } catch (error) {
+                        // The current page still changes theme if storage is unavailable.
+                    }
+                }
+
+                const toggle = document.getElementById('themeToggleBtn');
+                if (toggle) {
+                    const isDaylight = selectedTheme === 'daylight';
+                    const icon = toggle.querySelector('[data-theme-icon]');
+                    const label = toggle.querySelector('[data-theme-label]');
+                    toggle.setAttribute('aria-pressed', String(isDaylight));
+                    toggle.setAttribute('aria-label', `Switch to ${isDaylight ? 'Frozen Night' : 'Daylight'} theme`);
+                    toggle.title = `Switch to ${isDaylight ? 'Frozen Night' : 'Daylight'} theme`;
+                    if (icon) icon.className = `fa-solid ${isDaylight ? 'fa-sun' : 'fa-moon'} text-base`;
+                    if (label) label.textContent = isDaylight ? 'Daylight' : 'Frozen Night';
+                }
+            }
+
+            let initialTheme = null;
+            try {
+                const savedTheme = localStorage.getItem(storageKey);
+                if (validThemes.includes(savedTheme)) initialTheme = savedTheme;
+            } catch (error) {
+                // Fall back to local time when storage is unavailable.
+            }
+
+            if (!initialTheme) {
+                const localHour = new Date().getHours();
+                initialTheme = localHour >= 6 && localHour < 18 ? 'daylight' : 'frozen';
+            }
+
+            applyTheme(initialTheme);
+            window.togglePortfolioTheme = () => {
+                const nextTheme = document.documentElement.dataset.theme === 'daylight' ? 'frozen' : 'daylight';
+                applyTheme(nextTheme, true);
+            };
+
+            const bindToggle = () => {
+                const toggle = document.getElementById('themeToggleBtn');
+                if (toggle) toggle.addEventListener('click', window.togglePortfolioTheme);
+                applyTheme(document.documentElement.dataset.theme || initialTheme);
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', bindToggle, { once: true });
+            } else {
+                bindToggle();
+            }
+        })();
+    </script>
     <!-- Stable document name used by browser print/PDF dialogs. -->
     <title>CV KRISTINA VADOVSKA</title>
     <!-- Google Fonts -->
@@ -106,9 +171,115 @@
             cursor: pointer;
         }
 
-        .work-card:focus-visible {
-            outline: 2px solid #fbbf24;
+        /* Field Codex: quiet archive labels and a restrained focus state. */
+        .field-codex-card {
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            background: linear-gradient(145deg, rgba(17, 24, 39, 0.82), rgba(11, 15, 25, 0.72));
+            border-color: rgba(148, 163, 184, 0.16);
+            transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+        }
+
+        .field-codex-card::before {
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.85), rgba(6, 182, 212, 0.18));
+            content: "";
+            opacity: 0.55;
+            transition: opacity 220ms ease;
+        }
+
+        .field-codex-card:hover,
+        .field-codex-card:focus-visible {
+            border-color: rgba(110, 231, 183, 0.38);
+            background: linear-gradient(145deg, rgba(20, 35, 39, 0.92), rgba(11, 15, 25, 0.88));
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .field-codex-card:hover::before,
+        .field-codex-card:focus-visible::before {
+            opacity: 1;
+        }
+
+        .field-codex-index {
+            color: #6ee7b7;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .field-codex-card:focus-visible {
+            outline: 2px solid #6ee7b7;
             outline-offset: 4px;
+        }
+
+        /* Bring the theatre practice forward, before the interest-card gallery. */
+        #interests {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        #interests > * {
+            margin-top: 0 !important;
+        }
+
+        #interests > div:first-child {
+            order: 0;
+        }
+
+        #interests > article {
+            order: 1;
+        }
+
+        #interests > div.grid {
+            order: 2;
+        }
+
+        .codex-art-panel {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2.6 / 1;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            border: 1px solid rgba(203, 213, 225, 0.14);
+            border-radius: 0.75rem;
+            background: #0b1220;
+        }
+
+        .codex-art-panel::after {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(110deg, rgba(6, 9, 19, 0.12), transparent 55%, rgba(6, 9, 19, 0.2));
+            content: "";
+            pointer-events: none;
+        }
+
+        .codex-art-panel svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .field-codex-card:hover .codex-art-panel svg,
+        .field-codex-card:focus-visible .codex-art-panel svg {
+            transform: scale(1.035);
+        }
+
+        .codex-art-panel svg {
+            transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .codex-art-panel svg {
+                transition: none;
+            }
         }
 
         .exp-detail-toggle {
@@ -5043,6 +5214,175 @@
     #printCv .cv-page-two { break-before: auto !important; break-after: auto !important; page-break-before: auto !important; page-break-after: auto !important; }
 }
 </style>
+<style>
+    /* Daylight palette: the default Frozen Night appearance remains untouched. */
+    :root.theme-frozen {
+        color-scheme: dark;
+        --page-bg: #060913;
+        --surface-bg: rgba(17, 24, 39, .68);
+        --surface-border: rgba(129, 140, 248, .16);
+        --ink: #20213f;
+        --muted-ink: #525a78;
+        --heading-ink: #4937a5;
+        --accent-pink: #c026d3;
+        --accent-blue: #2563eb;
+    }
+
+    :root.theme-daylight {
+        color-scheme: light;
+        --page-bg: #f5f3ff;
+        --surface-bg: rgba(255, 255, 255, .9);
+        --surface-border: rgba(139, 92, 246, .18);
+        --ink: #20213f;
+        --muted-ink: #525a78;
+        --heading-ink: #4937a5;
+        --accent-pink: #c026d3;
+        --accent-blue: #2563eb;
+    }
+
+    @media screen {
+        body,
+        .glass-card,
+        .glass-card-interactive,
+        .glass-nav,
+        .glass-pill,
+        .field-codex-card {
+            transition-property: background-color, color, border-color, box-shadow;
+            transition-duration: 350ms;
+            transition-timing-function: ease;
+        }
+
+        html.theme-daylight,
+        html.theme-daylight body {
+            background-color: var(--page-bg) !important;
+            color: var(--ink) !important;
+            transition: background-color 350ms ease, color 350ms ease;
+        }
+
+        html.theme-daylight body {
+            background-image:
+                radial-gradient(ellipse at 12% 0%, rgba(244, 114, 182, .12), transparent 34%),
+                radial-gradient(ellipse at 92% 24%, rgba(96, 165, 250, .12), transparent 36%);
+        }
+
+        html.theme-daylight .glass-card,
+        html.theme-daylight .glass-card-interactive {
+            background: var(--surface-bg) !important;
+            border-color: var(--surface-border) !important;
+            box-shadow: 0 12px 32px rgba(88, 72, 140, .08) !important;
+            color: var(--ink) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        html.theme-daylight .glass-card-interactive:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(239,246,255,.94)) !important;
+            border-color: rgba(192, 38, 211, .32) !important;
+            box-shadow: 0 16px 38px rgba(99, 72, 150, .14) !important;
+        }
+
+        html.theme-daylight .glass-nav {
+            background: rgba(250, 248, 255, .9) !important;
+            border-color: rgba(109, 92, 160, .16) !important;
+            box-shadow: 0 8px 24px rgba(62, 50, 98, .06);
+        }
+
+        html.theme-daylight .glass-pill {
+            background: rgba(246, 244, 255, .86) !important;
+            border-color: rgba(124, 105, 180, .2) !important;
+            color: #363353 !important;
+        }
+
+        html.theme-daylight .field-codex-card {
+            background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(245,243,255,.94)) !important;
+        }
+
+        html.theme-daylight .field-codex-card:hover,
+        html.theme-daylight .field-codex-card:focus-visible {
+            background: linear-gradient(145deg, #fff, #f1f5ff) !important;
+        }
+
+        html.theme-daylight .field-codex-index,
+        html.theme-daylight .exp-detail-toggle,
+        html.theme-daylight .text-gradient-accent,
+        html.theme-daylight a:not(.theme-toggle) {
+            color: var(--heading-ink) !important;
+        }
+
+        html.theme-daylight .text-white,
+        html.theme-daylight .text-slate-200,
+        html.theme-daylight .text-slate-300 {
+            color: #292747 !important;
+        }
+
+        html.theme-daylight .text-slate-400,
+        html.theme-daylight .text-slate-500 {
+            color: #5e6380 !important;
+        }
+
+        html.theme-daylight .text-slate-600,
+        html.theme-daylight .text-slate-700 {
+            color: #454764 !important;
+        }
+
+        html.theme-daylight .text-emerald-300,
+        html.theme-daylight .text-emerald-400,
+        html.theme-daylight .text-cyan-300,
+        html.theme-daylight .text-cyan-400,
+        html.theme-daylight .text-violet-300,
+        html.theme-daylight .text-violet-400,
+        html.theme-daylight .text-pink-300,
+        html.theme-daylight .text-pink-400,
+        html.theme-daylight .text-amber-300,
+        html.theme-daylight .text-amber-400 {
+            color: #51419b !important;
+        }
+
+        html.theme-daylight .border-white\/5,
+        html.theme-daylight .border-white\/10 {
+            border-color: rgba(105, 91, 154, .17) !important;
+        }
+
+        html.theme-daylight .bg-dark-900,
+        html.theme-daylight .bg-dark-800 {
+            background-color: rgba(240, 238, 250, .9) !important;
+        }
+
+        html.theme-daylight .glow-orb-1 { opacity: .42; }
+        html.theme-daylight .glow-orb-2 { opacity: .38; }
+        html.theme-daylight .glow-orb-3 { opacity: .34; }
+
+        html.theme-daylight .ua-accent {
+            color: #fff !important;
+        }
+
+        .theme-toggle {
+            min-height: 2.25rem;
+            white-space: nowrap;
+        }
+
+        .theme-toggle [data-theme-icon] {
+            color: #a5f3fc;
+            transition: color 300ms ease, transform 300ms ease;
+        }
+
+        html.theme-daylight .theme-toggle [data-theme-icon] {
+            color: #c026d3;
+            transform: rotate(-12deg);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html.theme-daylight *,
+            html.theme-daylight *::before,
+            html.theme-daylight *::after,
+            .theme-toggle,
+            .theme-toggle [data-theme-icon] {
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+        }
+    }
+</style>
 </head>
 <body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
 
@@ -5082,6 +5422,12 @@
                     <button id="langToggleBtn" onclick="toggleLanguage()" class="glass-pill px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-semibold text-slate-200 hover:border-emerald-500/50 hover:text-emerald-400 transition-all cursor-pointer">
                         <i class="fa-solid fa-globe text-emerald-400"></i>
                         <span id="langLabel">UA / EN</span>
+                    </button>
+
+                    <!-- Automatic local-time theme with persistent manual override. -->
+                    <button id="themeToggleBtn" type="button" aria-pressed="false" aria-label="Switch theme" title="Switch theme" class="theme-toggle glass-pill px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-semibold text-slate-200 transition-all duration-300 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400">
+                        <i data-theme-icon class="fa-solid fa-moon text-base" aria-hidden="true"></i>
+                        <span data-theme-label class="hidden sm:inline">Frozen Night</span>
                     </button>
 
                     <!-- Print / Save PDF Button -->
@@ -6154,47 +6500,130 @@
                     </div>
                     <div>
                         <h2 class="text-2xl font-extrabold text-white" data-en="Personal Interests & Creative Lore" data-ua="Захоплення та Творчий Лор">Personal Interests & Creative Lore</h2>
-                        <p class="text-xs text-slate-400" data-en="Interdisciplinary passions that shape creative vision and analytical depth." data-ua="Сфери натхнення, що формують аналітичну та творчу глибину.">Interdisciplinary passions that shape creative vision and analytical depth.</p>
+                        <p class="text-xs text-slate-400" data-en="Six field notes from the worlds, objects, voices, and stories I return to." data-ua="Шість нотаток про світи, предмети, голоси й історії, до яких я повертаюся.">Six field notes from the worlds, objects, voices, and stories I return to.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
 
-                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-pink-500/40 transition-all group" data-interest-id="visual-arts">
-                    <div class="text-2xl text-pink-400 group-hover:scale-110 transition-transform">🎨</div>
-                    <div class="text-xs font-bold text-white" data-en="Visual Arts" data-ua="Образотворче Мистецтво">Visual Arts</div>
-                    <div class="text-[10px] text-slate-400" data-en="Traditional Painting" data-ua="Традиційний Живопис">Traditional Painting</div>
+                <button type="button" class="interest-card field-codex-card glass-card p-4 rounded-xl text-left space-y-2 border border-white/5 hover:border-pink-500/40 transition-all group" data-interest-id="visual-arts">
+                    <div class="codex-art-panel" aria-hidden="true">
+                        <svg viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="art-sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29234f"/><stop offset=".55" stop-color="#7b426a"/><stop offset="1" stop-color="#e28b69"/></linearGradient>
+                                <linearGradient id="art-moon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8e4bd"/><stop offset="1" stop-color="#eaa17b"/></linearGradient>
+                            </defs>
+                            <rect width="480" height="180" fill="url(#art-sky)"/>
+                            <circle cx="352" cy="57" r="34" fill="url(#art-moon)" opacity=".95"/>
+                            <circle cx="352" cy="57" r="47" fill="none" stroke="#f6d5bd" stroke-opacity=".28"/>
+                            <path d="M0 130 Q78 82 154 126T305 118T480 105V180H0Z" fill="#24233d" opacity=".78"/>
+                            <path d="M0 150 Q90 113 170 148T334 137T480 129" fill="none" stroke="#f4c4a3" stroke-opacity=".62" stroke-width="1.5"/>
+                            <path d="M44 29C96 54 104 79 79 103M55 23C122 50 133 85 101 112M68 18C144 47 159 93 124 121" fill="none" stroke="#f8d2c4" stroke-opacity=".4" stroke-width="1"/>
+                            <g fill="#fff1cf"><circle cx="242" cy="36" r="1.5"/><circle cx="281" cy="78" r="1"/><circle cx="420" cy="27" r="1.5"/><circle cx="197" cy="91" r="1"/></g>
+                            <path d="M212 151h88" stroke="#eec3a4" stroke-opacity=".75"/>
+                        </svg>
+                    </div>
+                    <div class="field-codex-index" data-en="Field note 01 · Image" data-ua="Нотатка 01 · Образ">Field note 01 · Image</div>
+                    <div class="text-sm font-bold text-white" data-en="Visual Arts" data-ua="Образотворче мистецтво">Visual Arts</div>
+                    <div class="text-xs leading-relaxed text-slate-400" data-en="Color, composition, and atmosphere—small visual fragments from imagined worlds." data-ua="Колір, композиція й атмосфера — візуальні фрагменти уявних світів.">Color, composition, and atmosphere—small visual fragments from imagined worlds.</div>
                 </button>
 
-                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-violet-500/40 transition-all group" data-interest-id="ttrpg">
-                    <div class="text-2xl text-violet-400 group-hover:scale-110 transition-transform">🎲</div>
-                    <div class="text-xs font-bold text-white" data-en="TTRPG & Lore" data-ua="TTRPG та Лор">TTRPG & Lore</div>
-                    <div class="text-[10px] text-slate-400" data-en="World Architecture" data-ua="Архітектура Світів">World Architecture</div>
+                <button type="button" class="interest-card field-codex-card glass-card p-4 rounded-xl text-left space-y-2 border border-white/5 hover:border-violet-500/40 transition-all group" data-interest-id="ttrpg">
+                    <div class="codex-art-panel" aria-hidden="true">
+                        <svg viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="map-ground" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#182c35"/><stop offset="1" stop-color="#322b49"/></linearGradient></defs>
+                            <rect width="480" height="180" fill="url(#map-ground)"/>
+                            <g fill="none" stroke="#8fb7a2" stroke-opacity=".32" stroke-width="1.2">
+                                <path d="M-20 35C40 8 91 13 119 43s73 32 111 5 81-29 121 2 79 26 149-4"/>
+                                <path d="M-20 45C40 18 91 23 119 53s73 32 111 5 81-29 121 2 79 26 149-4"/>
+                                <path d="M-20 55C40 28 91 33 119 63s73 32 111 5 81-29 121 2 79 26 149-4"/>
+                                <path d="M-10 137c55-34 101-31 143-4s77 29 107 2 78-27 117 1 77 20 141-15"/>
+                                <path d="M-10 147c55-34 101-31 143-4s77 29 107 2 78-27 117 1 77 20 141-15"/>
+                                <path d="M-10 157c55-34 101-31 143-4s77 29 107 2 78-27 117 1 77 20 141-15"/>
+                            </g>
+                            <path d="M70 133C125 108 141 75 201 91s87 43 135 5 68-33 107-19" fill="none" stroke="#e4bd85" stroke-width="2" stroke-dasharray="4 5"/>
+                            <g fill="#e8c88f" stroke="#19232d" stroke-width="3"><circle cx="70" cy="133" r="6"/><circle cx="201" cy="91" r="6"/><circle cx="336" cy="96" r="6"/><circle cx="443" cy="77" r="6"/></g>
+                            <path d="M237 40l7 14 15 2-11 10 3 15-14-7-14 7 3-15-11-10 15-2z" fill="#caa8f5" opacity=".9"/>
+                            <circle cx="237" cy="60" r="28" fill="none" stroke="#caa8f5" stroke-opacity=".4"/>
+                        </svg>
+                    </div>
+                    <div class="field-codex-index" data-en="Field note 02 · World" data-ua="Нотатка 02 · Світ">Field note 02 · World</div>
+                    <div class="text-sm font-bold text-white" data-en="TTRPG & Lore" data-ua="TTRPG та лор">TTRPG & Lore</div>
+                    <div class="text-xs leading-relaxed text-slate-400" data-en="Worlds are made of rules, rumors, and the things nobody says aloud." data-ua="Світи складаються з правил, чуток і того, про що не говорять уголос.">Worlds are made of rules, rumors, and the things nobody says aloud.</div>
                 </button>
 
-                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-emerald-500/40 transition-all group" data-interest-id="tactile-arts">
-                    <div class="text-2xl text-emerald-400 group-hover:scale-110 transition-transform">🌿</div>
-                    <div class="text-xs font-bold text-white" data-en="Tactile Arts" data-ua="Тактильне Мистецтво">Tactile Arts</div>
-                    <div class="text-[10px] text-slate-400" data-en="Botanical Crafts" data-ua="Ботанічний Ремесла">Botanical Crafts</div>
+                <button type="button" class="interest-card field-codex-card glass-card p-4 rounded-xl text-left space-y-2 border border-white/5 hover:border-emerald-500/40 transition-all group" data-interest-id="tactile-arts">
+                    <div class="codex-art-panel" aria-hidden="true">
+                        <svg viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="craft-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17342e"/><stop offset="1" stop-color="#4b5944"/></linearGradient><linearGradient id="wax" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0dfb8"/><stop offset="1" stop-color="#b9a77f"/></linearGradient></defs>
+                            <rect width="480" height="180" fill="url(#craft-bg)"/>
+                            <circle cx="367" cy="83" r="66" fill="#d8b887" opacity=".09"/>
+                            <path d="M167 119h84l-9 42h-66z" fill="url(#wax)"/><path d="M194 119c-2-12 8-20 10-31 10 10 12 18 6 31" fill="#f5bd6a"/><path d="M200 117c2-7 4-12 5-16" stroke="#fff0bd" stroke-width="2"/>
+                            <path d="M112 153c38-37 48-77 32-119M114 139c-21-4-34-17-39-38 20 3 32 16 39 38Zm15-35c22-7 34-22 38-44-20 7-33 22-38 44Zm-9 28c19-2 35-12 45-31-21 2-36 12-45 31Z" fill="#88a87c" stroke="#b4c69a" stroke-width="1.3"/>
+                            <path d="M325 30c35 18 59 45 72 81s30 47 57 52" fill="none" stroke="#d6bd83" stroke-width="2"/>
+                            <g fill="#d6bd83"><circle cx="341" cy="42" r="5"/><circle cx="361" cy="56" r="5"/><circle cx="378" cy="74" r="5"/><circle cx="391" cy="96" r="5"/><circle cx="407" cy="119" r="5"/><circle cx="428" cy="145" r="5"/></g>
+                            <path d="M261 44v25m-8-13h16" stroke="#e8d5a8" stroke-opacity=".7"/>
+                        </svg>
+                    </div>
+                    <div class="field-codex-index" data-en="Field note 03 · Object" data-ua="Нотатка 03 · Предмет">Field note 03 · Object</div>
+                    <div class="text-sm font-bold text-white" data-en="Tactile Arts" data-ua="Тактильне мистецтво">Tactile Arts</div>
+                    <div class="text-xs leading-relaxed text-slate-400" data-en="Candles, beadwork, and botanical forms—objects shaped by hand and ritual." data-ua="Свічки, бісер і ботанічні форми — предмети, створені руками й ритуалом.">Candles, beadwork, and botanical forms—objects shaped by hand and ritual.</div>
                 </button>
 
-                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-cyan-500/40 transition-all group" data-interest-id="vocal-arts">
-                    <div class="text-2xl text-cyan-400 group-hover:scale-110 transition-transform">🎤</div>
-                    <div class="text-xs font-bold text-white" data-en="Vocal Arts" data-ua="Вокальне Мистецтво">Vocal Arts</div>
-                    <div class="text-[10px] text-slate-400" data-en="Performative Express" data-ua="Перформативна Виразність">Performative Express</div>
+                <button type="button" class="interest-card field-codex-card glass-card p-4 rounded-xl text-left space-y-2 border border-white/5 hover:border-cyan-500/40 transition-all group" data-interest-id="vocal-arts">
+                    <div class="codex-art-panel" aria-hidden="true">
+                        <svg viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="stage-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17243b"/><stop offset=".55" stop-color="#493554"/><stop offset="1" stop-color="#191b2b"/></linearGradient><radialGradient id="spot"><stop stop-color="#e8d3a0" stop-opacity=".48"/><stop offset="1" stop-color="#e8d3a0" stop-opacity="0"/></radialGradient></defs>
+                            <rect width="480" height="180" fill="url(#stage-bg)"/><ellipse cx="258" cy="85" rx="150" ry="110" fill="url(#spot)"/>
+                            <path d="M0 0h84l-14 180H0zm480 0h-84l14 180h70z" fill="#8b5366" opacity=".68"/>
+                            <path d="M0 0h27l16 180H0zm480 0h-27l-16 180h43z" fill="#d29683" opacity=".24"/>
+                            <path d="M0 152c95-25 164-20 240-5s151 20 240-4v37H0z" fill="#111522"/>
+                            <path d="M223 133c-8-20-3-41 7-49l-4-21c-1-7 7-11 11-4l5 12 4-24c1-7 9-7 10 0l1 20 6-17c2-6 9-4 8 3l-3 23c12 11 15 30 7 57l18 20h-91z" fill="#1a1d2a" stroke="#d9cda8" stroke-opacity=".65" stroke-width="1.4"/>
+                            <path d="M183 153h114M226 163h45" stroke="#d6bd83" stroke-opacity=".65"/>
+                            <g fill="#f4ddb0"><circle cx="241" cy="19" r="1.5"/><circle cx="124" cy="55" r="1"/><circle cx="357" cy="47" r="1"/></g>
+                        </svg>
+                    </div>
+                    <div class="field-codex-index" data-en="Field note 04 · Presence" data-ua="Нотатка 04 · Присутність">Field note 04 · Presence</div>
+                    <div class="text-sm font-bold text-white" data-en="Vocal Arts & Theatre" data-ua="Вокальне мистецтво й театр">Vocal Arts &amp; Theatre</div>
+                    <div class="text-xs leading-relaxed text-slate-400" data-en="A scene begins before the first line—in breath, gesture, and the listening ensemble." data-ua="Сцена починається до першої репліки — з подиху, жесту й ансамблевого слухання.">A scene begins before the first line—in breath, gesture, and the listening ensemble.</div>
                 </button>
 
-                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-amber-500/40 transition-all group" data-interest-id="gaming-analysis">
-                    <div class="text-2xl text-amber-400 group-hover:scale-110 transition-transform">🎮</div>
-                    <div class="text-xs font-bold text-white" data-en="Gaming Analysis" data-ua="Аналіз Геймдизайну">Gaming Analysis</div>
-                    <div class="text-[10px] text-slate-400" data-en="Baldur's Gate 3 Lore" data-ua="Нарратив BG3">Baldur's Gate 3 Lore</div>
+                <button type="button" class="interest-card field-codex-card glass-card p-4 rounded-xl text-left space-y-2 border border-white/5 hover:border-amber-500/40 transition-all group" data-interest-id="gaming-analysis">
+                    <div class="codex-art-panel" aria-hidden="true">
+                        <svg viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="game-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#161d3b"/><stop offset=".55" stop-color="#3f345f"/><stop offset="1" stop-color="#172d3b"/></linearGradient><linearGradient id="portal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f3c778"/><stop offset="1" stop-color="#da7d8d"/></linearGradient></defs>
+                            <rect width="480" height="180" fill="url(#game-bg)"/>
+                            <path d="M0 146 90 96l91 50 91-48 91 48 117-64v98H0z" fill="#20233d"/>
+                            <path d="M32 154 90 122l58 32v26H32zm176 0 65-36 65 36v26H208z" fill="#2d3150" stroke="#a394cc" stroke-opacity=".5"/>
+                            <path d="M247 114V71c0-25 18-44 41-44s41 19 41 44v43" fill="none" stroke="#d5a9e8" stroke-opacity=".8" stroke-width="4"/>
+                            <path d="M256 114V72c0-19 14-33 32-33s32 14 32 33v42" fill="url(#portal)" opacity=".78"/>
+                            <path d="M288 39v74m-30-37h60" stroke="#f8e2b4" stroke-opacity=".3"/>
+                            <g fill="#f2d99d"><path d="m90 111 5 11 12 2-9 8 2 12-10-6-10 6 2-12-9-8 12-2z"/><circle cx="160" cy="47" r="2"/><circle cx="375" cy="38" r="1.5"/><circle cx="400" cy="77" r="1"/></g>
+                            <path d="M32 178h416" stroke="#8c8ab0" stroke-opacity=".5"/>
+                        </svg>
+                    </div>
+                    <div class="field-codex-index" data-en="Field note 05 · Play" data-ua="Нотатка 05 · Гра">Field note 05 · Play</div>
+                    <div class="text-sm font-bold text-white" data-en="Gaming Analysis" data-ua="Аналіз ігор">Gaming Analysis</div>
+                    <div class="text-xs leading-relaxed text-slate-400" data-en="Lore-rich games read through player choice, character systems, and environmental clues." data-ua="Ігри з глибоким лором — крізь вибір гравця, системи персонажів і підказки середовища.">Lore-rich games read through player choice, character systems, and environmental clues.</div>
                 </button>
 
-                <button type="button" class="interest-card glass-card p-4 rounded-xl text-center space-y-2 border border-white/5 hover:border-indigo-500/40 transition-all group" data-interest-id="literature">
-                    <div class="text-2xl text-indigo-400 group-hover:scale-110 transition-transform">📚</div>
-                    <div class="text-xs font-bold text-white" data-en="Literature" data-ua="Література">Literature</div>
-                    <div class="text-[10px] text-slate-400" data-en="Psych & Fantasy" data-ua="Психологія та Фентезі">Psych & Fantasy</div>
+                <button type="button" class="interest-card field-codex-card glass-card p-4 rounded-xl text-left space-y-2 border border-white/5 hover:border-indigo-500/40 transition-all group" data-interest-id="literature">
+                    <div class="codex-art-panel" aria-hidden="true">
+                        <svg viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="book-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#20233f"/><stop offset="1" stop-color="#493c58"/></linearGradient><linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0dfbb"/><stop offset="1" stop-color="#c7b38d"/></linearGradient></defs>
+                            <rect width="480" height="180" fill="url(#book-bg)"/>
+                            <circle cx="101" cy="47" r="29" fill="none" stroke="#c3a8de" stroke-opacity=".4"/><circle cx="101" cy="47" r="19" fill="none" stroke="#c3a8de" stroke-opacity=".3"/>
+                            <path d="M104 133c37-24 76-30 126-15v39c-50-14-89-8-126 16-37-24-76-30-126-16v-39c50-15 89-9 126 15Z" fill="url(#paper)" stroke="#e5d3ad" stroke-width="2"/>
+                            <path d="M230 118v55M-3 126c46-12 78-7 107 7v39c-34-20-67-24-107-13m249-31c34-13 66-18 107-7v33c-39-11-73-7-107 13" fill="none" stroke="#8e806a" stroke-opacity=".55"/>
+                            <path d="M34 131h54m-46 10h47m-40 10h43m164-20h52m-53 10h45m-39 10h37" stroke="#8e806a" stroke-opacity=".48" stroke-width="1.5"/>
+                            <path d="M230 118c-4-34 14-54 35-62-5 22-9 43-35 62Zm0 0c3-28-9-50-29-63 0 24 5 47 29 63Zm0 0c18-23 39-30 61-28-13 17-32 27-61 28Z" fill="#96a88a" opacity=".8"/>
+                            <g fill="#f1dcae"><circle cx="342" cy="36" r="1.5"/><circle cx="388" cy="63" r="1"/><circle cx="313" cy="78" r="1"/><circle cx="424" cy="108" r="1.5"/></g>
+                        </svg>
+                    </div>
+                    <div class="field-codex-index" data-en="Field note 06 · Text" data-ua="Нотатка 06 · Текст">Field note 06 · Text</div>
+                    <div class="text-sm font-bold text-white" data-en="Literature" data-ua="Література">Literature</div>
+                    <div class="text-xs leading-relaxed text-slate-400" data-en="Psychological and speculative fiction, mythology, and the symbols that linger after the final page." data-ua="Психологічна й спекулятивна проза, міфологія та символи, що залишаються після останньої сторінки.">Psychological and speculative fiction, mythology, and the symbols that linger after the final page.</div>
                 </button>
 
             </div>
@@ -7030,27 +7459,27 @@
         const interestDetails = {
             'visual-arts': {
                 title: ['Visual Arts', 'Образотворче мистецтво'],
-                body: ['Traditional painting and digital artwork shape my sense of composition, colour, atmosphere, and visual storytelling.', 'Традиційний живопис і digital artwork формують моє відчуття композиції, кольору, атмосфери та візуального сторітеллінгу.']
+                body: ['A field study in color, composition, and atmosphere: visual fragments gathered from imagined places, remembered scenes, and the worlds I am still building.', 'Дослідження кольору, композиції й атмосфери: візуальні фрагменти уявних місць, згаданих сцен і світів, які я ще будую.']
             },
             ttrpg: {
                 title: ['TTRPG & Lore', 'TTRPG та лор'],
-                body: ['I design campaigns, branching narratives, character dynamics, and immersive world architecture for Dungeons & Dragons and tabletop systems.', 'Я створюю кампанії, branching narratives, динаміку персонажів та immersive world architecture для Dungeons & Dragons і настільних систем.']
+                body: ['Worlds are made of rules, rumors, and the things nobody says aloud. I build settings where history leaves marks on the map, character choices alter the balance of a place, and even a small detail may become a door.', 'Світи складаються з правил, чуток і того, про що не говорять уголос. Я створюю простори, де історія лишає сліди на мапі, вибір персонажів змінює рівновагу, а дрібна деталь може стати дверима.']
             },
             'tactile-arts': {
                 title: ['Tactile Arts', 'Тактильне мистецтво'],
-                body: ['Candles, beadwork, crystal artifacts, and embroidery connect ritual aesthetics with natural textures and precise handcraft.', 'Свічки, бісер, crystal artifacts та вишивка поєднують ритуальну естетику, природні текстури й точність ручної роботи.']
+                body: ['Candles, beadwork, crystal artifacts, and embroidery become small objects with their own textures, symbols, and quiet ritual lives.', 'Свічки, бісер, кристальні артефакти й вишивка стають маленькими предметами з власними текстурами, символами й тихим ритуальним життям.']
             },
             'vocal-arts': {
                 title: ['Vocal Arts', 'Вокальне мистецтво'],
-                body: ['Voice practice and audio performance explore rhythm, sound aesthetics, emotional resonance, and the presence of a spoken story.', 'Вокальна практика й audio performance досліджують ритм, естетику звуку, емоційний резонанс і присутність spoken story.']
+                body: ['A scene begins before the first line—in breath, gesture, and the listening ensemble. In rehearsal, I explored script, voice, movement, and the distance between what a character says and what the room understands. The planned production was not publicly staged after the escalation of the war; the preparation and shared creative work were completed.', 'Сцена починається до першої репліки — з подиху, жесту й ансамблевого слухання. На репетиціях я досліджувала сценарій, голос, рух і відстань між словами персонажа та тим, що чує зал. Через ескалацію війни заплановану виставу не представили публічно; підготовку й спільну творчу роботу було завершено.']
             },
             'gaming-analysis': {
                 title: ['Gaming Analysis', 'Аналіз ігор'],
-                body: ['I study lore-rich games such as Baldur’s Gate 3 through player agency, game mechanics, character systems, and environmental storytelling.', 'Я досліджую lore-rich ігри, зокрема Baldur’s Gate 3, через player agency, game mechanics, character systems та environmental storytelling.']
+                body: ['I read lore-rich games such as Baldur’s Gate 3 through player choice, character systems, environmental clues, and the stories hidden in a world’s ordinary details.', 'Я досліджую ігри з глибоким лором, зокрема Baldur’s Gate 3, крізь вибір гравця, системи персонажів, підказки середовища й історії, приховані у звичайних деталях світу.']
             },
             literature: {
                 title: ['Psychological & Fantasy Literature', 'Психологічна та fantasy-література'],
-                body: ['Fantasy, speculative fiction, psychological prose, mythology, Tarot, and runic systems feed the symbolic and emotional depth of my creative work.', 'Фентезі, speculative fiction, психологічна проза, міфологія, Таро та руничні системи живлять символічну й емоційну глибину моєї творчості.']
+                body: ['Psychological and speculative fiction, mythology, Tarot, and runic systems leave a trail of symbols, hidden motives, and questions that continue beyond the final page.', 'Психологічна й спекулятивна проза, міфологія, Таро та руничні системи залишають слід символів, прихованих мотивів і запитань, що тривають після останньої сторінки.']
             }
         };
 
