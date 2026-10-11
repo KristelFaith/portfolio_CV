@@ -3214,6 +3214,229 @@
     }
 }
 </style>
+<style>
+/* Print CV refinement: clean sidebar layout with controlled two-page pagination. */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 10mm 11mm;
+    }
+
+    #printCv {
+        font-family: Arial, "Helvetica Neue", sans-serif !important;
+        font-size: 8.2pt !important;
+        line-height: 1.28 !important;
+        color: #26332d !important;
+    }
+
+    #printCv .cv-page {
+        display: grid !important;
+        grid-template-columns: 46mm minmax(0, 1fr) !important;
+        grid-template-rows: auto minmax(0, 1fr) auto !important;
+        column-gap: 7mm !important;
+        row-gap: 0 !important;
+        min-height: 277mm !important;
+        position: relative !important;
+    }
+
+    #printCv .cv-page-one {
+        break-after: page !important;
+        page-break-after: always !important;
+    }
+
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        page-break-before: auto !important;
+    }
+
+    #printCv .cv-masthead {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        align-self: start !important;
+        margin: 0 0 4mm !important;
+        padding: 2.5mm 0 3mm !important;
+        border-top: 1.1mm solid #16816b !important;
+        border-bottom: .45pt solid #cbd2ce !important;
+    }
+
+    #printCv .cv-rail {
+        grid-column: 1 !important;
+        grid-row: 1 / 3 !important;
+        align-self: stretch !important;
+        margin: -10mm 0 -2mm -11mm !important;
+        padding: 10mm 3.5mm 4mm 11mm !important;
+        background: #edf1e9 !important;
+        border-right: .5pt solid #d2dbd3 !important;
+    }
+
+    #printCv .cv-main {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+    }
+
+    #printCv .cv-page-two .cv-running-head {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+        margin: 0 0 4mm !important;
+        padding: 0 0 1.5mm !important;
+        border-bottom: .45pt solid #cbd2ce !important;
+    }
+
+    #printCv .cv-page-two .cv-rail {
+        grid-row: 2 !important;
+        margin-top: 0 !important;
+        padding-top: 4mm !important;
+    }
+
+    #printCv .cv-page-two .cv-main {
+        grid-row: 2 !important;
+    }
+
+    #printCv .cv-page-footer {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        align-self: end !important;
+        margin: 2mm 0 0 !important;
+        padding-top: 1mm !important;
+        border-top: .4pt solid #d9e0dc !important;
+    }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section {
+        margin-bottom: 3mm !important;
+    }
+
+    #printCv .cv-section-label {
+        grid-template-columns: 6mm minmax(0, 1fr) !important;
+        gap: 1mm !important;
+        margin-bottom: 1.4mm !important;
+        padding-bottom: .7mm !important;
+    }
+
+    #printCv h1 {
+        font-size: 23pt !important;
+    }
+
+    #printCv h2 {
+        font-size: 7.7pt !important;
+    }
+
+    #printCv h3 {
+        font-size: 8pt !important;
+    }
+
+    #printCv p {
+        font-size: 7.8pt !important;
+        line-height: 1.28 !important;
+    }
+
+    #printCv .cv-lead {
+        font-size: 8.5pt !important;
+        line-height: 1.35 !important;
+    }
+
+    #printCv .cv-capability {
+        margin-bottom: 2.1mm !important;
+        padding: 0 0 1.5mm 1.8mm !important;
+    }
+
+    #printCv .cv-capability h3,
+    #printCv .cv-method-grid h3 {
+        font-size: 6.2pt !important;
+    }
+
+    #printCv .cv-capability p,
+    #printCv .cv-method-grid p {
+        font-size: 7.2pt !important;
+        line-height: 1.28 !important;
+    }
+
+    #printCv .cv-entry {
+        grid-template-columns: 16mm minmax(0, 1fr) !important;
+        gap: 2.5mm !important;
+        margin-bottom: 2.1mm !important;
+        padding-bottom: 1.5mm !important;
+    }
+
+    #printCv .cv-date,
+    #printCv .cv-context {
+        font-size: 6.1pt !important;
+    }
+
+    #printCv .cv-entry-body {
+        padding-left: 2mm !important;
+    }
+
+    #printCv .cv-bullets {
+        margin-left: 3mm !important;
+    }
+
+    #printCv .cv-bullets li {
+        margin-bottom: .4mm !important;
+        font-size: 7.5pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-method-grid {
+        gap: 1.5mm 3mm !important;
+    }
+
+    #printCv .cv-method-grid article {
+        padding-left: 1.7mm !important;
+    }
+
+    #printCv .cv-project-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.8mm 3mm !important;
+    }
+
+    #printCv .cv-project {
+        grid-template-columns: 5mm minmax(0, 1fr) !important;
+        gap: 1mm !important;
+        padding-bottom: 1.2mm !important;
+    }
+
+    #printCv .cv-project h3 {
+        font-size: 7.2pt !important;
+    }
+
+    #printCv .cv-project p {
+        font-size: 7pt !important;
+        line-height: 1.24 !important;
+    }
+
+    #printCv .cv-project small {
+        font-size: 5.4pt !important;
+    }
+
+    #printCv .cv-proof {
+        margin-bottom: 2.2mm !important;
+        padding-bottom: 1.5mm !important;
+    }
+
+    #printCv .cv-proof strong {
+        font-size: 12pt !important;
+    }
+
+    #printCv .cv-proof span,
+    #printCv .cv-learning span,
+    #printCv .cv-learning strong,
+    #printCv .cv-languages li,
+    #printCv .cv-education > p {
+        font-size: 6.5pt !important;
+    }
+
+    #printCv .cv-learning {
+        margin-bottom: 1.5mm !important;
+        padding-bottom: 1mm !important;
+    }
+
+    #printCv .cv-languages li {
+        padding: .7mm 0 !important;
+    }
+}
+</style>
     <style media="not all">
         @page {
             size: A4 portrait;
@@ -3599,6 +3822,1226 @@
             }
         }
     </style>
+<style>
+/* Print pagination fix: let each designed page size to its content, not fill the sheet. */
+@media print {
+    #printCv .cv-page {
+        grid-template-rows: auto auto auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        align-content: start !important;
+        row-gap: 0 !important;
+    }
+
+    #printCv .cv-page-one .cv-rail {
+        grid-row: 1 / 3 !important;
+        align-self: stretch !important;
+    }
+
+    #printCv .cv-page-two .cv-rail,
+    #printCv .cv-page-two .cv-main {
+        grid-row: 2 !important;
+    }
+
+    #printCv .cv-page-footer {
+        grid-row: 3 !important;
+        align-self: start !important;
+        margin-top: 3mm !important;
+    }
+}
+</style>
+<style>
+/* Natural-flow editorial print CV: no fixed-height page grids or forced blank space. */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 11mm 13mm;
+    }
+
+    html,
+    body {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #202923 !important;
+        font: 8.5pt/1.32 Arial, "Helvetica Neue", sans-serif !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body > *:not(#printCv) {
+        display: none !important;
+    }
+
+    #printCv,
+    #printCv * {
+        box-sizing: border-box !important;
+    }
+
+    #printCv {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #29342e !important;
+        font: inherit !important;
+    }
+
+    /* Flatten the old page/sidebar wrappers so content paginates continuously. */
+    #printCv .cv-page,
+    #printCv .cv-rail,
+    #printCv .cv-main {
+        display: contents !important;
+        min-height: 0 !important;
+        height: auto !important;
+        break-before: auto !important;
+        break-after: auto !important;
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #printCv .cv-masthead {
+        order: 0 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 64mm !important;
+        grid-template-rows: auto auto auto auto !important;
+        gap: 0 8mm !important;
+        align-items: start !important;
+        margin: 0 0 4mm !important;
+        padding: 3mm 0 3.5mm !important;
+        border-top: 1.2mm solid #087b67 !important;
+        border-bottom: .5pt solid #cbd5d1 !important;
+        background: #fff !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-kicker { grid-column: 1; grid-row: 1; }
+    #printCv .cv-masthead h1 { grid-column: 1; grid-row: 2; }
+    #printCv .cv-roleline { grid-column: 1; grid-row: 3; }
+    #printCv .cv-descriptor { grid-column: 1; grid-row: 4; }
+    #printCv .cv-contact {
+        grid-column: 2 !important;
+        grid-row: 1 / 5 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1mm !important;
+        min-width: 0 !important;
+        padding: 1mm 0 1mm 3mm !important;
+        border-left: .7mm solid #16816b !important;
+        color: #46524b !important;
+        font-size: 7.2pt !important;
+        line-height: 1.4 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #printCv .cv-kicker,
+    #printCv .cv-descriptor,
+    #printCv .cv-date,
+    #printCv .cv-context,
+    #printCv .cv-project small {
+        font-family: "Courier New", monospace !important;
+        letter-spacing: .055em !important;
+        text-transform: uppercase !important;
+    }
+
+    #printCv .cv-kicker {
+        margin: 0 0 1.5mm !important;
+        color: #087b67 !important;
+        font-size: 6.5pt !important;
+        font-weight: 700 !important;
+    }
+
+    #printCv h1 {
+        margin: 0 !important;
+        color: #151a17 !important;
+        font-size: 26pt !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        letter-spacing: -.035em !important;
+    }
+
+    #printCv .cv-roleline {
+        margin: 1.5mm 0 1mm !important;
+        color: #25312b !important;
+        font-size: 9.5pt !important;
+        font-weight: 700 !important;
+        letter-spacing: .07em !important;
+    }
+
+    #printCv .cv-descriptor {
+        margin: 0 !important;
+        color: #66716a !important;
+        font-size: 6.3pt !important;
+        line-height: 1.45 !important;
+    }
+
+    #printCv a {
+        color: #087b67 !important;
+        text-decoration: none !important;
+    }
+
+    #printCv .cv-profile { order: 1 !important; }
+    #printCv .cv-capabilities,
+    #printCv .cv-page-one > .cv-rail > .cv-rail-section:first-child { order: 2 !important; }
+    #printCv .cv-page-one > .cv-rail > .cv-rail-section:first-child {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1.2mm 7mm !important;
+    }
+    #printCv .cv-page-one > .cv-rail > .cv-rail-section:first-child > .cv-section-label {
+        grid-column: 1 / -1 !important;
+    }
+    #printCv .cv-experience { order: 3 !important; }
+    #printCv .cv-method { order: 4 !important; }
+    #printCv .cv-experience-continued { order: 5 !important; }
+    #printCv .cv-projects { order: 6 !important; }
+    #printCv .cv-writing { order: 7 !important; }
+    #printCv .cv-education { order: 8 !important; }
+    #printCv .cv-proof-section { order: 9 !important; }
+    #printCv .cv-development-section { order: 10 !important; }
+    #printCv .cv-languages-section { order: 11 !important; }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 3.3mm !important;
+        padding: 0 !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-section-label {
+        display: grid !important;
+        grid-template-columns: 8mm minmax(0, 1fr) !important;
+        align-items: baseline !important;
+        gap: 1.5mm !important;
+        margin: 0 0 1.5mm !important;
+        padding: 0 0 .8mm !important;
+        border-bottom: .5pt solid #cbd5d1 !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #printCv .cv-section-label > span {
+        color: #087b67 !important;
+        font: 7pt/1 "Courier New", monospace !important;
+    }
+
+    #printCv h2 {
+        margin: 0 !important;
+        color: #26322b !important;
+        font-size: 9pt !important;
+        font-weight: 800 !important;
+        line-height: 1.15 !important;
+        letter-spacing: .1em !important;
+        text-transform: uppercase !important;
+    }
+
+    #printCv h3 {
+        margin: 0 0 .5mm !important;
+        color: #1c2520 !important;
+        font-size: 8.8pt !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv p {
+        margin: 0 0 .8mm !important;
+        color: #46514b !important;
+        font-size: 8.2pt !important;
+        line-height: 1.3 !important;
+        orphans: 2;
+        widows: 2;
+    }
+
+    #printCv .cv-lead {
+        max-width: none !important;
+        margin: 0 !important;
+        color: #293630 !important;
+        font-size: 8.7pt !important;
+        line-height: 1.38 !important;
+    }
+
+    #printCv .cv-capabilities .cv-capability-grid,
+    #printCv .cv-capabilities > .cv-section-label + div {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1.2mm 7mm !important;
+    }
+
+    #printCv .cv-capability {
+        margin: 0 !important;
+        padding: 0 0 1.2mm 2mm !important;
+        border-left: .5mm solid #c6d2cc !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-capability h3,
+    #printCv .cv-method-grid h3 {
+        margin: 0 0 .5mm !important;
+        color: #087b67 !important;
+        font-family: "Courier New", monospace !important;
+        font-size: 6.6pt !important;
+        font-weight: 700 !important;
+        letter-spacing: .06em !important;
+    }
+
+    #printCv .cv-capability p,
+    #printCv .cv-method-grid p {
+        margin: 0 !important;
+        color: #46514b !important;
+        font-size: 7.7pt !important;
+        line-height: 1.28 !important;
+    }
+
+    #printCv .cv-entries {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #printCv .cv-entry {
+        display: grid !important;
+        grid-template-columns: 24mm minmax(0, 1fr) !important;
+        gap: 4mm !important;
+        margin: 0 0 2.2mm !important;
+        padding: 0 0 1.8mm !important;
+        border-bottom: .4pt solid #dfe4e0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-entry:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    #printCv .cv-date {
+        margin: .3mm 0 0 !important;
+        color: #66736b !important;
+        font-size: 6.5pt !important;
+        line-height: 1.45 !important;
+    }
+
+    #printCv .cv-entry-body {
+        min-width: 0 !important;
+        padding-left: 2.5mm !important;
+        border-left: .55mm solid #b7c5bd !important;
+    }
+
+    #printCv .cv-entry-body::before { content: none !important; }
+
+    #printCv .cv-context {
+        margin: 0 0 .8mm !important;
+        color: #087b67 !important;
+        font-size: 6.5pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-bullets {
+        margin: .7mm 0 0 3.5mm !important;
+        padding: 0 !important;
+    }
+
+    #printCv .cv-bullets li {
+        margin: 0 0 .45mm !important;
+        padding-left: .3mm !important;
+        color: #46514b !important;
+        font-size: 7.9pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-method-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5mm 5mm !important;
+    }
+
+    #printCv .cv-method-grid article {
+        min-width: 0 !important;
+        padding: 0 0 1mm 2mm !important;
+        border-left: .5mm solid #c6d2cc !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-method-grid article:last-child {
+        grid-column: 1 / -1 !important;
+    }
+
+    #printCv .cv-project-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5mm 6mm !important;
+    }
+
+    #printCv .cv-project {
+        display: grid !important;
+        grid-template-columns: 6mm minmax(0, 1fr) !important;
+        gap: 1.5mm !important;
+        margin: 0 !important;
+        padding: 0 0 1.3mm !important;
+        border-bottom: .4pt solid #dfe4e0 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-project-no {
+        color: #087b67 !important;
+        font: 7pt/1.3 "Courier New", monospace !important;
+    }
+
+    #printCv .cv-project h3 { font-size: 7.8pt !important; }
+    #printCv .cv-project p { margin: 0 0 .5mm !important; font-size: 7.3pt !important; line-height: 1.25 !important; }
+    #printCv .cv-project small { color: #77827b !important; font-size: 5.8pt !important; line-height: 1.2 !important; }
+
+    #printCv .cv-proof {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 4mm !important;
+        margin: 0 !important;
+    }
+
+    #printCv .cv-proof strong {
+        display: block !important;
+        color: #1e2a23 !important;
+        font-size: 12pt !important;
+        line-height: 1.1 !important;
+    }
+
+    #printCv .cv-proof span,
+    #printCv .cv-learning span,
+    #printCv .cv-learning strong,
+    #printCv .cv-languages li,
+    #printCv .cv-education > p {
+        font-size: 7.5pt !important;
+    }
+
+    #printCv .cv-learning { margin: 0 0 1mm !important; }
+    #printCv .cv-learning strong { display: block !important; color: #26322b !important; }
+    #printCv .cv-learning span { color: #66736b !important; }
+    #printCv .cv-languages { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+    #printCv .cv-languages li { display: flex !important; justify-content: space-between !important; padding: .6mm 0 !important; border-bottom: .35pt solid #e1e6e2 !important; }
+    #printCv .cv-bottom-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6mm !important; }
+
+    #printCv .cv-running-head,
+    #printCv .cv-page-footer {
+        display: none !important;
+    }
+
+    #printCv .cv-section-label,
+    #printCv .cv-entry,
+    #printCv .cv-project,
+    #printCv .cv-capability,
+    #printCv .cv-method-grid article {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+}
+</style>
+<style>
+/* Final print art direction: framed sage-and-white two-column CV. */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: 100% !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #e7ede6 !important;
+        color: #27312b !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 8pt !important;
+        line-height: 1.28 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body > *:not(#printCv) {
+        display: none !important;
+    }
+
+    #printCv,
+    #printCv * {
+        box-sizing: border-box !important;
+    }
+
+    #printCv {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 5mm !important;
+        background: #e7ede6 !important;
+        color: #27312b !important;
+        font: 8pt/1.28 Arial, Helvetica, sans-serif !important;
+    }
+
+    #printCv .cv-page {
+        display: grid !important;
+        grid-template-columns: 46mm minmax(0, 1fr) !important;
+        grid-template-rows: auto auto auto !important;
+        align-content: start !important;
+        column-gap: 7mm !important;
+        row-gap: 0 !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 5mm !important;
+        overflow: visible !important;
+        border-radius: 3mm !important;
+        background: #fff !important;
+        box-shadow: 0 1mm 3mm rgba(34, 48, 39, .12) !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-page-one {
+        break-after: page !important;
+        page-break-after: always !important;
+    }
+
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        page-break-before: auto !important;
+    }
+
+    #printCv .cv-masthead {
+        display: grid !important;
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+        grid-template-columns: minmax(0, 1fr) 60mm !important;
+        align-items: center !important;
+        gap: 5mm !important;
+        margin: 0 0 4mm !important;
+        padding: 3mm 0 3.5mm !important;
+        border-top: 1.2mm solid #789781 !important;
+        border-bottom: .5pt solid #d4dbd5 !important;
+        background: #fff !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-kicker,
+    #printCv .cv-descriptor,
+    #printCv .cv-date,
+    #printCv .cv-context,
+    #printCv .cv-project small,
+    #printCv .cv-running-head,
+    #printCv .cv-page-footer {
+        font-family: "Courier New", monospace !important;
+        letter-spacing: .04em !important;
+        text-transform: uppercase !important;
+    }
+
+    #printCv .cv-kicker {
+        margin: 0 0 1.5mm !important;
+        color: #718c79 !important;
+        font-size: 6pt !important;
+        font-weight: 700 !important;
+    }
+
+    #printCv h1 {
+        margin: 0 !important;
+        color: #202923 !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 23pt !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        letter-spacing: -.035em !important;
+        white-space: nowrap !important;
+    }
+
+    #printCv .cv-roleline {
+        margin: 1.5mm 0 1mm !important;
+        color: #526a59 !important;
+        font-size: 9pt !important;
+        font-weight: 700 !important;
+        letter-spacing: .045em !important;
+    }
+
+    #printCv .cv-descriptor {
+        margin: 0 !important;
+        color: #68736b !important;
+        font-size: 5.8pt !important;
+        line-height: 1.4 !important;
+    }
+
+    #printCv .cv-contact {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: .8mm !important;
+        min-width: 0 !important;
+        padding: 1mm 0 1mm 3mm !important;
+        border-left: .7mm solid #91a995 !important;
+        color: #49564d !important;
+        font-size: 6.7pt !important;
+        line-height: 1.35 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #printCv a {
+        color: #526e5a !important;
+        text-decoration: none !important;
+    }
+
+    #printCv .cv-rail {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 3mm !important;
+        border: 0 !important;
+        border-radius: 1.5mm !important;
+        background: #edf1eb !important;
+    }
+
+    #printCv .cv-main {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 1mm 0 0 !important;
+        background: #fff !important;
+    }
+
+    #printCv .cv-page-two .cv-running-head {
+        display: flex !important;
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+        justify-content: space-between !important;
+        margin: 0 0 3mm !important;
+        padding: 0 0 1.5mm !important;
+        border-bottom: .5pt solid #d4dbd5 !important;
+        color: #718075 !important;
+        font-size: 6pt !important;
+    }
+
+    #printCv .cv-page-two .cv-rail,
+    #printCv .cv-page-two .cv-main {
+        grid-row: 2 !important;
+    }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 3mm !important;
+        padding: 0 !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-section-label {
+        display: grid !important;
+        grid-template-columns: 6mm minmax(0, 1fr) !important;
+        align-items: baseline !important;
+        gap: 1mm !important;
+        margin: 0 0 1.5mm !important;
+        padding: 0 0 .8mm !important;
+        border-bottom: .45pt solid #ccd5ce !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #printCv .cv-section-label > span {
+        color: #789781 !important;
+        font: 6.5pt/1 "Courier New", monospace !important;
+    }
+
+    #printCv h2 {
+        margin: 0 !important;
+        color: #29352e !important;
+        font-size: 8pt !important;
+        font-weight: 800 !important;
+        line-height: 1.15 !important;
+        letter-spacing: .09em !important;
+        text-transform: uppercase !important;
+    }
+
+    #printCv h3 {
+        margin: 0 0 .5mm !important;
+        color: #252e28 !important;
+        font-size: 8.2pt !important;
+        font-weight: 700 !important;
+        line-height: 1.18 !important;
+    }
+
+    #printCv p {
+        margin: 0 0 .7mm !important;
+        color: #4b574f !important;
+        font-size: 7.7pt !important;
+        line-height: 1.28 !important;
+        orphans: 2;
+        widows: 2;
+    }
+
+    #printCv .cv-lead {
+        margin: 0 !important;
+        color: #3b4840 !important;
+        font-size: 8pt !important;
+        line-height: 1.34 !important;
+    }
+
+    #printCv .cv-capability {
+        margin: 0 0 2mm !important;
+        padding: 0 0 1.3mm 1.8mm !important;
+        border-left: .5mm solid #9caf9f !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-capability h3,
+    #printCv .cv-method-grid h3 {
+        margin: 0 0 .5mm !important;
+        color: #5e7b66 !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 6.5pt !important;
+        font-weight: 700 !important;
+        letter-spacing: .06em !important;
+    }
+
+    #printCv .cv-capability p,
+    #printCv .cv-method-grid p {
+        margin: 0 !important;
+        color: #4f5b53 !important;
+        font-size: 7pt !important;
+        line-height: 1.25 !important;
+    }
+
+    #printCv .cv-entry {
+        display: grid !important;
+        grid-template-columns: 18mm minmax(0, 1fr) !important;
+        gap: 2.5mm !important;
+        margin: 0 0 2mm !important;
+        padding: 0 0 1.4mm !important;
+        border: 0 !important;
+        border-bottom: .4pt solid #dce2dd !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-entry:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    #printCv .cv-date,
+    #printCv .cv-context {
+        color: #718176 !important;
+        font-size: 5.8pt !important;
+        line-height: 1.35 !important;
+    }
+
+    #printCv .cv-entry-body {
+        min-width: 0 !important;
+        padding-left: 2mm !important;
+        border-left: .5mm solid #aebdaf !important;
+    }
+
+    #printCv .cv-entry-body::before {
+        display: none !important;
+        content: none !important;
+    }
+
+    #printCv .cv-bullets {
+        margin: .6mm 0 0 3mm !important;
+        padding: 0 !important;
+    }
+
+    #printCv .cv-bullets li {
+        margin: 0 0 .4mm !important;
+        padding-left: .3mm !important;
+        color: #4b574f !important;
+        font-size: 7.2pt !important;
+        line-height: 1.23 !important;
+    }
+
+    #printCv strong {
+        color: #303b34 !important;
+    }
+
+    #printCv .cv-method-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.2mm 3mm !important;
+    }
+
+    #printCv .cv-method-grid article {
+        min-width: 0 !important;
+        padding: 0 0 1mm 1.5mm !important;
+        border-left: .45mm solid #c4d0c6 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-method-grid article:last-child {
+        grid-column: 1 / -1 !important;
+    }
+
+    #printCv .cv-proof {
+        margin: 0 0 1.7mm !important;
+        padding: 0 0 1.3mm !important;
+        border-bottom: .4pt solid #d9e0da !important;
+    }
+
+    #printCv .cv-proof strong {
+        display: block !important;
+        color: #455d4c !important;
+        font-size: 11pt !important;
+        line-height: 1.05 !important;
+    }
+
+    #printCv .cv-proof span,
+    #printCv .cv-learning span,
+    #printCv .cv-learning strong,
+    #printCv .cv-languages li,
+    #printCv .cv-education > p {
+        font-size: 6.7pt !important;
+    }
+
+    #printCv .cv-learning {
+        margin: 0 0 1.4mm !important;
+        padding: 0 0 1mm !important;
+        border-bottom: .35pt solid #d9e0da !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-learning strong,
+    #printCv .cv-learning span {
+        display: block !important;
+    }
+
+    #printCv .cv-learning strong {
+        color: #39473e !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv .cv-learning span {
+        margin-top: .3mm !important;
+        color: #718075 !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv .cv-languages {
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+
+    #printCv .cv-languages li {
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 1mm !important;
+        padding: .6mm 0 !important;
+        border-bottom: .35pt solid #d9e0da !important;
+        color: #4b574f !important;
+    }
+
+    #printCv .cv-languages span {
+        color: #718075 !important;
+        text-align: right !important;
+    }
+
+    #printCv .cv-project-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5mm 3mm !important;
+    }
+
+    #printCv .cv-project {
+        display: grid !important;
+        grid-template-columns: 5mm minmax(0, 1fr) !important;
+        gap: 1mm !important;
+        margin: 0 !important;
+        padding: 0 0 1mm !important;
+        border-bottom: .35pt solid #dce2dd !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-project-no {
+        color: #789781 !important;
+        font: 6.5pt/1.25 "Courier New", monospace !important;
+    }
+
+    #printCv .cv-project h3 {
+        font-size: 7.2pt !important;
+    }
+
+    #printCv .cv-project p {
+        margin: 0 0 .4mm !important;
+        font-size: 6.8pt !important;
+        line-height: 1.22 !important;
+    }
+
+    #printCv .cv-project small {
+        color: #78847b !important;
+        font-size: 5.2pt !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv .cv-education h3 {
+        font-size: 7.5pt !important;
+    }
+
+    #printCv .cv-education > p {
+        margin-bottom: .5mm !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv .cv-page-footer {
+        display: flex !important;
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        justify-content: space-between !important;
+        margin: 2mm 0 0 !important;
+        padding: 1mm 0 0 !important;
+        border-top: .4pt solid #d9e0da !important;
+        color: #7a857d !important;
+        font-size: 5.5pt !important;
+    }
+}
+</style>
+<style>
+/* Final print overrides: compact editorial two-column pages without forced whitespace. */
+@media print {
+    @page { size: A4 portrait; margin: 8mm 10mm; }
+
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #edf1eb !important;
+        color: #27312b !important;
+        font: 8pt/1.25 Arial, Helvetica, sans-serif !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body > *:not(#printCv) { display: none !important; }
+
+    #printCv {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #edf1eb !important;
+        color: #27312b !important;
+        font: inherit !important;
+    }
+
+    #printCv .cv-page {
+        display: grid !important;
+        grid-template-columns: 43mm minmax(0, 1fr) !important;
+        grid-template-rows: auto auto auto !important;
+        align-content: start !important;
+        column-gap: 6mm !important;
+        row-gap: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 0 4mm !important;
+        padding: 4mm !important;
+        overflow: visible !important;
+        border: .4pt solid #d5ddd5 !important;
+        border-radius: 2mm !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        break-before: auto !important;
+        break-after: auto !important;
+    }
+
+    #printCv .cv-page-one,
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        break-after: auto !important;
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #printCv .cv-masthead {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 0 !important;
+        margin: 0 0 3mm !important;
+        padding: 2mm 0 !important;
+        border-top: 1mm solid #789781 !important;
+        border-bottom: .45pt solid #d4dbd5 !important;
+        background: #fff !important;
+    }
+
+    #printCv .cv-contact {
+        display: block !important;
+        margin-top: 1.5mm !important;
+        padding: 0 !important;
+        border: 0 !important;
+        font-size: 6.7pt !important;
+        line-height: 1.35 !important;
+    }
+
+    #printCv .cv-contact > * { display: block !important; margin: 0 0 .5mm !important; }
+
+    #printCv .cv-rail {
+        grid-column: 1 !important;
+        grid-row: 1 / 3 !important;
+        align-self: start !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 2.5mm !important;
+        border: 0 !important;
+        border-radius: 1mm !important;
+        background: #edf1eb !important;
+    }
+
+    #printCv .cv-main {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #printCv .cv-page-two .cv-running-head {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        margin: 0 0 2.5mm !important;
+        padding: 0 0 1mm !important;
+        border-bottom: .45pt solid #d4dbd5 !important;
+        font: 6pt/1.2 "Courier New", monospace !important;
+        color: #718075 !important;
+    }
+
+    #printCv .cv-page-two .cv-rail,
+    #printCv .cv-page-two .cv-main { grid-row: 2 !important; }
+
+    #printCv .cv-page-footer {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        margin: 2mm 0 0 !important;
+        padding: 1mm 0 0 !important;
+        border-top: .4pt solid #d9e0da !important;
+        font: 5.5pt/1.2 "Courier New", monospace !important;
+        color: #7a857d !important;
+    }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section { margin: 0 0 2.5mm !important; padding: 0 !important; }
+
+    #printCv .cv-section-label {
+        grid-template-columns: 5mm minmax(0, 1fr) !important;
+        gap: 1mm !important;
+        margin: 0 0 1mm !important;
+        padding: 0 0 .6mm !important;
+        border-bottom: .4pt solid #ccd5ce !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #printCv .cv-section-label > span,
+    #printCv .cv-date,
+    #printCv .cv-context,
+    #printCv .cv-kicker,
+    #printCv .cv-descriptor,
+    #printCv .cv-project small {
+        color: #718c79 !important;
+        font-family: "Courier New", monospace !important;
+        font-size: 6pt !important;
+        letter-spacing: .03em !important;
+    }
+
+    #printCv h1 { margin: 0 !important; font-size: 22pt !important; line-height: 1 !important; color: #202923 !important; }
+    #printCv h2 { margin: 0 !important; font-size: 7.5pt !important; line-height: 1.15 !important; letter-spacing: .08em !important; color: #29352e !important; }
+    #printCv h3 { margin: 0 0 .4mm !important; font-size: 7.8pt !important; line-height: 1.16 !important; color: #252e28 !important; }
+    #printCv p { margin: 0 0 .6mm !important; font-size: 7.4pt !important; line-height: 1.25 !important; color: #4b574f !important; }
+    #printCv .cv-roleline { margin: 1mm 0 .5mm !important; color: #526a59 !important; font-size: 8pt !important; }
+    #printCv .cv-descriptor { margin: 0 !important; }
+    #printCv .cv-lead { font-size: 7.8pt !important; line-height: 1.3 !important; }
+
+    #printCv .cv-capability { margin: 0 0 1.5mm !important; padding: 0 0 1mm 1.5mm !important; border-left: .45mm solid #9caf9f !important; }
+    #printCv .cv-capability h3,
+    #printCv .cv-method-grid h3 { margin-bottom: .4mm !important; color: #5e7b66 !important; font-size: 6pt !important; }
+    #printCv .cv-capability p,
+    #printCv .cv-method-grid p { font-size: 6.7pt !important; line-height: 1.2 !important; }
+
+    #printCv .cv-entry {
+        grid-template-columns: 16mm minmax(0, 1fr) !important;
+        gap: 2mm !important;
+        margin: 0 0 1.5mm !important;
+        padding: 0 0 1mm !important;
+        border-bottom: .35pt solid #dce2dd !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+    #printCv .cv-entry:last-child { margin-bottom: 0 !important; padding-bottom: 0 !important; border-bottom: 0 !important; }
+    #printCv .cv-entry-body { padding-left: 1.5mm !important; border-left: .45mm solid #aebdaf !important; }
+    #printCv .cv-entry-body::before { display: none !important; content: none !important; }
+    #printCv .cv-bullets { margin: .5mm 0 0 2.5mm !important; padding: 0 !important; }
+    #printCv .cv-bullets li { margin: 0 0 .3mm !important; font-size: 7.1pt !important; line-height: 1.2 !important; color: #4b574f !important; }
+
+    #printCv .cv-method-grid,
+    #printCv .cv-project-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1mm 2.5mm !important; }
+    #printCv .cv-method-grid article { padding: 0 0 .7mm 1.2mm !important; border-left: .4mm solid #c4d0c6 !important; break-inside: avoid !important; }
+    #printCv .cv-method-grid article:last-child { grid-column: auto !important; }
+    #printCv .cv-project { grid-template-columns: 4mm minmax(0, 1fr) !important; gap: 1mm !important; padding: 0 0 .8mm !important; border-bottom: .35pt solid #dce2dd !important; }
+    #printCv .cv-project h3 { font-size: 6.9pt !important; }
+    #printCv .cv-project p { font-size: 6.5pt !important; }
+    #printCv .cv-project small { font-size: 5pt !important; }
+
+    #printCv .cv-proof { margin: 0 0 1mm !important; padding: 0 0 .8mm !important; border-bottom: .35pt solid #d9e0da !important; }
+    #printCv .cv-proof strong { font-size: 10pt !important; color: #455d4c !important; }
+    #printCv .cv-proof span,
+    #printCv .cv-learning span,
+    #printCv .cv-learning strong,
+    #printCv .cv-languages li,
+    #printCv .cv-education > p { font-size: 6.2pt !important; }
+    #printCv .cv-learning { margin: 0 0 1mm !important; padding: 0 0 .7mm !important; border-bottom: .3pt solid #d9e0da !important; }
+    #printCv .cv-languages { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+    #printCv .cv-languages li { display: flex !important; justify-content: space-between !important; padding: .45mm 0 !important; border-bottom: .3pt solid #d9e0da !important; }
+    #printCv a { color: #526e5a !important; text-decoration: none !important; }
+}
+</style>
+<style>
+/* Clean, continuous CV print layout: no fixed-height pages or forced page breaks. */
+@media print {
+    @page { size: A4 portrait; margin: 10mm 12mm; }
+
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #27332d !important;
+        font: 8.5pt/1.32 Arial, Helvetica, sans-serif !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body > *:not(#printCv) { display: none !important; }
+
+    #printCv, #printCv * { box-sizing: border-box !important; }
+    #printCv {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #27332d !important;
+        font: inherit !important;
+    }
+
+    /* Flatten the old page wrappers so the CV flows naturally without blank pages. */
+    #printCv .cv-page,
+    #printCv .cv-rail,
+    #printCv .cv-main { display: contents !important; }
+
+    #printCv .cv-masthead {
+        order: 0 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 62mm !important;
+        gap: 2mm 7mm !important;
+        align-items: start !important;
+        margin: 0 0 3.5mm !important;
+        padding: 3mm 0 !important;
+        border-top: 1.2mm solid #718b78 !important;
+        border-bottom: .6pt solid #cbd4cd !important;
+        background: #fff !important;
+        break-inside: avoid !important;
+    }
+    #printCv .cv-kicker { grid-column: 1 !important; margin: 0 !important; color: #66816e !important; font: 700 6.5pt/1.2 Arial, sans-serif !important; letter-spacing: .12em !important; }
+    #printCv .cv-masthead h1 { grid-column: 1 !important; margin: 0 !important; color: #202923 !important; font: 800 25pt/1 Arial, sans-serif !important; letter-spacing: -.04em !important; }
+    #printCv .cv-roleline { grid-column: 1 !important; margin: 0 !important; color: #526a59 !important; font-size: 9.5pt !important; font-weight: 700 !important; letter-spacing: .06em !important; }
+    #printCv .cv-descriptor { grid-column: 1 !important; margin: 0 !important; color: #68736b !important; font: 6pt/1.45 Arial, sans-serif !important; letter-spacing: .07em !important; }
+    #printCv .cv-contact { grid-column: 2 !important; grid-row: 1 / span 4 !important; display: flex !important; flex-direction: column !important; gap: 1mm !important; padding-left: 3mm !important; border-left: .7mm solid #9caf9f !important; color: #49564d !important; font-size: 7pt !important; line-height: 1.35 !important; overflow-wrap: anywhere !important; }
+    #printCv a { color: #526e5a !important; text-decoration: none !important; }
+
+    #printCv .cv-profile { order: 1 !important; }
+    #printCv .cv-page-one > .cv-rail > .cv-rail-section:first-child {
+        order: 2 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1mm 6mm !important;
+    }
+    #printCv .cv-page-one > .cv-rail > .cv-rail-section:first-child > .cv-section-label { grid-column: 1 / -1 !important; }
+    #printCv .cv-experience { order: 3 !important; }
+    #printCv .cv-method { order: 4 !important; }
+    #printCv .cv-experience-continued { order: 5 !important; }
+    #printCv .cv-projects { order: 6 !important; }
+    #printCv .cv-writing { order: 7 !important; }
+    #printCv .cv-education { order: 8 !important; }
+    #printCv .cv-proof-section { order: 9 !important; }
+    #printCv .cv-development-section { order: 10 !important; }
+    #printCv .cv-languages-section { order: 11 !important; }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section { display: block !important; width: 100% !important; margin: 0 0 3mm !important; padding: 0 !important; break-inside: auto !important; }
+    #printCv .cv-section-label { display: grid !important; grid-template-columns: 7mm 1fr !important; gap: 1mm !important; margin: 0 0 1.4mm !important; padding: 0 0 .7mm !important; border-bottom: .5pt solid #cbd4cd !important; break-after: avoid !important; }
+    #printCv .cv-section-label > span { color: #718b78 !important; font: 6.5pt/1 Arial, sans-serif !important; }
+    #printCv h2 { margin: 0 !important; color: #29352e !important; font-size: 8.5pt !important; font-weight: 800 !important; letter-spacing: .1em !important; text-transform: uppercase !important; }
+    #printCv h3 { margin: 0 0 .5mm !important; color: #202923 !important; font-size: 8.7pt !important; font-weight: 700 !important; line-height: 1.2 !important; }
+    #printCv p { margin: 0 0 .7mm !important; color: #4b574f !important; font-size: 8pt !important; line-height: 1.3 !important; }
+    #printCv .cv-lead { color: #303c34 !important; font-size: 8.5pt !important; line-height: 1.38 !important; }
+
+    #printCv .cv-capability { margin: 0 !important; padding: 0 0 1mm 1.8mm !important; border-left: .5mm solid #9caf9f !important; break-inside: avoid !important; }
+    #printCv .cv-capability h3,
+    #printCv .cv-method-grid h3 { color: #66816e !important; font-size: 6.3pt !important; letter-spacing: .08em !important; }
+    #printCv .cv-capability p,
+    #printCv .cv-method-grid p { margin: 0 !important; font-size: 7.4pt !important; line-height: 1.25 !important; }
+
+    #printCv .cv-entry { display: grid !important; grid-template-columns: 20mm minmax(0, 1fr) !important; gap: 3mm !important; margin: 0 0 1.8mm !important; padding: 0 0 1.4mm !important; border-bottom: .4pt solid #dfe5e0 !important; break-inside: avoid !important; }
+    #printCv .cv-entry:last-child { margin-bottom: 0 !important; padding-bottom: 0 !important; border-bottom: 0 !important; }
+    #printCv .cv-date,
+    #printCv .cv-context { margin: .2mm 0 .6mm !important; color: #718176 !important; font: 6.2pt/1.35 Arial, sans-serif !important; letter-spacing: .04em !important; text-transform: uppercase !important; }
+    #printCv .cv-entry-body { min-width: 0 !important; padding-left: 2mm !important; border-left: .5mm solid #aebdaf !important; }
+    #printCv .cv-entry-body::before { display: none !important; content: none !important; }
+    #printCv .cv-bullets { margin: .5mm 0 0 3mm !important; padding: 0 !important; }
+    #printCv .cv-bullets li { margin: 0 0 .4mm !important; color: #4b574f !important; font-size: 7.7pt !important; line-height: 1.25 !important; }
+
+    #printCv .cv-method-grid,
+    #printCv .cv-project-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1.4mm 4mm !important; }
+    #printCv .cv-method-grid article { padding-left: 1.6mm !important; border-left: .45mm solid #c4d0c6 !important; break-inside: avoid !important; }
+    #printCv .cv-method-grid article:last-child { grid-column: 1 / -1 !important; }
+    #printCv .cv-project { display: grid !important; grid-template-columns: 5mm minmax(0, 1fr) !important; gap: 1mm !important; margin: 0 !important; padding: 0 0 1mm !important; border-bottom: .35pt solid #dfe5e0 !important; break-inside: avoid !important; }
+    #printCv .cv-project-no { color: #718b78 !important; font-size: 6.5pt !important; }
+    #printCv .cv-project h3 { font-size: 7.6pt !important; }
+    #printCv .cv-project p { font-size: 7.2pt !important; }
+    #printCv .cv-project small { color: #718176 !important; font-size: 5.6pt !important; }
+    #printCv .cv-proof { margin: 0 0 1.2mm !important; padding: 0 0 .8mm !important; border-bottom: .35pt solid #dfe5e0 !important; }
+    #printCv .cv-proof strong { color: #526a59 !important; font-size: 10pt !important; }
+    #printCv .cv-learning { margin: 0 0 1mm !important; padding: 0 0 .7mm !important; border-bottom: .3pt solid #dfe5e0 !important; }
+    #printCv .cv-learning strong,
+    #printCv .cv-learning span { display: block !important; font-size: 7pt !important; }
+    #printCv .cv-learning span,
+    #printCv .cv-languages span { color: #718176 !important; }
+    #printCv .cv-languages { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+    #printCv .cv-languages li { display: flex !important; justify-content: space-between !important; padding: .5mm 0 !important; border-bottom: .3pt solid #dfe5e0 !important; font-size: 7pt !important; }
+    #printCv .cv-page-footer,
+    #printCv .cv-running-head { display: none !important; }
+    #printCv .cv-page-one,
+    #printCv .cv-page-two { break-before: auto !important; break-after: auto !important; page-break-before: auto !important; page-break-after: auto !important; }
+}
+</style>
 </head>
 <body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
 
