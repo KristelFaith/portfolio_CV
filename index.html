@@ -5810,6 +5810,133 @@
     #printCv .cv-page-two .cv-languages-section { margin-bottom: 2mm !important; }
 }
 </style>
+<style>
+/* GitHub Pages print layout: compact, continuous CV with no forced page breaks. */
+@media print {
+    @page { size: A4 portrait; margin: 8mm 10mm; }
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #27332d !important;
+        font: 8.2pt/1.25 Arial, Helvetica, sans-serif !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    body > *:not(#printCv) { display: none !important; }
+
+    #printCv {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #27332d !important;
+        font: inherit !important;
+    }
+
+    #printCv .cv-page {
+        display: block !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        break-before: auto !important;
+        break-after: auto !important;
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #printCv .cv-page-one,
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        break-after: auto !important;
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #printCv .cv-masthead {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 58mm !important;
+        gap: 5mm !important;
+        align-items: center !important;
+        margin: 0 0 2mm !important;
+        padding: 1.5mm 0 2mm !important;
+        border-top: 1mm solid #718b78 !important;
+        border-bottom: .5pt solid #cbd4cd !important;
+        break-inside: avoid !important;
+    }
+
+    #printCv .cv-contact {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: .6mm !important;
+        min-width: 0 !important;
+        padding-left: 2.5mm !important;
+        border-left: .6mm solid #9caf9f !important;
+        font-size: 6.5pt !important;
+        line-height: 1.3 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #printCv .cv-rail,
+    #printCv .cv-main {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+    }
+
+    #printCv .cv-running-head,
+    #printCv .cv-page-footer { display: none !important; }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 1.8mm !important;
+        padding: 0 !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-section-label {
+        margin: 0 0 .7mm !important;
+        padding-bottom: .4mm !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #printCv p { margin-bottom: .35mm !important; line-height: 1.22 !important; }
+
+    #printCv .cv-entry {
+        margin: 0 0 1.1mm !important;
+        padding: 0 0 .7mm !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    #printCv .cv-bullets li {
+        margin-bottom: .2mm !important;
+        line-height: 1.2 !important;
+    }
+
+    #printCv .cv-method,
+    #printCv .cv-writing { display: none !important; }
+}
+</style>
 </head>
 <body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
     <div class="reading-progress" aria-hidden="true"><span id="readingProgressBar"></span></div>
