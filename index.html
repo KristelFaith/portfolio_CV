@@ -5937,6 +5937,100 @@
     #printCv .cv-writing { display: none !important; }
 }
 </style>
+<style>
+/* Keep the designed CV pages together as two-column print sheets; allow overflow onto page 3. */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 9mm 10mm;
+    }
+
+    #printCv .cv-page {
+        display: grid !important;
+        grid-template-columns: 43mm minmax(0, 1fr) !important;
+        grid-template-rows: auto auto auto !important;
+        align-content: start !important;
+        column-gap: 6mm !important;
+        row-gap: 0 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-page-one {
+        break-after: page !important;
+        page-break-after: always !important;
+    }
+
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        page-break-before: auto !important;
+    }
+
+    #printCv .cv-masthead,
+    #printCv .cv-page-two .cv-running-head {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+        min-width: 0 !important;
+    }
+
+    #printCv .cv-rail {
+        display: block !important;
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 2.5mm !important;
+        background: #edf1eb !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-main {
+        display: block !important;
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-page-two .cv-running-head {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin: 0 0 3mm !important;
+        padding: 0 0 1.2mm !important;
+        border-bottom: .5pt solid #cbd4cd !important;
+    }
+
+    #printCv .cv-page-footer {
+        display: flex !important;
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        justify-content: space-between !important;
+        margin: 2mm 0 0 !important;
+        padding: 1mm 0 0 !important;
+    }
+
+    /* These sections were hidden by an earlier print override. Include them in the CV. */
+    #printCv .cv-method,
+    #printCv .cv-writing {
+        display: block !important;
+    }
+}
+</style>
 </head>
 <body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
     <div class="reading-progress" aria-hidden="true"><span id="readingProgressBar"></span></div>
