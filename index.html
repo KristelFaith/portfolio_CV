@@ -5808,6 +5808,24 @@
     #printCv .cv-page-two .cv-proof-section,
     #printCv .cv-page-two .cv-development-section,
     #printCv .cv-page-two .cv-languages-section { margin-bottom: 2mm !important; }
+
+    /* Prevent page-one content from being distributed across artificial empty space. */
+    #printCv .cv-page {
+        grid-template-rows: auto auto auto !important;
+        align-content: start !important;
+        min-height: 0 !important;
+        height: auto !important;
+    }
+
+    #printCv .cv-page-one > .cv-main {
+        display: block !important;
+        justify-content: initial !important;
+    }
+
+    #printCv .cv-page-footer {
+        align-self: start !important;
+        margin-top: 1.5mm !important;
+    }
 }
 </style>
 <style>
@@ -6028,6 +6046,91 @@
     #printCv .cv-method,
     #printCv .cv-writing {
         display: block !important;
+    }
+}
+</style>
+<style>
+/* Final print correction: keep the masthead clear, widen the sidebar, and anchor folios. */
+@media print {
+    @page { size: A4 portrait; margin: 9mm 10mm; }
+
+    #printCv .cv-page {
+        grid-template-columns: 48mm minmax(0, 1fr) !important;
+        grid-template-rows: auto auto auto !important;
+        column-gap: 6mm !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    #printCv .cv-page-one {
+        break-after: page !important;
+        page-break-after: always !important;
+    }
+
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        page-break-before: auto !important;
+    }
+
+    #printCv .cv-masthead,
+    #printCv .cv-page-two .cv-running-head {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+    }
+
+    #printCv .cv-page-one > .cv-rail,
+    #printCv .cv-page-two > .cv-rail {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        align-self: stretch !important;
+    }
+
+    #printCv .cv-page-one > .cv-main,
+    #printCv .cv-page-two > .cv-main {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        min-width: 0 !important;
+    }
+
+    #printCv .cv-page-one > .cv-rail > .cv-rail-section:first-child {
+        display: block !important;
+    }
+
+    #printCv .cv-page-one > .cv-main {
+        display: block !important;
+    }
+
+    #printCv .cv-page-footer {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        align-self: end !important;
+        margin: 2mm 0 0 !important;
+        padding-top: 1.2mm !important;
+        border-top: .4pt solid #cbd4cd !important;
+    }
+
+    #printCv .cv-section,
+    #printCv .cv-rail-section {
+        margin-bottom: 2.5mm !important;
+    }
+
+    #printCv p { font-size: 8pt !important; line-height: 1.28 !important; }
+    #printCv .cv-bullets li { font-size: 7.7pt !important; line-height: 1.25 !important; }
+
+    /* Let page two fill the unused space after page one; omit running heads and folios. */
+    #printCv .cv-page-one,
+    #printCv .cv-page-two {
+        break-before: auto !important;
+        break-after: auto !important;
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+    }
+
+    #printCv .cv-running-head,
+    #printCv .cv-page-footer {
+        display: none !important;
     }
 }
 </style>
