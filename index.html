@@ -5383,8 +5383,146 @@
         }
     }
 </style>
+<style>
+    .reading-progress {
+        position: fixed;
+        inset: 0 auto auto 0;
+        z-index: 60;
+        width: 100%;
+        height: 3px;
+        background: rgba(148, 163, 184, .12);
+        pointer-events: none;
+    }
+
+    .reading-progress > span {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6);
+        box-shadow: 0 0 12px rgba(16, 185, 129, .45);
+        transform-origin: left;
+    }
+
+    nav a[aria-current="location"] {
+        color: #6ee7b7 !important;
+        background: rgba(16, 185, 129, .09);
+    }
+
+    .career-map-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .career-map-node {
+        position: relative;
+        min-width: 0;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .career-map-node:not(:last-child)::after {
+        position: absolute;
+        top: 50%;
+        right: -1rem;
+        z-index: 1;
+        color: #6ee7b7;
+        content: "→";
+        transform: translate(50%, -50%);
+    }
+
+    .career-map-node[aria-pressed="true"] {
+        border-color: rgba(110, 231, 183, .65) !important;
+        box-shadow: 0 0 0 1px rgba(110, 231, 183, .22), 0 10px 28px rgba(16, 185, 129, .1);
+    }
+
+    .career-map-output {
+        border-left: 2px solid #10b981;
+        background: linear-gradient(90deg, rgba(16, 185, 129, .08), transparent 80%);
+    }
+
+    .workflow-steps {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: .75rem;
+    }
+
+    .workflow-step {
+        position: relative;
+        min-width: 0;
+    }
+
+    .workflow-step:not(:last-child)::after {
+        position: absolute;
+        top: 1.3rem;
+        right: -.7rem;
+        color: #6ee7b7;
+        content: "→";
+        font-family: "JetBrains Mono", monospace;
+    }
+
+    .work-contribution-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .65rem;
+        margin-bottom: .5rem;
+    }
+
+    .work-contribution-grid > div {
+        min-width: 0;
+        padding: .75rem;
+        border: 1px solid rgba(148, 163, 184, .16);
+        border-radius: .75rem;
+        background: rgba(15, 23, 42, .35);
+    }
+
+    .work-contribution-grid strong {
+        display: block;
+        margin-bottom: .35rem;
+        color: #6ee7b7;
+        font-family: "JetBrains Mono", monospace;
+        font-size: .62rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    .work-contribution-grid span {
+        display: block;
+        color: #cbd5e1;
+        font-size: .72rem;
+        line-height: 1.45;
+    }
+
+    @media (max-width: 767px) {
+        .career-map-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .career-map-node:not(:last-child)::after { display: none; }
+        .workflow-steps { grid-template-columns: 1fr; gap: .55rem; }
+        .workflow-step:not(:last-child)::after {
+            top: auto;
+            right: 1rem;
+            bottom: -.55rem;
+            content: "↓";
+        }
+        .work-contribution-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 420px) {
+        .career-map-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .reading-progress > span { transition: none !important; }
+    }
+
+    @media print {
+        .reading-progress,
+        .career-map,
+        .workflow-showcase { display: none !important; }
+    }
+</style>
 </head>
 <body class="bg-dark-900 text-slate-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500 selection:text-white">
+    <div class="reading-progress" aria-hidden="true"><span id="readingProgressBar"></span></div>
 
     <!-- Glowing Background Atmosphere -->
     <div class="glow-orb-1 animate-pulse-slow"></div>
@@ -5408,6 +5546,7 @@
                 <!-- Desktop Nav Links -->
                 <nav class="hidden md:flex items-center gap-1 lg:gap-2">
                     <a href="#about" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="About" data-ua="Про мене">About</a>
+                    <a href="#career-map" class="px-2 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Approach" data-ua="Підхід">Approach</a>
                     <a href="#experience" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Experience" data-ua="Досвід">Experience</a>
                     <a href="#skills" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Skills & Tech" data-ua="Навички">Skills & Tech</a>
                     <a href="#work" class="px-3 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all" data-en="Selected Work" data-ua="Вибрані роботи">Selected Work</a>
@@ -5447,6 +5586,7 @@
         <!-- Mobile Drawer Menu -->
         <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-dark-800/95 px-4 pt-3 pb-6 space-y-2">
             <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="About & Summary" data-ua="Про мене">About & Summary</a>
+            <a href="#career-map" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Approach" data-ua="Підхід">Approach</a>
             <a href="#experience" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Experience" data-ua="Досвід роботи">Experience</a>
             <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Skills & Tech" data-ua="Навички">Skills & Tech</a>
             <a href="#work" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Selected Work" data-ua="Вибрані роботи">Selected Work</a>
@@ -5711,6 +5851,79 @@
             </div>
         </section>
 
+        <section id="career-map" class="career-map space-y-6" aria-labelledby="careerMapTitle">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><i class="fa-solid fa-share-nodes text-xl" aria-hidden="true"></i></div>
+                    <div>
+                        <h2 id="careerMapTitle" class="text-2xl font-extrabold text-white" data-en="Where my experience connects" data-ua="Як поєднується мій досвід">Where my experience connects</h2>
+                        <p class="text-xs text-slate-400" data-en="Select a field to see how it informs my current AI and digital systems work." data-ua="Оберіть напрям, щоб побачити, як він впливає на мою роботу з AI та цифровими системами.">Select a field to see how it informs my current AI and digital systems work.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="career-map-grid">
+                <button type="button" class="career-map-node glass-card-interactive rounded-2xl p-4" data-career-node="support" aria-pressed="true">
+                    <span class="field-codex-index">01 · SIGNAL</span>
+                    <span class="mt-2 block font-bold text-white" data-en="Customer support" data-ua="Підтримка клієнтів">Customer support</span>
+                    <span class="mt-1 block text-xs leading-relaxed text-slate-400" data-en="User needs, recurring friction, service quality" data-ua="Потреби користувачів, повторювані проблеми, якість сервісу">User needs, recurring friction, service quality</span>
+                </button>
+                <button type="button" class="career-map-node glass-card-interactive rounded-2xl p-4" data-career-node="analysis" aria-pressed="false">
+                    <span class="field-codex-index">02 · STRUCTURE</span>
+                    <span class="mt-2 block font-bold text-white" data-en="Data analysis" data-ua="Аналітика даних">Data analysis</span>
+                    <span class="mt-1 block text-xs leading-relaxed text-slate-400" data-en="Reliable records, research, clear decisions" data-ua="Надійні дані, дослідження, чіткі рішення">Reliable records, research, clear decisions</span>
+                </button>
+                <button type="button" class="career-map-node glass-card-interactive rounded-2xl p-4" data-career-node="development" aria-pressed="false">
+                    <span class="field-codex-index">03 · SYSTEMS</span>
+                    <span class="mt-2 block font-bold text-white" data-en="AI & development" data-ua="AI та розробка">AI &amp; development</span>
+                    <span class="mt-1 block text-xs leading-relaxed text-slate-400" data-en="Prompts, code, APIs, automation" data-ua="Промпти, код, API, автоматизація">Prompts, code, APIs, automation</span>
+                </button>
+                <button type="button" class="career-map-node glass-card-interactive rounded-2xl p-4" data-career-node="writing" aria-pressed="false">
+                    <span class="field-codex-index">04 · EXPERIENCE</span>
+                    <span class="mt-2 block font-bold text-white" data-en="Writing & narrative" data-ua="Письмо й наратив">Writing &amp; narrative</span>
+                    <span class="mt-1 block text-xs leading-relaxed text-slate-400" data-en="Clarity, tone, structure, audience" data-ua="Ясність, тон, структура, аудиторія">Clarity, tone, structure, audience</span>
+                </button>
+            </div>
+            <div class="career-map-output rounded-xl px-4 py-3" aria-live="polite">
+                <p class="text-[10px] font-mono uppercase tracking-widest text-emerald-400" data-en="THE CONNECTION" data-ua="ЗВ’ЯЗОК">THE CONNECTION</p>
+                <p id="careerMapInsight" class="mt-1 text-sm leading-relaxed text-slate-300" data-career-en="Support experience helps me spot real user needs and recurring friction—the starting point for useful automation." data-career-ua="Досвід підтримки допомагає помічати реальні потреби користувачів і повторювані проблеми — саме з цього починається корисна автоматизація.">Support experience helps me spot real user needs and recurring friction—the starting point for useful automation.</p>
+            </div>
+        </section>
+
+        <section id="workflow-demo" class="workflow-showcase space-y-6" aria-labelledby="workflowTitle">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"><i class="fa-solid fa-diagram-project text-xl" aria-hidden="true"></i></div>
+                    <div>
+                        <h2 id="workflowTitle" class="text-2xl font-extrabold text-white" data-en="A practical AI workflow" data-ua="Практичний AI-workflow">A practical AI workflow</h2>
+                        <p class="text-xs text-slate-400" data-en="An anonymized example of how a request becomes a useful, reviewable action." data-ua="Анонімізований приклад того, як запит перетворюється на корисну дію, результат якої можна перевірити.">An anonymized example of how a request becomes a useful, reviewable action.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="workflow-steps">
+                <article class="workflow-step glass-card rounded-xl p-4">
+                    <span class="field-codex-index">01</span><h3 class="mt-2 text-sm font-bold text-white" data-en="Request" data-ua="Запит">Request</h3>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-400" data-en="A message or task arrives with a clear goal and relevant context." data-ua="Надходить повідомлення або завдання з визначеною метою та потрібним контекстом.">A message or task arrives with a clear goal and relevant context.</p>
+                </article>
+                <article class="workflow-step glass-card rounded-xl p-4">
+                    <span class="field-codex-index">02</span><h3 class="mt-2 text-sm font-bold text-white" data-en="Prepare & route" data-ua="Підготовка й маршрутизація">Prepare &amp; route</h3>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-400" data-en="Validate inputs, identify intent, and send the right data to the right step." data-ua="Перевіряються вхідні дані, визначається намір і потрібна інформація передається на відповідний етап.">Validate inputs, identify intent, and send the right data to the right step.</p>
+                </article>
+                <article class="workflow-step glass-card rounded-xl p-4">
+                    <span class="field-codex-index">03</span><h3 class="mt-2 text-sm font-bold text-white" data-en="AI processing" data-ua="Обробка AI">AI processing</h3>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-400" data-en="A constrained prompt produces a structured draft or recommendation." data-ua="Промпт із чіткими обмеженнями формує структурований чернетковий результат або рекомендацію.">A constrained prompt produces a structured draft or recommendation.</p>
+                </article>
+                <article class="workflow-step glass-card rounded-xl p-4">
+                    <span class="field-codex-index">04</span><h3 class="mt-2 text-sm font-bold text-white" data-en="Review & validate" data-ua="Перевірка й валідація">Review &amp; validate</h3>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-400" data-en="Check format, evidence, and quality; send exceptions for human review." data-ua="Перевіряються формат, обґрунтованість і якість; нестандартні випадки передаються людині.">Check format, evidence, and quality; send exceptions for human review.</p>
+                </article>
+                <article class="workflow-step glass-card rounded-xl p-4">
+                    <span class="field-codex-index">05</span><h3 class="mt-2 text-sm font-bold text-white" data-en="Action & learn" data-ua="Дія й покращення">Action &amp; learn</h3>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-400" data-en="Deliver or route the result, then capture feedback for the next iteration." data-ua="Результат надсилається або спрямовується далі, а зворотний зв’язок використовується для наступної ітерації.">Deliver or route the result, then capture feedback for the next iteration.</p>
+                </article>
+            </div>
+            <p class="text-[11px] text-slate-500" data-en="Illustrative workflow only; client systems, data, and confidential implementation details are not shown." data-ua="Це ілюстративний workflow: системи, дані клієнтів і конфіденційні деталі реалізації не показані.">Illustrative workflow only; client systems, data, and confidential implementation details are not shown.</p>
+        </section>
+
         <section id="experience" class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
                 <div class="flex items-center gap-3">
@@ -5898,16 +6111,17 @@
                         </div>
                     </div>
 
-                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Builds a sustained writing and publishing practice across poetry, short fiction, essays, and narrative design, with work reaching readers through both independent platforms and print." data-ua="Розвиває сталу письменницьку й видавничу практику: поезію, коротку прозу, есеї та наративний дизайн — для читачів цифрових платформ і друкованих видань.">
-                        Builds a sustained writing and publishing practice across poetry, short fiction, essays, and narrative design, with work reaching readers through both independent platforms and print.
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Turns a long-running writing practice into published work across digital and print channels, from literary pieces to research-led essays and narrative development." data-ua="Перетворює багаторічну письменницьку практику на опубліковані роботи для цифрових і друкованих платформ — від літературних текстів до дослідницьких есеїв і розробки наративів.">
+                        Turns a long-running writing practice into published work across digital and print channels, from literary pieces to research-led essays and narrative development.
                     </p>
 
                     <div class="space-y-2 mb-4">
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Selected Work & Reach:" data-ua="Вибрані роботи та аудиторія:">Selected Work &amp; Reach:</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Selected work, reach &amp; editorial practice:" data-ua="Вибрані роботи, аудиторія та редакторська практика:">Selected work, reach &amp; editorial practice:</div>
                         <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
-                            <li data-en="Published 150+ poems and 300+ short stories, reaching 1,000+ readers across digital and print platforms; selected work appeared in Odesa’s Porto-Franco newspaper." data-ua="Опублікувала понад 150 віршів і 300 коротких оповідань, які прочитали понад 1 000 людей на цифрових і друкованих платформах; окремі твори вийшли в одеській газеті «Порто-Франко».">Published 150+ poems and 300+ short stories, reaching 1,000+ readers across digital and print platforms; selected work appeared in Odesa’s Porto-Franco newspaper.</li>
-                            <li data-en="Founded Kristel inside out in 2025 and published 10+ long-form, research-led essays on psychotherapy, fiction, and character worldbuilding." data-ua="У 2025 році заснувала Kristel inside out і опублікувала понад 10 великих дослідницьких есеїв про психотерапію, художню літературу та створення персонажів.">Founded Kristel inside out in 2025 and published 10+ long-form, research-led essays on psychotherapy, fiction, and character worldbuilding.</li>
-                            <li data-en="Develops transmedia lore and psychological fiction; a memoir is currently in progress." data-ua="Розробляє трансмедійний лор і психологічну прозу; наразі працює над мемуарами.">Develops transmedia lore and psychological fiction; a memoir is currently in progress.</li>
+                            <li data-en="OUTPUT — Published 150+ poems and 300+ short stories; selected work appeared in Odesa’s Porto-Franco newspaper." data-ua="ДОРОБОК — Опублікувала понад 150 віршів і 300 коротких оповідань; окремі твори вийшли в одеській газеті «Порто-Франко».">OUTPUT — Published 150+ poems and 300+ short stories; selected work appeared in Odesa’s Porto-Franco newspaper.</li>
+                            <li data-en="REACH — Work reached 1,000+ readers across digital and print platforms." data-ua="АУДИТОРІЯ — Твори прочитали понад 1 000 людей на цифрових і друкованих платформах.">REACH — Work reached 1,000+ readers across digital and print platforms.</li>
+                            <li data-en="EDITORIAL PLATFORM — Founded Kristel inside out in 2025; published 10+ research-led essays on psychotherapy, fiction, and character worldbuilding." data-ua="АВТОРСЬКА ПЛАТФОРМА — У 2025 році заснувала Kristel inside out і опублікувала понад 10 дослідницьких есеїв про психотерапію, художню літературу та створення персонажів.">EDITORIAL PLATFORM — Founded Kristel inside out in 2025; published 10+ research-led essays on psychotherapy, fiction, and character worldbuilding.</li>
+                            <li data-en="IN PROGRESS — Develops transmedia lore and psychological fiction; memoir in progress." data-ua="У РОБОТІ — Розробляє трансмедійний лор і психологічну прозу; працює над мемуарами.">IN PROGRESS — Develops transmedia lore and psychological fiction; memoir in progress.</li>
                         </ul>
                     </div>
 
@@ -5934,16 +6148,16 @@
                         </div>
                     </div>
 
-                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Creates audience-focused content that connects brand voice, editorial craft, and conversion goals across travel, lifestyle, and digital projects." data-ua="Створює контент для аудиторій, поєднуючи голос бренду, редакторську майстерність і цілі конверсії у туристичних, lifestyle- та цифрових проєктах.">
-                        Creates audience-focused content that connects brand voice, editorial craft, and conversion goals across travel, lifestyle, and digital projects.
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Bridges editorial craft and commercial goals, adapting each message to its audience, platform, and brand voice." data-ua="Поєднує редакторську майстерність із бізнес-цілями, адаптуючи кожне повідомлення до аудиторії, платформи й голосу бренду.">
+                        Bridges editorial craft and commercial goals, adapting each message to its audience, platform, and brand voice.
                     </p>
 
                     <div class="space-y-2 mb-4">
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Selected Results & Scope:" data-ua="Вибрані результати та обсяг роботи:">Selected Results &amp; Scope:</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Selected outcomes &amp; delivery:" data-ua="Вибрані результати та виконані роботи:">Selected outcomes &amp; delivery:</div>
                         <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
-                            <li data-en="Produced high-converting landing pages, promotional copy, and sales materials for travel agencies and premium retreats, helping secure full bookings for luxury Maldives retreats." data-ua="Створювала посадкові сторінки, рекламні тексти й матеріали для продажів туристичних агенцій і преміальних відпочинкових проєктів, допомагаючи заповнювати місця на відпочинок класу люкс на Мальдівах.">Produced high-converting landing pages, promotional copy, and sales materials for travel agencies and premium retreats, helping secure full bookings for luxury Maldives retreats.</li>
-                            <li data-en="Managed and grew social media pages; translated and adapted marketing and editorial content across languages while preserving brand voice and audience fit." data-ua="Розвивала сторінки в соцмережах, перекладала й адаптувала маркетингові та редакторські матеріали різними мовами, зберігаючи голос бренду й відповідність аудиторії.">Managed and grew social media pages; translated and adapted marketing and editorial content across languages while preserving brand voice and audience fit.</li>
-                            <li data-en="Across 8+ years of writing and editing, delivered 50+ SEO articles, 300+ social media publications, plus academic and technical documents." data-ua="За понад 8 років письма й редагування підготувала понад 50 SEO-статей, 300 дописів для соцмереж, а також академічні й технічні документи.">Across 8+ years of writing and editing, delivered 50+ SEO articles, 300+ social media publications, plus academic and technical documents.</li>
+                            <li data-en="COMMERCIAL IMPACT — Created landing pages, promotional copy, and sales materials for travel agencies and premium retreats; the work helped fill luxury Maldives retreats." data-ua="КОМЕРЦІЙНИЙ РЕЗУЛЬТАТ — Створювала landing pages, рекламні тексти й матеріали для продажів туристичних агенцій і преміальних ретритів; робота допомогла заповнити місця на ретритах класу люкс на Мальдівах.">COMMERCIAL IMPACT — Created landing pages, promotional copy, and sales materials for travel agencies and premium retreats; the work helped fill luxury Maldives retreats.</li>
+                            <li data-en="AUDIENCE &amp; CHANNELS — Managed and grew social media pages; adapted multilingual marketing and editorial content while preserving brand voice and audience fit." data-ua="АУДИТОРІЯ ТА КАНАЛИ — Розвивала сторінки в соцмережах; адаптувала маркетингові й редакторські матеріали різними мовами, зберігаючи голос бренду та відповідність аудиторії.">AUDIENCE &amp; CHANNELS — Managed and grew social media pages; adapted multilingual marketing and editorial content while preserving brand voice and audience fit.</li>
+                            <li data-en="DELIVERY VOLUME — Across 8+ years, produced 50+ SEO articles, 300+ social media posts, and academic and technical documents." data-ua="ОБСЯГ РОБОТИ — За понад 8 років підготувала понад 50 SEO-статей, 300 дописів для соцмереж, а також академічні й технічні документи.">DELIVERY VOLUME — Across 8+ years, produced 50+ SEO articles, 300+ social media posts, and academic and technical documents.</li>
                         </ul>
                     </div>
 
@@ -5969,16 +6183,16 @@
                         </div>
                     </div>
 
-                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Moved between hotel housekeeping and food-service operations, maintaining pace, quality, and reliable teamwork in a cross-cultural environment." data-ua="Працювала у готельному господарстві та сфері харчового сервісу, підтримуючи темп, якість і злагоджену роботу в багатокультурному середовищі.">
-                        Moved between hotel housekeeping and food-service operations, maintaining pace, quality, and reliable teamwork in a cross-cultural environment.
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4" data-en="Kept guest-room turnover and kitchen service moving across two hospitality settings, adapting quickly as pace, tasks, and team needs changed." data-ua="Підтримувала швидку підготовку номерів і роботу кухні у двох закладах гостинності, адаптуючись до змін темпу, завдань і потреб команди.">
+                        Kept guest-room turnover and kitchen service moving across two hospitality settings, adapting quickly as pace, tasks, and team needs changed.
                     </p>
 
                     <div class="space-y-2 mb-4">
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Key Responsibilities & Results:" data-ua="Ключові обов’язки та результати:">Key Responsibilities &amp; Results:</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-en="Operating context, contribution &amp; proof:" data-ua="Робочий контекст, внесок і факти:">Operating context, contribution &amp; proof:</div>
                         <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1.5">
-                            <li data-en="Prepared 12–15 hotel rooms per shift, averaging about 20 minutes per room while maintaining turnover and quality standards." data-ua="Готувала 12–15 готельних номерів за зміну — приблизно по 20 хвилин на номер — дотримуючись стандартів якості та швидкої підготовки.">Prepared 12–15 hotel rooms per shift, averaging about 20 minutes per room while maintaining turnover and quality standards.</li>
-                            <li data-en="Later supported kitchen and service operations at Atlas Apart Hotel and Andreas Pizzeria, assisting with food preparation, bakery and pizza production, supplies, and inventory." data-ua="Згодом підтримувала кухонні й сервісні процеси в Atlas Apart Hotel та Andreas Pizzeria: допомагала з підготовкою їжі, випічкою, приготуванням піци, постачанням та обліком запасів.">Later supported kitchen and service operations at Atlas Apart Hotel and Andreas Pizzeria, assisting with food preparation, bakery and pizza production, supplies, and inventory.</li>
-                            <li data-en="Adapted quickly to a cross-cultural team and changing tasks despite initially not speaking the local language." data-ua="Швидко адаптувалася до багатокультурної команди й різних завдань, хоча спочатку не володіла місцевою мовою.">Adapted quickly to a cross-cultural team and changing tasks despite initially not speaking the local language.</li>
+                            <li data-en="HOUSEKEEPING — Prepared 12–15 guest rooms per shift at about 20 minutes per room, meeting turnover and quality standards." data-ua="ГОТЕЛЬНЕ ГОСПОДАРСТВО — Готувала 12–15 номерів за зміну, витрачаючи близько 20 хвилин на номер і дотримуючись стандартів якості та швидкої підготовки.">HOUSEKEEPING — Prepared 12–15 guest rooms per shift at about 20 minutes per room, meeting turnover and quality standards.</li>
+                            <li data-en="KITCHEN &amp; SERVICE — Supported food preparation, bakery and pizza production, supplies, and inventory at Atlas Apart Hotel and Andreas Pizzeria." data-ua="КУХНЯ ТА СЕРВІС — Допомагала з підготовкою їжі, випічкою, приготуванням піци, постачанням і запасами в Atlas Apart Hotel та Andreas Pizzeria.">KITCHEN &amp; SERVICE — Supported food preparation, bakery and pizza production, supplies, and inventory at Atlas Apart Hotel and Andreas Pizzeria.</li>
+                            <li data-en="ADAPTABILITY — Joined a cross-cultural team and handled changing tasks despite initially not speaking the local language." data-ua="АДАПТАЦІЯ — Працювала в багатокультурній команді й виконувала різні завдання, хоча спочатку не володіла місцевою мовою.">ADAPTABILITY — Joined a cross-cultural team and handled changing tasks despite initially not speaking the local language.</li>
                         </ul>
                     </div>
 
@@ -6509,12 +6723,26 @@
                     <div>
                         <p class="text-[10px] font-mono uppercase tracking-widest text-amber-400">FEATURED PROJECT / NDA-SAFE</p>
                         <h3 class="mt-1 text-lg font-bold text-white" data-en="Multilingual Content Automation" data-ua="Багатомовна автоматизація контенту">Multilingual Content Automation</h3>
-                        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300" data-en="Co-developed a TikTok-focused content pipeline with supporting YouTube content using N8N and VS Code. The work included stories, video concepts, quizzes, bots, AI-generated media, and Ukrainian, English, and russian adaptations." data-ua="Брала участь у створенні контентного pipeline для TikTok і YouTube за допомогою N8N та VS Code. Робота охоплювала історії, концепції відео, квізи, ботів, AI-медіа та адаптацію українською, англійською та russian.">Co-developed a TikTok-focused content pipeline with supporting YouTube content using N8N and VS Code. The work included stories, video concepts, quizzes, bots, AI-generated media, and Ukrainian, English, and russian adaptations.</p>
+                        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300" data-en="Co-developed a TikTok-focused content pipeline with supporting YouTube content using N8N and VS Code. The work included stories, video concepts, quizzes, bots, AI-generated media, and Ukrainian, English, and Russian adaptations." data-ua="Брала участь у створенні контентного pipeline для TikTok і YouTube за допомогою N8N та VS Code. Робота охоплювала історії, концепції відео, квізи, ботів, AI-медіа та адаптацію українською, англійською й російською мовами.">Co-developed a TikTok-focused content pipeline with supporting YouTube content using N8N and VS Code. The work included stories, video concepts, quizzes, bots, AI-generated media, and Ukrainian, English, and Russian adaptations.</p>
+                        <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
+                                <p class="text-[10px] font-mono uppercase tracking-wider text-amber-400" data-en="My role" data-ua="Мій внесок">My role</p>
+                                <p class="mt-1 text-xs leading-relaxed text-slate-300" data-en="Story and script development, research, prompt-based content, language adaptation, and workflow design." data-ua="Розробка історій і сценаріїв, дослідження, prompt-based контент, мовна адаптація й проєктування workflow.">Story and script development, research, prompt-based content, language adaptation, and workflow design.</p>
+                            </div>
+                            <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
+                                <p class="text-[10px] font-mono uppercase tracking-wider text-amber-400" data-en="Team contribution" data-ua="Командна взаємодія">Team contribution</p>
+                                <p class="mt-1 text-xs leading-relaxed text-slate-300" data-en="Collaborative pipeline; this case describes my contribution without claiming ownership of the whole system." data-ua="Командний pipeline; кейс описує мій внесок, не приписуючи мені всю систему.">Collaborative pipeline; this case describes my contribution without claiming ownership of the whole system.</p>
+                            </div>
+                            <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
+                                <p class="text-[10px] font-mono uppercase tracking-wider text-amber-400" data-en="Tools" data-ua="Інструменти">Tools</p>
+                                <p class="mt-1 text-xs leading-relaxed text-slate-300">N8N · VS Code · AI media tools · TikTok / YouTube</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <a href="#work" class="no-print shrink-0 inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500/15 border border-amber-500/40 px-4 py-2.5 text-xs font-bold text-amber-300 hover:bg-amber-500/25 hover:text-amber-200 transition-all" data-en="View case study" data-ua="Переглянути кейс">
-                    <span>View case study</span>
-                    <i class="fa-solid fa-arrow-down"></i>
+                <a href="#work" onclick="openWorkModal('content-pipeline'); return false;" class="no-print shrink-0 inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500/15 border border-amber-500/40 px-4 py-2.5 text-xs font-bold text-amber-300 hover:bg-amber-500/25 hover:text-amber-200 transition-all">
+                    <span data-en="View case study" data-ua="Переглянути кейс">View case study</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                 </a>
             </div>
         </section>
@@ -7224,6 +7452,13 @@
             document.querySelectorAll('.localized-rich').forEach(el => {
                 el.innerHTML = currentLang === 'UA' ? el.getAttribute('data-ua-html') : el.getAttribute('data-en-html');
             });
+            formatExperienceLeadIns();
+            const activeCareerNode = document.querySelector('[data-career-node][aria-pressed="true"]');
+            const activeCareerInsight = activeCareerNode && careerMapInsights[activeCareerNode.dataset.careerNode];
+            const careerMapOutput = document.getElementById('careerMapInsight');
+            if (activeCareerInsight && careerMapOutput) {
+                careerMapOutput.textContent = currentLang === 'UA' ? activeCareerInsight.ua : activeCareerInsight.en;
+            }
 
             const languageMessages = {
                 EN: 'Language switched to English',
@@ -7281,6 +7516,36 @@
                 toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
             }, 3000);
         }
+
+        const careerMapInsights = {
+            support: {
+                en: 'Support experience helps me spot real user needs and recurring friction—the starting point for useful automation.',
+                ua: 'Досвід підтримки допомагає помічати реальні потреби користувачів і повторювані проблеми — саме з цього починається корисна автоматизація.'
+            },
+            analysis: {
+                en: 'Data analysis taught me to make messy information reliable and searchable, so AI workflows can work from structured inputs rather than guesswork.',
+                ua: 'Аналітика навчила перетворювати неструктуровану інформацію на надійні й доступні для пошуку дані, щоб AI-workflow спирався на чіткі входи, а не здогадки.'
+            },
+            development: {
+                en: 'Development turns the idea into a working system: prompts, APIs, validation, and automation connected into a maintainable flow.',
+                ua: 'Розробка перетворює задум на робочу систему: промпти, API, валідація й автоматизація поєднуються у підтримуваний процес.'
+            },
+            writing: {
+                en: 'Writing brings clarity to instructions, tone, and user-facing outputs—so the system is not only functional, but understandable.',
+                ua: 'Письмо додає ясність інструкціям, тону й відповідям для користувачів — система стає не лише функціональною, а й зрозумілою.'
+            }
+        };
+
+        document.querySelectorAll('[data-career-node]').forEach(node => {
+            node.addEventListener('click', () => {
+                document.querySelectorAll('[data-career-node]').forEach(item => {
+                    item.setAttribute('aria-pressed', String(item === node));
+                });
+                const insight = careerMapInsights[node.dataset.careerNode];
+                const output = document.getElementById('careerMapInsight');
+                if (insight && output) output.textContent = currentLang === 'UA' ? insight.ua : insight.en;
+            });
+        });
 
         const workDetails = {
             'ai-workflows': {
@@ -7411,6 +7676,33 @@
             }
         };
 
+        const workContributions = {
+            'ai-workflows': {
+                en: ['Prompt and workflow architecture, structured outputs, testing, guardrails, and QA.', 'Aligned workflow behavior with product and operations needs; integration details kept private.', 'N8N · LLM APIs · JSON schemas · Webhooks'],
+                ua: ['Архітектура промптів і workflow, структуровані відповіді, тестування, guardrails і QA.', 'Узгодження логіки workflow з потребами продукту й операцій; деталі інтеграції не розкриваються.', 'N8N · LLM API · JSON-схеми · Webhooks']
+            },
+            'web-ux': {
+                en: ['UX structure, wireframes, interface design, responsive implementation, and testing.', 'Requirements and content shaped with project stakeholders; private project details are omitted.', 'Figma · HTML · CSS · JavaScript · Tilda / Webflow'],
+                ua: ['UX-структура, wireframes, дизайн інтерфейсу, адаптивна реалізація й тестування.', 'Вимоги й контент формувалися разом із зацікавленими сторонами; приватні деталі проєктів не розкриваються.', 'Figma · HTML · CSS · JavaScript · Tilda / Webflow']
+            },
+            'support-operations': {
+                en: ['Live-chat support, case ownership, response resources, and recurring-issue documentation.', 'Shared actionable patterns and customer feedback with product and QA teams.', 'CRM · Live chat · Knowledge base · AI-assisted replies'],
+                ua: ['Підтримка в live chat, ведення звернень, матеріали відповідей і документування повторюваних проблем.', 'Передавання продуктовим і QA-командам корисних закономірностей та відгуків клієнтів.', 'CRM · Live chat · Knowledge base · AI-assisted відповіді']
+            },
+            'narrative-design': {
+                en: ['Writing, editing, character work, worldbuilding, and independent publishing.', 'Independent author practice; no team contribution is implied for personally authored work.', 'Research · Editing · Digital publishing · Narrative design'],
+                ua: ['Письмо, редагування, робота з персонажами, worldbuilding і незалежна публікація.', 'Самостійна авторська практика; командний внесок не приписується особистим роботам.', 'Дослідження · Редагування · Digital publishing · Наративний дизайн']
+            },
+            'content-pipeline': {
+                en: ['Story and script development, research, prompt-based content, language adaptation, and workflow design.', 'Collaborative pipeline; this case describes my contribution without claiming ownership of the whole system.', 'N8N · VS Code · AI media tools · TikTok / YouTube'],
+                ua: ['Розробка історій і сценаріїв, дослідження, prompt-based контент, мовна адаптація й проєктування workflow.', 'Командний pipeline; кейс описує мій внесок, не приписуючи мені всю систему.', 'N8N · VS Code · AI media tools · TikTok / YouTube']
+            },
+            'bots-quizzes': {
+                en: ['Prompt and story writing, quiz and dialogue logic, response testing, and content adaptation.', 'Contributed within a shared multilingual pipeline; private implementation details remain undisclosed.', 'Speech-to-text · Translation · Quizzes / bots · Prompt testing'],
+                ua: ['Написання промптів та історій, логіка квізів і діалогів, тестування відповідей і адаптація контенту.', 'Внесок у спільний багатомовний pipeline; приватні деталі реалізації не розкриваються.', 'Speech-to-text · Переклад · Квізи / боти · Тестування промптів']
+            }
+        };
+
         function openWorkModal(workId) {
             const detail = workDetails[workId];
             if (!detail) return;
@@ -7418,7 +7710,15 @@
             const paragraphs = currentLang === 'UA' ? detail.bodyUa : detail.body;
             document.getElementById('workModalEyebrow').textContent = detail.eyebrow[languageIndex];
             document.getElementById('workModalTitle').textContent = detail.title[languageIndex];
-            document.getElementById('workModalBody').innerHTML = paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
+            const contribution = workContributions[workId];
+            const contributionLabels = currentLang === 'UA'
+                ? ['Мій внесок', 'Командна взаємодія', 'Інструменти']
+                : ['My role', 'Team contribution', 'Tools'];
+            const contributionItems = contribution?.[currentLang === 'UA' ? 'ua' : 'en'] || [];
+            const contributionMarkup = contributionItems.length
+                ? `<div class="work-contribution-grid">${contributionItems.map((item, index) => `<div><strong>${contributionLabels[index] || ''}</strong><span>${item}</span></div>`).join('')}</div>`
+                : '';
+            document.getElementById('workModalBody').innerHTML = contributionMarkup + paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
             document.getElementById('workModalTags').innerHTML = detail.tags.map(tag => `<span class="glass-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-amber-300">${tag}</span>`).join('');
             document.getElementById('workModal').classList.remove('hidden');
             document.body.classList.add('overflow-hidden');
@@ -7540,6 +7840,68 @@
                 document.body.classList.remove('overflow-hidden');
             });
         });
+
+        // Give each labeled experience bullet a clear, scannable lead-in.
+        function formatExperienceLeadIns() {
+            document.querySelectorAll('.exp-card .space-y-2.mb-4 li').forEach(item => {
+                const text = item.textContent.trim();
+                const match = text.match(/^(.{1,70}?)\s+([—–-])\s+(.+)$/);
+                if (!match) return;
+
+                const labelText = `${match[1]} ${match[2]} `;
+                const firstTextNode = Array.from(item.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+                if (!firstTextNode || !firstTextNode.textContent.startsWith(labelText)) return;
+
+                const label = document.createElement('strong');
+                label.className = 'text-emerald-300 font-bold';
+                firstTextNode.splitText(labelText.length);
+                label.textContent = firstTextNode.textContent;
+                firstTextNode.replaceWith(label);
+            });
+        }
+
+        formatExperienceLeadIns();
+
+        // Reading progress and active section state for the long-form portfolio.
+        const readingProgressBar = document.getElementById('readingProgressBar');
+        let progressFrame = 0;
+        function updateReadingProgress() {
+            progressFrame = 0;
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+            if (readingProgressBar) readingProgressBar.style.width = `${Math.min(100, Math.max(0, progress * 100))}%`;
+        }
+        function requestReadingProgressUpdate() {
+            if (!progressFrame) progressFrame = window.requestAnimationFrame(updateReadingProgress);
+        }
+        window.addEventListener('scroll', requestReadingProgressUpdate, { passive: true });
+        window.addEventListener('resize', requestReadingProgressUpdate);
+        updateReadingProgress();
+
+        const sectionLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+        const sectionObserver = new IntersectionObserver(entries => {
+            const visibleSections = entries
+                .filter(entry => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+            if (!visibleSections.length) return;
+
+            const activeSection = visibleSections[0].target;
+            const sections = Array.from(document.querySelectorAll('main > section[id]'));
+            const activeIndex = sections.indexOf(activeSection);
+            let activeLink = sectionLinks.find(link => link.getAttribute('href') === `#${activeSection.id}`);
+            if (!activeLink) {
+                const precedingLinks = sectionLinks.filter(link => {
+                    const linkedIndex = sections.findIndex(section => link.getAttribute('href') === `#${section.id}`);
+                    return linkedIndex >= 0 && linkedIndex <= activeIndex;
+                });
+                activeLink = precedingLinks[precedingLinks.length - 1];
+            }
+            sectionLinks.forEach(link => {
+                if (link === activeLink) link.setAttribute('aria-current', 'location');
+                else link.removeAttribute('aria-current');
+            });
+        }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, .15, .35, .6] });
+        document.querySelectorAll('main > section[id]').forEach(section => sectionObserver.observe(section));
 
         // Filter Experience Timeline Live Search
         function filterExperience() {
