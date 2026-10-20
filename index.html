@@ -324,6 +324,82 @@
             display: none;
         }
 
+        /* Back-to-top floating button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(16, 185, 129, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6ee7b7;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.12);
+            opacity: 0;
+            transform: translateY(1rem);
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: rgba(16, 185, 129, 0.25);
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.25);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .back-to-top:focus-visible {
+            outline: 2px solid #6ee7b7;
+            outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .back-to-top { transition: none !important; }
+        }
+
+        /* Process strip cards */
+        .process-step {
+            position: relative;
+            min-width: 0;
+            text-align: left;
+        }
+
+        .process-step:not(:last-child)::after {
+            position: absolute;
+            top: 1.2rem;
+            right: -2rem;
+            z-index: 1;
+            color: #6ee7b7;
+            content: "→";
+            font-family: "JetBrains Mono", monospace;
+            font-size: 1.1rem;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 767px) {
+            .process-step:not(:last-child)::after { display: none; }
+        }
+
+        @media print {
+            .back-to-top { display: none !important; }
+        }
+
         .print-resume {
             display: none;
         }
@@ -6199,6 +6275,11 @@
 
         <!-- Mobile Drawer Menu -->
         <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-dark-800/95 px-4 pt-3 pb-6 space-y-2">
+            <div class="flex justify-end">
+                <button onclick="toggleMobileMenu()" class="glass-pill w-8 h-8 rounded-lg text-slate-300 hover:text-white flex items-center justify-center" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
             <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="About & Summary" data-ua="Про мене">About & Summary</a>
             <a href="#career-map" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Approach" data-ua="Підхід">Approach</a>
             <a href="#experience" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5" data-en="Experience" data-ua="Досвід роботи">Experience</a>
@@ -6461,6 +6542,51 @@
                 <article class="glass-card rounded-2xl p-5">
                     <h3 class="font-bold text-white text-sm" data-en="Independent Ownership" data-ua="Самостійне ведення проєктів">Independent Ownership</h3>
                     <p class="mt-2 text-xs leading-relaxed text-slate-300" data-en="Takes independent work from discovery and planning through implementation, iteration, and delivery." data-ua="Веду самостійні проєкти від дослідження й планування до реалізації, ітерацій та результату.">Takes independent work from discovery and planning through implementation, iteration, and delivery.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- How I Work: 4-step process -->
+        <section id="how-i-work" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <i class="fa-solid fa-route text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white" data-en="How I Work" data-ua="Як я працюю">How I Work</h2>
+                        <p class="text-xs text-slate-400" data-en="A clear path from request to delivery." data-ua="Чіткий шлях від запиту до результату.">A clear path from request to delivery.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <article class="process-step glass-card rounded-xl p-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold text-sm font-mono">01</span>
+                        <span class="text-xs font-semibold font-mono uppercase tracking-wider text-emerald-400" data-en="DISCOVER" data-ua="ВІДКРИТТЯ">DISCOVER</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-300" data-en="Understand the need, audience, constraints, and desired outcome." data-ua="Розумію потребу, аудиторію, обмеження та бажаний результат.">Understand the need, audience, constraints, and desired outcome.</p>
+                </article>
+                <article class="process-step glass-card rounded-xl p-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/15 text-cyan-400 font-bold text-sm font-mono">02</span>
+                        <span class="text-xs font-semibold font-mono uppercase tracking-wider text-cyan-400" data-en="DESIGN" data-ua="ПРОЄКТУВАННЯ">DESIGN</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-300" data-en="Map the structure, logic, flow, and system architecture." data-ua="Мапаю структуру, логіку, потік і архітектуру системи.">Map the structure, logic, flow, and system architecture.</p>
+                </article>
+                <article class="process-step glass-card rounded-xl p-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-violet-500/15 text-violet-400 font-bold text-sm font-mono">03</span>
+                        <span class="text-xs font-semibold font-mono uppercase tracking-wider text-violet-400" data-en="BUILD" data-ua="РЕАЛІЗАЦІЯ">BUILD</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-300" data-en="Implement with code, prompts, workflows, or content — iteratively." data-ua="Реалізую кодом, промптами, workflow або контентом — ітеративно.">Implement with code, prompts, workflows, or content — iteratively.</p>
+                </article>
+                <article class="process-step glass-card rounded-xl p-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-amber-500/15 text-amber-400 font-bold text-sm font-mono">04</span>
+                        <span class="text-xs font-semibold font-mono uppercase tracking-wider text-amber-400" data-en="DELIVER" data-ua="ДОСТАВКА">DELIVER</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-300" data-en="Deliver, validate, refine, and hand over with clear documentation." data-ua="Доставляю, валідую, вдосконалюю та передаю з чіткою документацією.">Deliver, validate, refine, and hand over with clear documentation.</p>
                 </article>
             </div>
         </section>
@@ -7052,7 +7178,7 @@
             <article class="glass-card rounded-2xl p-5 sm:p-6 border border-pink-500/20">
                 <div class="mb-4 flex flex-wrap items-end justify-between gap-3">
                     <div>
-                        <p class="text-[10px] font-mono uppercase tracking-widest text-pink-400" data-en="FEATURED VIDEO / AI DRAMA" data-ua="ВІДЕО / AI-ДРАМА">FEATURED VIDEO / AI DRAMA</p>
+                        <p class="text-[10px] font-mono uppercase tracking-widest text-pink-400" data-en="FEATURED VIDEO / AI DRAMA · 2025" data-ua="ВІДЕО / AI-ДРАМА · 2025">FEATURED VIDEO / AI DRAMA · 2025</p>
                         <h3 class="mt-1 text-lg font-bold text-white" data-en="AI Drama" data-ua="AI-драма">AI Drama</h3>
                         <p class="mt-1 text-xs font-semibold text-pink-200" data-en="AI Video Creator & Editor · Generative Storytelling" data-ua="AI-креаторка відео та монтажерка · генеративний сторітелінг">AI Video Creator &amp; Editor · Generative Storytelling</p>
                     </div>
@@ -8056,6 +8182,11 @@
         <span id="toastMessage">Action completed successfully</span>
     </div>
 
+    <!-- Back-to-top button -->
+    <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <script>
         // State Management
         let currentLang = 'EN';
@@ -8574,6 +8705,32 @@
                 }
             });
         }
+
+        // Back-to-top button
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        let backToTopFrame = 0;
+        function handleBackToTopScroll() {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 500);
+        }
+        function requestBackToTopUpdate() {
+            if (!backToTopFrame) backToTopFrame = window.requestAnimationFrame(handleBackToTopScroll);
+        }
+        window.addEventListener('scroll', requestBackToTopUpdate, { passive: true });
+        handleBackToTopScroll();
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Open the first exp-detail toggle by default so the page feels immediately detailed
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstToggle = document.querySelector('.exp-card .exp-detail-toggle');
+            if (firstToggle) {
+                const detail = firstToggle.nextElementSibling;
+                if (detail && detail.classList.contains('hidden')) {
+                    firstToggle.click();
+                }
+            }
+        });
     </script>
 </body>
 </html>
