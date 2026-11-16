@@ -8798,5 +8798,37 @@
             }
         });
     </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const selectors = [
+      '#saveCvBtn',
+      '#cvPrintBtn',
+      '#printCvBtn',
+      '#downloadCvBtn',
+      '[data-print-cv]',
+      '[data-action="print-cv"]',
+      'button[title*="CV"]',
+      'button[title*="Print"]'
+    ];
+
+    const btn = selectors
+      .map(selector => document.querySelector(selector))
+      .find(Boolean);
+
+    if (btn) {
+      btn.type = 'button';
+      btn.onclick = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        window.print();
+      };
+    }
+
+    // Якщо в коді є функція preparePrint(), перезаписуємо її
+    window.preparePrint = function () {
+      window.print();
+    };
+  });
+</script>
 </body>
 </html>
